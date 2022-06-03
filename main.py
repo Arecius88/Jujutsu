@@ -8,6 +8,7 @@ kansetsu_wasa = kansetsu_wasa()
 nage_wasa = nage_wasa()
 kihon = kihon()
 
+Test = 1234
 
 while start != True:
     choice = input("\nVälj teknikfamilj (Uke wasa, Atemi wasa, Kansetsu wasa, Nage wasa or all kihon):")
