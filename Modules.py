@@ -63,7 +63,7 @@ def kihon():
     kihon = uke_wasa( ) + kansetsu_wasa( ) + atemi_wasa() + nage_wasa()
     return kihon
 
-
+#Function för att välja teknik och radera teknik från listan. 
 def kihon_selecter(technic_group):
     technic = random.choice(technic_group)
     print(f"\n Tekniken är: {technic} \n")

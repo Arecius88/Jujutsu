@@ -40,8 +40,7 @@ while start != True:
             start = True   
 
 
-
-       '''
+'''
         
         new_exercice =input("New technic? (y/n) ")
 
