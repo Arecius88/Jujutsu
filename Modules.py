@@ -64,8 +64,6 @@ def kihon():
     return kihon
 
 
-
-
 def kihon_selecter(technic_group):
     technic = random.choice(technic_group)
     print(f"\n Tekniken är: {technic} \n")
@@ -73,12 +71,5 @@ def kihon_selecter(technic_group):
     return technic_group
 
 
-'''
-print(type(kansetsu_wasa()))
-print(type(uke_wasa()))
-print(type(atemi_wasa()))
-print(type(nage_wasa()))
-print(type(kihon()))
-print(kihon())
-'''
+
 

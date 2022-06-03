@@ -47,4 +47,4 @@ while start != True:
         start = True
 
     else:
-        print("Ange xya")
+        print("Ange teknikfamilj")
