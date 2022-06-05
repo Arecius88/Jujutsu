@@ -1,0 +1,42 @@
+
+
+
+
+Tkiter Code
+def my_click():
+    my_label = tk.Label(root, text="I'm clicked")
+    my_label.pack()
+
+button_1 = tk.Button(root, text="Click me", state= "normal", padx=50, pady=50, command=my_click, fg="Red", bg="Black")
+
+button_1.pack()
+
+#Drop Down Boxes
+def show ():
+    mylabel = tk.Label(root, text= clicked.get()).pack()
+
+
+options = ["Atemi", "Uke",]
+
+clicked = tk.StringVar()
+clicked.set(options[0])
+
+drop = tk.OptionMenu(root, clicked, *options)
+drop.pack()
+
+
+my_button = tk.Button(root, text= "Välj teknik", command=show).pack()
+
+'''
+#Creating a label widget
+my_label1 = tk.Label(root, text="Hello World")
+my_label2 = tk.Label(root, text="Jag heter Linus")
+
+#Gridsystem
+my_label1.grid(row= 0, column=0)
+my_label2.grid(row=1, column=1) #Column is relative. 
+
+#Showing on screen
+my_label1.pack()
+my_label2.pack()
+'''
