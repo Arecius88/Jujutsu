@@ -17,7 +17,7 @@ while start != True:
     if choice == "u":
         selected_group = kihon_selecter(uke_wasa)
 
-        #Försök till att lägga till extra val om jag vill fortsätta i samma teknikfamilj. 
+#Försök till att lägga till extra val om jag vill fortsätta i samma teknikfamilj. 
         choice2 = input("ny teknik j/n: ").lower() 
         while choice2 == "j":
             selected_group = kihon_selecter(uke_wasa)
