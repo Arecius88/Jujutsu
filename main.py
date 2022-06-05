@@ -30,7 +30,7 @@ while start != True:
             elif len(selected_group) == 0:
                 start = True
             
-            #Behöver lösa denna Else statment - Hoppar tillbaka till första Whileloop
+#Behöver lösa denna Else statment - Hoppar tillbaka till första Whileloop
             else:
                 print("Svara med j eller n")
       
