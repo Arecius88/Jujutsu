@@ -11,7 +11,7 @@ kansetsu_wasa = kansetsu_wasa()
 nage_wasa = nage_wasa()
 kihon = kihon()
 
-# Skriv en reset för när listan med tekniker är tom.
+# Todo Skriv en reset för när listan med tekniker är tom.
 # Undersök om det gått att stoppa inner_loop_start i en function.
 # När listan med tekninker är tom krashar koden!
 
@@ -23,114 +23,113 @@ while start != True:
     if choice == "u":
         selected_group = kihon_selecter(uke_wasa)
         inner_loop_start = True
-    
+
         while inner_loop_start == True:
             choice2 = input("\n ny teknik j/n: ").lower()
-            
+
             if choice2 == "j":
                 selected_group = kihon_selecter(uke_wasa)
-                
+
                 if len(selected_group) == 0:
                     inner_loop_start = False
 
             if choice2 == "n":
-                break 
-            
-            elif choice2 != "j":  
+                break
+
+            elif choice2 != "j":
                 print("\n Ange j eller n: ")
 
 
 # Choice Atemi Wasa
     elif choice == "at":
-        selected_group = kihon_selecter(atemi_wasa) 
+        selected_group = kihon_selecter(atemi_wasa)
         inner_loop_start = True
-    
+
         while inner_loop_start == True:
             choice2 = input("\n ny teknik j/n: ").lower()
-            
+
             if choice2 == "j":
                 selected_group = kihon_selecter(uke_wasa)
-                
+
                 if len(selected_group) == 0:
                     inner_loop_start = False
 
             if choice2 == "n":
-                break 
-            
-            elif choice2 != "j":  
-                print("\n Ange j eller n: ")
-                
+                break
 
-# Choice Kansetsu Wasa    
+            elif choice2 != "j":
+                print("\n Ange j eller n: ")
+
+
+# Choice Kansetsu Wasa
     elif choice == "ka":
         selected_group = kihon_selecter(kansetsu_wasa)
         inner_loop_start = True
-    
+
         while inner_loop_start == True:
             choice2 = input("\n ny teknik j/n: ").lower()
-            
+
             if choice2 == "j":
                 selected_group = kihon_selecter(uke_wasa)
-                
+
                 if len(selected_group) == 0:
                     inner_loop_start = False
 
             if choice2 == "n":
-                break 
-            
-            elif choice2 != "j":  
+                break
+
+            elif choice2 != "j":
                 print("\n Ange j eller n: ")
- 
-                
-# Choice Nage Wasa    
+
+
+# Choice Nage Wasa
     elif choice == "na":
         selected_group = kihon_selecter(nage_wasa)
         inner_loop_start = True
-    
+
         while inner_loop_start == True:
             choice2 = input("\n ny teknik j/n: ").lower()
-            
+
             if choice2 == "j":
                 selected_group = kihon_selecter(uke_wasa)
-                
+
                 if len(selected_group) == 0:
                     inner_loop_start = False
 
             if choice2 == "n":
-                break 
-            
-            elif choice2 != "j":  
+                break
+
+            elif choice2 != "j":
                 print("\n Ange j eller n: ")
-                   
-# Choice All Kihon    
+
+# Choice All Kihon
     elif choice == "ki":
         selected_group = kihon_selecter(atemi_wasa)
         inner_loop_start = True
-    
+
         while inner_loop_start == True:
             choice2 = input("\n ny teknik j/n: ").lower()
-            
+
             if choice2 == "j":
                 selected_group = kihon_selecter(uke_wasa)
-                
+
                 if len(selected_group) == 0:
                     inner_loop_start = False
 
             if choice2 == "n":
-                break 
-            
-            elif choice2 != "j":  
-                print("\n Ange j eller n: ")
-            
+                break
 
-            elif choice2 != "j":  
-                choice2 = input("ny teknik j/n: ").lower() 
- 
- 
+            elif choice2 != "j":
+                print("\n Ange j eller n: ")
+
+
+            elif choice2 != "j":
+                choice2 = input("ny teknik j/n: ").lower()
+
+
     elif choice == "q":
         start = True
 
 
     else:
         print("\n Ange teknikfamilj")
-        
