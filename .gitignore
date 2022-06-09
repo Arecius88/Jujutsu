@@ -2,8 +2,8 @@
 .venv/
 venv/
 __Pycache__/
-
+kivymd/
 Anteckning.txt
+Anteckningar.txt
 MOCK.py
-GUI.py
-
+Logos.py
