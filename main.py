@@ -11,9 +11,9 @@ kansetsu_wasa = kansetsu_wasa()
 nage_wasa = nage_wasa()
 kihon = kihon()
 
-# Skriv en reset för när listan med tekniker är tom.
-# Undersök om det gått att stoppa inner_loop_start i en function.
-# När listan med tekninker är tom krashar koden!
+#Todo Skriv en reset för när listan med tekniker är tom.
+#Todo Undersök om det gått att stoppa inner_loop_start i en function.
+#! När listan med tekninker är tom krashar koden!
 
 #Loop för att starta valen
 while start != True:
