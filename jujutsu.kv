@@ -2,9 +2,48 @@ MainWidget:
 
 <MainWidget>:
     BoxLayout:
+        orientation: "vertical"
         size: root.width, root.height
-        Button:
-            text: "3"
 
-        Button:
-            text: "4"
+#todo write a function that is able to choose between the values in the Spinner.
+#todo research if the color can change in the "dropdown" buttons in the Spinner.
+
+#Meny position in the head of the window
+        Spinner:
+            id: menu
+            text: "Home"
+            values: ("Home", "Uke Wasa", "Atemi Wasa", "Kansetsu Wasa", "Nage wasa", "All Kihon")
+            size_hint_y: None
+            height: "48dp"
+            background_color: (255/255,142/255,0,1)
+
+#todo: Write a funtction that display the technics.
+#The label for displaying the technics
+        Label:
+            id: technic_displayer
+            text: "Min label som jag snart ska göra något med"
+
+#todo write the funktion for the on button release event - display a technic
+#Button for the new technic
+        Bubble:
+            size_hint_y: None
+            height: "100dp"
+            arrow_pos: "top_mid"
+            background_color: (1, 0.741, 0.2, 1)
+
+            BubbleButton:
+                id: technic_button
+                text: "New technic"
+                #background_normal: "" #can use if I want a charper color
+                background_color: (1, 0.741, 0.2, 1)
+
+#Button for the reset
+        Bubble:
+            size_hint_y: None
+            height: "100dp"
+            pos_hint: {"center_x": .5} #todo Need to change the position
+
+            BubbleButton:
+                id: reset_button
+                text: "Reset"
+                background_color: (1,0,0,1)
