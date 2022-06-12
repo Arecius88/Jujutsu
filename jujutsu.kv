@@ -16,12 +16,16 @@ MainWidget:
             size_hint_y: None
             height: "48dp"
             background_color: (255/255,142/255,0,1)
+            on_text: root.on_spinner_select(self.text) #fångar in värdet i Spinner
+
+
+
 
 #todo: Write a funtction that display the technics.
 #The label for displaying the technics
         Label:
-            id: technic_displayer
-            text: "Min label som jag snart ska göra något med"
+            id: technic_displayer_label
+            text: "Choose a technic Family"
 
 #todo write the funktion for the on button release event - display a technic
 #Button for the new technic
@@ -31,19 +35,21 @@ MainWidget:
             arrow_pos: "top_mid"
             background_color: (1, 0.741, 0.2, 1)
 
+
             BubbleButton:
                 id: technic_button
                 text: "New technic"
                 #background_normal: "" #can use if I want a charper color
                 background_color: (1, 0.741, 0.2, 1)
+                on_press: root.new_technic_button()
 
 #Button for the reset
         Bubble:
             size_hint_y: None
             height: "100dp"
-            pos_hint: {"center_x": .5} #todo Need to change the position
 
             BubbleButton:
                 id: reset_button
                 text: "Reset"
                 background_color: (1,0,0,1)
+                on_press: root.reset_button()
