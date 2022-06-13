@@ -15,7 +15,6 @@ class MainWidget(Widget):
     nagewasa = nage_wasa()
     spinner_choice = StringProperty("0")
     end_of_technic = StringProperty("Grattis, välj ny teknikfamilj")
-    welcome_text = StringProperty("You have chosen ")
     reset_text = StringProperty("You have pressed reset")
 
 #Function to select the technics
@@ -29,30 +28,31 @@ class MainWidget(Widget):
 
 # Function for the spinner widget
     def on_spinner_select(self, spinner_choice):
-
+        self.welcome_text = f"You have chosen {spinner_choice}"
+                
         if spinner_choice == "Home":
             self.ids.technic_displayer_label.text = "Choose a technic Family"
             self.spinner_choice = spinner_choice
 
         elif spinner_choice == "Uke Wasa":
             self.spinner_choice = spinner_choice
-            self.ids.technic_displayer_label.text = self.welcome_text + spinner_choice
+            self.ids.technic_displayer_label.text = self.welcome_text
 
 
         elif spinner_choice == "Atemi Wasa":
-            self.ids.technic_displayer_label.text = self.welcome_text + spinner_choice
+            self.ids.technic_displayer_label.text = self.welcome_text
             self.spinner_choice = spinner_choice
 
         elif spinner_choice == "Kansetsu Wasa":
-            self.ids.technic_displayer_label.text = self.welcome_text + spinner_choice
+            self.ids.technic_displayer_label.text = self.welcome_text
             self.spinner_choice = spinner_choice
 
         elif spinner_choice == "Nage wasa":
-            self.ids.technic_displayer_label.text = self.welcome_text + spinner_choice
+            self.ids.technic_displayer_label.text = self.welcome_text
             self.spinner_choice = spinner_choice
 
         elif spinner_choice == "All Kihon":
-            self.ids.technic_displayer_label.text = f"You have chosen {spinner_choice}!"
+            self.ids.technic_displayer_label.text = self.welcome_text
             self.spinner_choice = spinner_choice
 
 
