@@ -113,7 +113,7 @@ class MainWidget(Widget):
                 # self.spinner_choice = " "
                 self.kihon = kihon()
         else:
-            print("NOT UKEAWASA")
+            print("Choose a technicfamily")
 
     # Function for the reset button
 #Todo display "You have pressed reset in the label!"
