@@ -15,8 +15,7 @@ class MainWidget(Widget):
     nagewasa = nage_wasa()
     spinner_choice = StringProperty("0")
     end_of_technic = StringProperty("Grattis, välj ny teknikfamilj")
-    reset_text = StringProperty("You have pressed reset")
-
+    
 #Function to select the technics
 
     def technic_selecter(self, technic_group):
@@ -117,16 +116,17 @@ class MainWidget(Widget):
             print("NOT UKEAWASA")
 
     # Function for the reset button
-#Todo set the Spinner to Home when reset is pressed.
+#Todo display "You have pressed reset in the label!"
     def reset_button(self):
-        self.spinner_choice = "Home"
+        self.reset_text = "You have pressed reset"
+        self.spinner_choice = " "
         self.ukewasa = uke_wasa()
         self.atemiwasa = atemi_wasa()
         self.kihon = kihon()
         self.kansetsuwasa = kansetsu_wasa()
         self.nagewasa = nage_wasa()
         self.ids.technic_displayer_label.text = self.reset_text
-
+        self.ids.menu.text = "Home"
         print("reset")
 
 
