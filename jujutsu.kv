@@ -5,7 +5,7 @@ MainWidget:
         orientation: "vertical"
         size: root.width, root.height
 
-#todo write a function that is able to choose between the values in the Spinner.
+
 #todo research if the color can change in the "dropdown" buttons in the Spinner.
 
 #Meny position in the head of the window
@@ -21,13 +21,37 @@ MainWidget:
 
 
 
-#todo: Write a funtction that display the technics.
 #The label for displaying the technics
-        Label:
-            id: technic_displayer_label
-            text: "Choose a technic Family"
 
-#todo write the funktion for the on button release event - display a technic
+        GridLayout:
+            columns:1
+            rows:2
+
+            size: root.width, root.height
+            Label:
+                id: technic_displayer_label
+                font_size: "25"
+                text: "Choose a technic Family"
+
+            BoxLayout:
+                orientation: "horizontal"
+
+                BoxLayout:
+                    orientation: "vertical"
+                    Label:
+                        text: "Technics left: "
+
+                    Label:
+                        id: length_of_list_counter
+                        text: "-"
+
+                Button:
+                    text: "Placeholder:\nVälja random eller i ordning"
+                Button:
+                    text: "placeholder3"
+                Button:
+                    text: "placeholder4"
+
 #Button for the new technic
         Bubble:
             size_hint_y: None

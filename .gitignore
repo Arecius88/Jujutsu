@@ -1,13 +1,2 @@
-*.log
-Ignorefolder/
-.venv/
-venv/
-__Pycache__/
-kivymd/
-kivycatalog/
-Ignorefolder/Anteckning.txt
-Anteckningar.txt
-Ignorefolder/MOCK.py
-Logos.py
-Catalog.py
-kivycatalog.kv
+.venv
+.idea
