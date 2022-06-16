@@ -4,7 +4,7 @@ from kivy.uix.widget import Widget
 from kivy.properties import StringProperty
 from Modules import uke_wasa, atemi_wasa, kihon, kansetsu_wasa, nage_wasa
 
-
+test =1
 
 class MainWidget(Widget):
     #defintioner för Kivy
