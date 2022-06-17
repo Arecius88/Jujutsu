@@ -18,7 +18,6 @@ class MainWidget(Widget):
     technic_family_button_text = StringProperty("Choose a technic Family")
     technic_display = StringProperty("0")
     reset_text = StringProperty("You have pressed reset.\nChoose a new technic family")
-    delay = 3
 
     # Function for the reset button
     def reset_button(self):
@@ -74,7 +73,7 @@ class MainWidget(Widget):
         elif self.spinner_choice == "Uke Wasa":
             self.technic_selecter(self.ukewasa)
             self.ids.technic_displayer_label.text = self.technic
-            self.ids.length_of_list_counter.text = str(len(self.ukewasa))
+            
 
             if len(self.ukewasa) == 0:
                 self.ids.technic_displayer_label.text = self.end_of_technic
@@ -84,7 +83,7 @@ class MainWidget(Widget):
         elif self.spinner_choice == "Atemi Wasa":
             self.technic_selecter(self.atemiwasa)
             self.ids.technic_displayer_label.text = self.technic
-            self.ids.length_of_list_counter.text = str(len(self.atemiwasa))
+            
 
             if len(self.atemiwasa) == 0:
                 self.ids.technic_displayer_label.text = self.end_of_technic
@@ -94,7 +93,7 @@ class MainWidget(Widget):
         elif self.spinner_choice == "Kansetsu Wasa":
             self.technic_selecter(self.kansetsuwasa)
             self.ids.technic_displayer_label.text = self.technic
-            self.ids.length_of_list_counter.text = str(len(self.kansetsuwasa))
+            
 
             if len(self.kansetsuwasa) == 0:
                 self.ids.technic_displayer_label.text = self.end_of_technic
@@ -105,7 +104,7 @@ class MainWidget(Widget):
         elif self.spinner_choice == "Nage wasa":
             self.technic_selecter(self.nagewasa)
             self.ids.technic_displayer_label.text = self.technic
-            self.ids.length_of_list_counter.text = str(len(self.nagewasa))
+            
 
             if len(self.nagewasa) == 0:
                 self.ids.technic_displayer_label.text = self.end_of_technic
@@ -116,7 +115,7 @@ class MainWidget(Widget):
         elif self.spinner_choice == "All Kihon":
             self.technic_selecter(self.kihon)
             self.ids.technic_displayer_label.text = self.technic
-            self.ids.length_of_list_counter.text = str(len(self.kihon))
+            
 
             if len(self.kihon) == 0:
                 self.ids.technic_displayer_label.text = self.end_of_technic
