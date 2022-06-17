@@ -16,8 +16,8 @@ Plan for this project is:
     Make a counter that count how many times a User have completed a technocfamily
       Kihon = +1 on all sub Kihon groups. 
     
-    Have different users that indivudally can track the above
-    Present the data in a cool fashion
+  Have different users that indivudally can track the above
+  Present the data in a cool fashion
   
 
 DONE: 
