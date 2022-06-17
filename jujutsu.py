@@ -18,7 +18,11 @@ class MainWidget(Widget):
     technic_family_button_text = StringProperty("Choose a technic Family")
     technic_display = StringProperty("0")
     reset_text = StringProperty("You have pressed reset.\nChoose a new technic family")
-    delay = 3
+
+
+
+    def progressbar_calculating(self):
+        pass
 
     # Function for the reset button
     def reset_button(self):
@@ -75,6 +79,7 @@ class MainWidget(Widget):
             self.technic_selecter(self.ukewasa)
             self.ids.technic_displayer_label.text = self.technic
             self.ids.length_of_list_counter.text = str(len(self.ukewasa))
+            
 
             if len(self.ukewasa) == 0:
                 self.ids.technic_displayer_label.text = self.end_of_technic

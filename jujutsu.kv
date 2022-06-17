@@ -33,11 +33,12 @@ MainWidget:
                 font_size: "25"
                 text: "Choose a technic Family"
 
-            BoxLayout:
-                orientation: "horizontal"
+            GridLayout:
+                columns: 2
+                rows: 2
 
                 BoxLayout:
-                    orientation: "vertical"
+                    orientation: "horizontal"
                     Label:
                         text: "Technics left: "
 
@@ -45,8 +46,9 @@ MainWidget:
                         id: length_of_list_counter
                         text: "-"
 
-                Button:
-                    text: "Placeholder:\nVälja random eller i ordning"
+                ProgressBar:
+                    paddig: "10dp"
+                    value: 50
                 Button:
                     text: "placeholder3"
                 Button:
