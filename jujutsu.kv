@@ -22,35 +22,11 @@ MainWidget:
 
 
 #The label for displaying the technics
+        Label:
+            id: technic_displayer_label
+            font_size: "25"
+            text: "Choose a technic Family"
 
-        GridLayout:
-            columns:1
-            rows:2
-
-            size: root.width, root.height
-            Label:
-                id: technic_displayer_label
-                font_size: "25"
-                text: "Choose a technic Family"
-
-            BoxLayout:
-                orientation: "horizontal"
-
-                BoxLayout:
-                    orientation: "vertical"
-                    Label:
-                        text: "Technics left: "
-
-                    Label:
-                        id: length_of_list_counter
-                        text: "-"
-
-                Button:
-                    text: "Placeholder:\nVälja random eller i ordning"
-                Button:
-                    text: "placeholder3"
-                Button:
-                    text: "placeholder4"
 
 #Button for the new technic
         Bubble:
