@@ -1,5 +1,4 @@
 # Jujutsu
-
 A program to choose, at random, technics in jujustu Kai system for 1 dan.
 
 <h2>Plan for this project is:</h2>

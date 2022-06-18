@@ -18,11 +18,18 @@ class MainWidget(Widget):
     technic_family_button_text = StringProperty("Choose a technic Family")
     technic_display = StringProperty("0")
     reset_text = StringProperty("You have pressed reset.\nChoose a new technic family")
-    delay = 3
+    down_counter_of_technics = StringProperty("-")
+    static_technics_left = StringProperty("Technics left: ")
+    static_length_of_list = StringProperty("Technics in family")
+
+
+
+    def spinner_selected_welcome_text(self):
+        self.ids.technic_displayer_label.text = self.welcome_text
+
 
     # Function for the reset button
     def reset_button(self):
-
         self.ukewasa = uke_wasa()
         self.atemiwasa = atemi_wasa()
         self.kihon = kihon()
@@ -44,7 +51,6 @@ class MainWidget(Widget):
         self.welcome_text = f"You have chosen {spinner_choice}"
         self.spinner_choice = spinner_choice
 
-#Bör kunna skriva nedan upprepade kod i en function.
         if spinner_choice == "Home":
             self.ids.technic_displayer_label.text = self.technic_family_button_text
 
@@ -72,9 +78,11 @@ class MainWidget(Widget):
             self.ids.technic_displayer_label.text = self.technic_family_button_text
 
         elif self.spinner_choice == "Uke Wasa":
+            self.ids.technic_list_length.text = str(len(uke_wasa()))
             self.technic_selecter(self.ukewasa)
             self.ids.technic_displayer_label.text = self.technic
             self.ids.length_of_list_counter.text = str(len(self.ukewasa))
+            
 
             if len(self.ukewasa) == 0:
                 self.ids.technic_displayer_label.text = self.end_of_technic
