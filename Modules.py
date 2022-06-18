@@ -70,3 +70,5 @@ def kihon_selecter(technic_group):
     print(f"\n Tekniken är: {technic} \n")
     technic_group.remove(technic)
     return technic_group
+
+
