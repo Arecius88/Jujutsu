@@ -25,7 +25,7 @@ MainWidget:
 
         GridLayout:
             columns:1
-            rows:2
+            rows:3
 
             size: root.width, root.height
             Label:
@@ -33,12 +33,18 @@ MainWidget:
                 font_size: "25"
                 text: "Choose a technic Family"
 
+            ProgressBar:
+                paddig: "10dp"
+                value: 50
+
             GridLayout:
                 columns: 2
                 rows: 2
 
                 BoxLayout:
                     orientation: "horizontal"
+
+
                     Label:
                         text: "Technics left: "
 
@@ -46,13 +52,13 @@ MainWidget:
                         id: length_of_list_counter
                         text: "-"
 
-                ProgressBar:
-                    paddig: "10dp"
-                    value: 50
+
                 Button:
                     text: "placeholder3"
                 Button:
                     text: "placeholder4"
+                Button:
+                    text: "placeholder5"
 
 #Button for the new technic
         Bubble:
