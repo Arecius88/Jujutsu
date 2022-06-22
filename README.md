@@ -20,6 +20,8 @@ A program to choose, at random, technics in jujustu Kai system for 1 dan.
    </ul>
    <li>Have different users that indivudally can track the above</li>
    <li>Present the data in a cool fashion</li>
+   <li>Develop a webapp? </li>
+   <li>Release the app to android market? </li>
 </ul>
   
 
