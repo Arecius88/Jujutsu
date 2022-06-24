@@ -28,8 +28,7 @@ class MainWidget(Widget):
         self.nagewasa = nage_wasa()
         self.ids.menu.text = "Home"
         self.ids.technic_displayer_label.text = self.reset_text
-
-
+        
 #Function to select the technics
     def technic_selecter(self, technic_group):
         self.technic = choice(technic_group)
@@ -58,9 +57,7 @@ class MainWidget(Widget):
             self.ids.technic_displayer_label.text = self.welcome_text
 
         elif spinner_choice == "All Kihon":
-            self.ids.technic_displayer_label.text = self.welcome_text
-
-
+            self.ids.technic_displayer_label.text = self.welcome_text       
 
 # Function for the new technic button
     def new_technic_button(self):
@@ -70,7 +67,10 @@ class MainWidget(Widget):
 
         elif self.spinner_choice == "Uke Wasa":
             self.technic_selecter(self.ukewasa)
-            self.ids.technic_displayer_label.text = self.technic            
+            self.ids.technic_displayer_label.text = self.technic         
+            current_value = len(self.ukewasa) / len(uke_wasa())
+            print(current_value)
+            self.ids.progressbar.value = current_value
 
             if len(self.ukewasa) == 0:
                 self.ids.technic_displayer_label.text = self.end_of_technic
