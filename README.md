@@ -1,10 +1,13 @@
 # Jujutsu
 A program to choose, at random, technics in jujustu Kai system for 1 dan.
 
+<font size= "-1">Crossed out text means that goal has been reached and is moved to the Done section.</font>
+
 <h2>Plan for this project is:</h2>
 <ol>
+  <li>Make the dropdown in spinner the same color as the main spinner. 
   <li>Have a countdown on the amount of technics that are left in a family. </li>
-  <li>Have a progressbar that visually shows how much you have left in a family. </li>
+  <li><s>Have a progressbar that visually shows how much you have left in a family. </s></li>
   <li>Make it possible to choose if the user wants the technics in order or at random.</li>
   <li>Make it possible to change kyu-grade and only get that kyu-grade Kihon.</li> 
   <li>Include Classes in the code that is not a part of Kivy.</li> 
@@ -28,5 +31,6 @@ A program to choose, at random, technics in jujustu Kai system for 1 dan.
 
 <h4>DONE:</h4>
 <ul>
-  <li> Make a GUI - Done</li>
+  <li> Make a GUI</li>
+  <li>Have a progressbar that visually shows how much you have left in a family.</li>
 </ul>
