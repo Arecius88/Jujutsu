@@ -40,10 +40,11 @@ class MainWidget(Widget):
     def on_spinner_select(self, spinner_choice):
         self.welcome_text = f"You have chosen {spinner_choice}"
         self.spinner_choice = spinner_choice
+        self.ids.my_progressbar.value = 0
 
         if spinner_choice == "Home":
-            self.ids.technic_displayer_label.text = self.technic_family_button_text
-
+            self.ids.technic_displayer_label.text = self.technic_family_button_text 
+            
         elif spinner_choice == "Uke Wasa":
             self.ids.technic_displayer_label.text = self.welcome_text
 
@@ -59,6 +60,9 @@ class MainWidget(Widget):
         elif spinner_choice == "All Kihon":
             self.ids.technic_displayer_label.text = self.welcome_text       
 
+    def progressbar_max(self, max_value):
+        return len(max_value)
+            
 # Function for the new technic button
     def new_technic_button(self):
 
@@ -69,21 +73,26 @@ class MainWidget(Widget):
             self.technic_selecter(self.ukewasa)
             self.ids.technic_displayer_label.text = self.technic         
             
-            #Trying to assign a value to Progressbar. This is the method I know right now. 
-            current_value = len(self.ukewasa) / len(uke_wasa())
-            print(current_value)
-            self.ids.progressbar.value = current_value
-
+            #Increment the progressbar with 1 to the maximum of def progressbar_max.
+            self.ids.my_progressbar.max = self.progressbar_max(uke_wasa())
+            self.ids.my_progressbar.value += 1
+            
+            #Check if the list of technics are empty
             if len(self.ukewasa) == 0:
                 self.ids.technic_displayer_label.text = self.end_of_technic
                 self.spinner_choice = ""
                 self.ukewasa = uke_wasa()
+                
 
         elif self.spinner_choice == "Atemi Wasa":
             self.technic_selecter(self.atemiwasa)
             self.ids.technic_displayer_label.text = self.technic
             
+            #Increment the progressbar with 1 to the maximum of def progressbar_max.
+            self.ids.my_progressbar.max = self.progressbar_max(atemi_wasa())
+            self.ids.my_progressbar.value += 1
 
+            #Check if the list of technics are empty
             if len(self.atemiwasa) == 0:
                 self.ids.technic_displayer_label.text = self.end_of_technic
                 self.spinner_choice = ""
@@ -93,7 +102,11 @@ class MainWidget(Widget):
             self.technic_selecter(self.kansetsuwasa)
             self.ids.technic_displayer_label.text = self.technic
             
+            #Increment the progressbar with 1 to the maximum of def progressbar_max.
+            self.ids.my_progressbar.max = self.progressbar_max(kansetsu_wasa())
+            self.ids.my_progressbar.value += 1
 
+            #Check if the list of technics are empty
             if len(self.kansetsuwasa) == 0:
                 self.ids.technic_displayer_label.text = self.end_of_technic
                 self.spinner_choice = ""
@@ -104,6 +117,9 @@ class MainWidget(Widget):
             self.technic_selecter(self.nagewasa)
             self.ids.technic_displayer_label.text = self.technic
             
+            #Increment the progressbar with 1 to the maximum of def progressbar_max.
+            self.ids.my_progressbar.max = self.progressbar_max(nage_wasa())
+            self.ids.my_progressbar.value += 1
 
             if len(self.nagewasa) == 0:
                 self.ids.technic_displayer_label.text = self.end_of_technic
@@ -115,7 +131,11 @@ class MainWidget(Widget):
             self.technic_selecter(self.kihon)
             self.ids.technic_displayer_label.text = self.technic
             
+            #Increment the progressbar with 1 to the maximum of def progressbar_max.
+            self.ids.my_progressbar.max = self.progressbar_max(kihon())
+            self.ids.my_progressbar.value += 1
 
+            #Check if the list of technics are empty
             if len(self.kihon) == 0:
                 self.ids.technic_displayer_label.text = self.end_of_technic
                 self.spinner_choice = ""
