@@ -22,6 +22,10 @@ MainWidget:
 
 
 #The label for displaying the technics
+        Label:
+            id: technic_displayer_label
+            font_size: "25"
+            text: "Choose a technic Family"
 
         GridLayout:
             columns:1
@@ -32,41 +36,6 @@ MainWidget:
                 id: technic_displayer_label
                 font_size: "25"
                 text: root.technic_family_button_text
-
-            ProgressBar:
-                id: my_progressbar
-                paddig: "10dp"
-                min: 0.0
-                max: 1.0
-                value: .30
-
-            GridLayout:
-                columns: 1
-                rows: 2
-
-                BoxLayout:
-                    orientation: "horizontal"
-
-                    Label:
-                        id: static_technic_in_list
-                        text: root.static_length_of_list
-
-                    Label:
-                        id: technic_list_length
-                        text: root.down_counter_of_technics
-
-                    Label:
-                        id: static_technic_left_in_list
-                        text: root.static_technics_left
-
-                    Label:
-                        id: length_of_list_counter
-                        text: root.down_counter_of_technics
-
-
-                Button:
-                    text: "placeholder3"
-
 
 #Button for the new technic
         Bubble:
