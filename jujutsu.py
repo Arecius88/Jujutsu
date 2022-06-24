@@ -69,7 +69,6 @@ class MainWidget(Widget):
             self.ids.technic_displayer_label.text = self.technic_family_button_text
 
         elif self.spinner_choice == "Uke Wasa":
-            #self.ids.technic_list_length.text = str(len(uke_wasa()))
             self.technic_selecter(self.ukewasa)
             self.ids.technic_displayer_label.text = self.technic            
 
