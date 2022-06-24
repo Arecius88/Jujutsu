@@ -21,7 +21,6 @@ class MainWidget(Widget):
 
     # Function for the reset button
     def reset_button(self):
-
         self.ukewasa = uke_wasa()
         self.atemiwasa = atemi_wasa()
         self.kihon = kihon()
@@ -43,7 +42,6 @@ class MainWidget(Widget):
         self.welcome_text = f"You have chosen {spinner_choice}"
         self.spinner_choice = spinner_choice
 
-#Bör kunna skriva nedan upprepade kod i en function.
         if spinner_choice == "Home":
             self.ids.technic_displayer_label.text = self.technic_family_button_text
 
@@ -71,9 +69,9 @@ class MainWidget(Widget):
             self.ids.technic_displayer_label.text = self.technic_family_button_text
 
         elif self.spinner_choice == "Uke Wasa":
+            self.ids.technic_list_length.text = str(len(uke_wasa()))
             self.technic_selecter(self.ukewasa)
-            self.ids.technic_displayer_label.text = self.technic
-            
+            self.ids.technic_displayer_label.text = self.technic            
 
             if len(self.ukewasa) == 0:
                 self.ids.technic_displayer_label.text = self.end_of_technic

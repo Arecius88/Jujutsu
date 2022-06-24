@@ -27,6 +27,15 @@ MainWidget:
             font_size: "25"
             text: "Choose a technic Family"
 
+        GridLayout:
+            columns:1
+            rows:3
+
+            size: root.width, root.height
+            Label:
+                id: technic_displayer_label
+                font_size: "25"
+                text: root.technic_family_button_text
 
 #Button for the new technic
         Bubble:
