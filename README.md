@@ -2,7 +2,7 @@
 A program to choose, at random, technics in jujustu Kai system for 1 dan.
 It is build in Python and the latest Kivymodules. You need to have Kivy installed. 
 
-<font size= "-1">Crossed out text means that goal has been reached and is moved to the Done section.</font>
+Crossed out text means that goal has been reached and is moved to the Done section.
 
 <h2>Plan for this project is:</h2>
 
