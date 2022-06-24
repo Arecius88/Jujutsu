@@ -68,6 +68,8 @@ class MainWidget(Widget):
         elif self.spinner_choice == "Uke Wasa":
             self.technic_selecter(self.ukewasa)
             self.ids.technic_displayer_label.text = self.technic         
+            
+            #Trying to assign a value to Progressbar. This is the method I know right now. 
             current_value = len(self.ukewasa) / len(uke_wasa())
             print(current_value)
             self.ids.progressbar.value = current_value
