@@ -6,6 +6,9 @@ from Modules import uke_wasa, atemi_wasa, kihon, kansetsu_wasa, nage_wasa
 from time import sleep
 
 
+#Todo Make it possible to make choises what grades you want to train for. 
+
+
 class MainWidget(Widget):
     #defintioner för Kivy
     ukewasa = uke_wasa()
