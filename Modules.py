@@ -2,8 +2,10 @@ import random
 
 def uke_wasa():
     uke_wasa = ["Ju morote jodan uke, mot svingslag",
-                "Jodan uchi uke, mot rakt slag",                "Gedan uchi uke, mot cirkulär spark",
-                "Gedan juji uke, mot knästöt och rak spark", "Morote jodan uke, mot svingslag",
+                "Jodan uchi uke, mot rakt slag",
+                "Gedan uchi uke, mot cirkulär spark",
+                "Gedan juji uke, mot knästöt och rak spark", 
+                "Morote jodan uke, mot svingslag",
                 "Chudan soto uke, mot rakt slag",
                 "Gedan soto uke, mot rak spark",
                 "Jodan soto uke, mot rakt slag",
