@@ -1,3 +1,5 @@
+# Försöker att spitta uke_wasa per grad. Målet är att ha någopn form av lösning 
+# där jag lägger till nya tekniker i på de tekikerna från den före gående listan
 
 ukewasa_yellow = ["Ju morote jodan uke, mot svingslag",
                   "Jodan uchi uke, mot rakt slag",
