@@ -23,6 +23,7 @@ uke_wasa_blue = add_ukewasa_yellow + add_ukewasa_orange + add_ukewasa_green + ad
 uke_wasa_brown = uke_wasa_blue
 
 
+
 '''
 #Troligen den metoden jag anävnder för att slå ihop de olika list. 
 orange = ukewasa_yellow + ukewasa_organge
