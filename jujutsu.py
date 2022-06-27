@@ -67,6 +67,7 @@ class MainWidget(Widget):
         return len(max_value)
             
 # Function for the new technic button
+# TODO Add a F-string technics_countdown = f"You have {x}/{y} left" /../ where x = technics left in the list  and y = technics in the list
     def new_technic_button(self):
 
         if self.spinner_choice == "Home":
