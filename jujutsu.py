@@ -3,7 +3,7 @@ from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.properties import StringProperty
 from Modules import uke_wasa, atemi_wasa, kihon, kansetsu_wasa, nage_wasa
-from time import sleep
+
 
 
 class MainWidget(Widget):
