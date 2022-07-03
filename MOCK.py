@@ -1,30 +1,51 @@
 #! Försöker ordna datan i classer. Syfte: lära mig OOP
+# Classes är kanske fel väg att gå. All data är fixerad. Functions kanske är bättre väg att gå.
+# får försöka hitta ett bra sätt att strukturera datan på. 
+
+def yellow_belt():
+    ukewasa = ["Ju morote jodan uke, mot svingslag",
+                            "Jodan uchi uke, mot rakt slag",
+                            "Gedan uchi uke, mot cirkulär spark",
+                            "Gedan juji uke, mot knästöt och rak spark"]    
+
+    atemiwasa = ["Shotei uchi, jodan och chudan",
+                        "Me uchi, insidan och utsidan",
+                            "Gedan geri",]
+
+    kansetsuwasa = ["Ude osae, mot grepp i ärmen, ude osae gatame"]
+    
+    return yellow_belt
 
 
+
+
+'''
 class YellowBelt():
-    def __init__(self, ukewasa, atemiwasa,  kansetsuwasa):
-        self.ukewasa = ukewasa
-        self.atemiwasa = atemiwasa
-        self.kansetsuwasa = kansetsuwasa
-        
-    def blokeringar(self):
+    
+    
+    def __init__(self):
         self.ukewasa = ["Ju morote jodan uke, mot svingslag",
                             "Jodan uchi uke, mot rakt slag",
                             "Gedan uchi uke, mot cirkulär spark",
                             "Gedan juji uke, mot knästöt och rak spark"]    
-    
-    def slag(self):
+
         self.atemiwasa = ["Shotei uchi, jodan och chudan",
                         "Me uchi, insidan och utsidan",
                             "Gedan geri",]
-    def ledtekniker(self):
+
         self.kansetsuwasa = ["Ude osae, mot grepp i ärmen, ude osae gatame"]
-        
-        
-        
-p1 = YellowBelt(ukewasa, atemiwasa,kansetsuwasa)
-print(p1.slag())
-        
+    
+    
+    
+    def rm_a_technic(self):
+        self.ukewasa.pop()
+        print(self.ukewasa)
+    
+    
+p1 = YellowBelt()
+print(p1)
+print(p1.rm_a_technic)
+            
 class OragneBelt(YellowBelt):
      
     ukewasa_orange = ["Morote jodan uke, mot svingslag",
@@ -73,12 +94,9 @@ class FirstDan():
     kansetsuwasa_firstdan = []
     
 
-y1 = YellowBelt()
-
-print(type(y1.atemiwasa_yellow))
 
 
-'''
+
 uke_wasa_yellow = add_ukewasa_yellow
 uke_wasa_orange = add_ukewasa_yellow + add_ukewasa_orange 
 uke_wasa_green = add_ukewasa_yellow + add_ukewasa_orange + add_ukewasa_green
