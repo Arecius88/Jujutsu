@@ -37,3 +37,15 @@ Crossed out text means that goal has been reached and is moved to the Done secti
   <li> Make a GUI</li>
   <li>Have a progressbar that visually shows how much you have left in a family.</li>
 </ul>
+
+
+
+
+<h2>How to use</h2>
+In the head of the screen press the button and choose your technic family. 
+Press "New Technic" button and the label in the middle of the screen show a random technic. 
+Press "New Technic" again and the laven shows a new random technic.
+
+When you have pressed the "New technic" button enough times the label tells you that you are done with that technicfamily. 
+
+Choose a new technic family or press "Reset" and restart. 
