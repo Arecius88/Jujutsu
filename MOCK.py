@@ -1,105 +1,141 @@
-#! Försöker ordna datan i classer. Syfte: lära mig OOP
-# Classes är kanske fel väg att gå. All data är fixerad. Functions kanske är bättre väg att gå.
-# får försöka hitta ett bra sätt att strukturera datan på. 
-
-def yellow_belt():
-    ukewasa = ["Ju morote jodan uke, mot svingslag",
-                            "Jodan uchi uke, mot rakt slag",
-                            "Gedan uchi uke, mot cirkulär spark",
-                            "Gedan juji uke, mot knästöt och rak spark"]    
-
-    atemiwasa = ["Shotei uchi, jodan och chudan",
-                        "Me uchi, insidan och utsidan",
-                            "Gedan geri",]
-
-    kansetsuwasa = ["Ude osae, mot grepp i ärmen, ude osae gatame"]
-    
-    return yellow_belt
-
-
-
-
-'''
 class YellowBelt():
-    
-    
-    def __init__(self):
-        self.ukewasa = ["Ju morote jodan uke, mot svingslag",
+    def ukewasa():
+        ukewasa = ["Ju morote jodan uke, mot svingslag",
                             "Jodan uchi uke, mot rakt slag",
                             "Gedan uchi uke, mot cirkulär spark",
                             "Gedan juji uke, mot knästöt och rak spark"]    
+        return ukewasa
 
-        self.atemiwasa = ["Shotei uchi, jodan och chudan",
+    def atemiwasa():
+        atemiwasa = ["Shotei uchi, jodan och chudan",
                         "Me uchi, insidan och utsidan",
                             "Gedan geri",]
+        return atemiwasa
+    
+    def kansetsuwasa():
+        kansetsuwasa = ["Ude osae, mot grepp i ärmen, ude osae gatame"]
+        return kansetsuwasa
 
-        self.kansetsuwasa = ["Ude osae, mot grepp i ärmen, ude osae gatame"]
+           
+class OrangeBelt():
+    def ukewasa():
+        ukewasa = ["Morote jodan uke, mot svingslag",
+                    "Chudan soto uke, mot rakt slag",
+                    "Gedan soto uke, mot rak spark"]
+        ukewasa = YellowBelt.ukewasa() + ukewasa
+        return ukewasa
+      
+    def atemiwasa():
+        atemiwasa = ["Chudan tski",
+                    "Kin geri"]
+        atemiwasa = YellowBelt.atemiwasa()+atemiwasa        
+        return atemiwasa
     
+    def kansetsuwasa():
+        kansetsuwasa = ["Kote gaeshi, mot diagonalt grepp, kote gaeshi gatame",
+                        "O soto osae, mot grepp i ärmen, ude henkan gatame",]
+        kansetsuwasa = YellowBelt.kansetsuwasa() + kansetsuwasa
+        return kansetsuwasa 
     
-    
-    def rm_a_technic(self):
-        self.ukewasa.pop()
-        print(self.ukewasa)
-    
-    
-p1 = YellowBelt()
-print(p1)
-print(p1.rm_a_technic)
-            
-class OragneBelt(YellowBelt):
-     
-    ukewasa_orange = ["Morote jodan uke, mot svingslag",
-                   "Chudan soto uke, mot rakt slag",
-                   "Gedan soto uke, mot rak spark"]
+    def nagewasa():
+        nagewasa = ["O soto otoshi, mot grepp i ärmen, ude hishigi hiza gatame"]
+        return nagewasa
 
-    atemiwasa_orange = ["Chudan tski",
-                        "Kin geri"]
-    
-    kansetsuwasa_orange = []
-    
-    
-    
+  
 class GreenBelt():
-    ukewasa_green = ["Jodan soto uke, mot rakt slag",
+    def ukewasa():
+        ukewasa = ["Jodan soto uke, mot rakt slag",
                      "San ren uke, mot cirkulär spark"]
+        ukewasa = OrangeBelt.ukewasa() + ukewasa
+        return ukewasa
     
-    atemiwasa_green = ["Kizami tski, jodan och chudan",
+    def atemiwasa():
+        atemiwasa = ["Kizami tski, jodan och chudan",
                   "Mae geri, chudan"]
+        atemiwasa = OrangeBelt.atemiwasa + atemiwasa
+        return atemiwasa
     
-    kansetsuwasa_green = []
+    def kansetsuwasa(): 
+        kansetsuwasa = ["Kote mawashi, mot grepp i ärmen, kote mawashi gatame",
+                            "Shiho nage, mot diagonalt grepp, shiho nage gatame",]
+        kansetsuwasa = OrangeBelt.kansetsuwasa() + kansetsuwasa
+        return kansetsuwasa
+
+    def nagewasa():
+        nagewasa = ["Ko soto gari, mot grepp i ärmen, ude hishigi hiza gatame",
+            "O goshi, mot grepp i ärmen, ude hishigi hiza atame"]
+        nagewasa = OrangeBelt.nagewasa() + nagewasa
+        return nagewasa
+
 
 class BlueBelt():
-    ukewasa_blue = [ "Chudan uchi uke, mot rakt slag"]
+    def ukewasa():
+        ukewasa = [ "Chudan uchi uke, mot rakt slag"]
+        ukewasa = GreenBelt.ukewasa + ukewasa
+        return ukewasa
     
-    atemiwasa_blue = [ "Gyaku tski, chudan",
-                      "Hiza geri, chudan",
-                      "Mawashi geri, chudan och gedan"]
-    kansetsuwasa_blue = []
-
+    def atemiwasa():
+        atemiwasa = [ "Gyaku tski, chudan",
+                        "Hiza geri, chudan",
+                        "Mawashi geri, chudan och gedan"]
+        atemiwasa = GreenBelt.atemiwasa() + atemiwasa
+        return atemiwasa
+    
+    def kansetsuwasa ():
+        kansetsuwasa = ["Kote hineri, mot diagonalt grepp. ude henkan gatame",
+                     "Irimi nage, mot diagonalt grepp, ude henkan gatame",]
+        kansetsuwasa = GreenBelt.kansetsuwasa + kansetsuwasa
+        return kansetsuwasa
+    
+    def nagewasa():
+        nagewasa =   ["Ko uchi gari, mot grepp i ärmen, ude hishigi hiza gatame"]
+        nagewasa = GreenBelt.nagewasa() + nagewasa
+        return nagewasa
+    
+    
 class BrownBelt():
-    ukewasa_brown = []
-    
-    atemiwasa_brown = ["Empi uchi, jodan och chudan",
+    def ukewasa():
+        ukewasa = BlueBelt.ukewasa()
+        return ukewasa
+    def atemiwasa():   
+        atemiwasa = ["Empi uchi, jodan och chudan",
                        "Uraken uchi , jodan",
                         "Yoko geri, chudan",]
+        atemiwasa = BlueBelt.atemiwasa + atemiwasa
+        return atemiwasa
+   
+    def kansetsuwasa():
+        kansetsuwasa = ["Hiji gatame, gripa, ude hishigi hiza gatame"]
+        kansetsuwasa = BlueBelt.kansetsuwasa() + kansetsuwasa
+        return kansetsuwasa
     
-    kansetsuwasa_brown = []
+    def nagewasa():
+        nagewasa = ["Seoi nage, mot grepp i ärmen, ude hishigi hiza gatame",
+                      "Uki otoshi, mot grepp i ärmen, ude henkan gatame",]
+        nagewasa = BlueBelt.nagewasa + nagewasa
+        return nagewasa
+        
     
 class FirstDan():
-    ukewasa_firstdan = []
+    def ukewasa():
+        ukewasa_firstdan = BlueBelt.ukewasa()
+        return ukewasa_firstdan
     
-    atemiwasa_firstdan = ["Haito uchi, jodan",
+    def atemiwasa():
+        atemiwasa_firstdan = ["Haito uchi, jodan",
                   "Shuto uchi, jodan, höger och vänster sida"]
+        atemiwasa_firstdan = BrownBelt.atemiwasa + atemiwasa_firstdan
+        return atemiwasa_firstdan
     
-    kansetsuwasa_firstdan = []
-    
-
-
-
-
-uke_wasa_yellow = add_ukewasa_yellow
-uke_wasa_orange = add_ukewasa_yellow + add_ukewasa_orange 
-uke_wasa_green = add_ukewasa_yellow + add_ukewasa_orange + add_ukewasa_green
-uke_wasa_blue = add_ukewasa_yellow + add_ukewasa_orange + add_ukewasa_green + add_ukewasa_blue
-uke_wasa_brown = uke_wasa_blue
-'''
+    def kansetsuwasa():
+        kansetsuwasa_firstdan = ["Ude hishigi, gripa",
+                     "Kuzure kote gaeshi gatame, gripa",
+                     "Ude garami, gripa, kote gatame"]
+        kansetsuwasa_firstdan = BrownBelt.kansetsuwasa() + kansetsuwasa_firstdan
+        return kansetsuwasa_firstdan
+        
+    def nagewasa ():
+        nagewasa = ["Harai goshi, mot grepp i ärmen, ude hishigi hiza gatame",
+            "Sukui nage, mot grepp i ärmen, ude hishigi hiza gatame"]
+        nagewasa = BrownBelt.nagewasa() + nagewasa
+        return nagewasa
