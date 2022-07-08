@@ -1,3 +1,5 @@
+import random
+
 class YellowBelt():
     def ukewasa():
         ukewasa = ["Ju morote jodan uke, mot svingslag",
@@ -139,3 +141,23 @@ class FirstDan():
             "Sukui nage, mot grepp i ärmen, ude hishigi hiza gatame"]
         nagewasa = BrownBelt.nagewasa() + nagewasa
         return nagewasa
+    
+    
+class technic_counter():
+    
+    def in_order():
+        pass
+    
+    
+    
+    
+    def kihon_selecter(technic_group):
+        technic = random.choice(technic_group)
+        print(f"\n Tekniken är: {technic} \n")
+        technic_group.remove(technic)
+        return technic_group
+
+        
+
+        
+        
