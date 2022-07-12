@@ -1,4 +1,5 @@
 import random
+
 class YellowBelt():
     def ukewasa():
         ukewasa = ["Ju morote jodan uke, mot svingslag",
@@ -141,10 +142,6 @@ class FirstDan():
         nagewasa = BrownBelt.nagewasa() + nagewasa
         return nagewasa
  
- 
-from Modules import atemi_wasa
-
-atemiwasa = atemi_wasa()   
     
 def kihon_selecter(technic_group):
     technic = random.choice(technic_group)
@@ -177,16 +174,11 @@ def kihon_selecter_random(technic_group):
     technic_group.remove(technic)
     return technic_group
 
-        
-   
-    
-
-
-
 
 
 '''
 for rm in range(len(test)):
     test.pop()
     print(len(test))
-    '''
+'''    
+    
