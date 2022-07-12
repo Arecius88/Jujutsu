@@ -1,4 +1,4 @@
-import random 
+import random
 
 #todo rad 77 början på classerna som ska föras över till jujutsu.py
 
@@ -175,6 +175,7 @@ class BrownBelt():
     def ukewasa():
         ukewasa = BlueBelt.ukewasa()
         return ukewasa
+    
     def atemiwasa():   
         atemiwasa = ["Empi uchi, jodan och chudan",
                        "Uraken uchi , jodan",
@@ -217,3 +218,5 @@ class FirstDan():
             "Sukui nage, mot grepp i ärmen, ude hishigi hiza gatame"]
         nagewasa = BrownBelt.nagewasa() + nagewasa
         return nagewasa
+    
+    
