@@ -141,6 +141,7 @@ class FirstDan():
             "Sukui nage, mot grepp i ärmen, ude hishigi hiza gatame"]
         nagewasa = BrownBelt.nagewasa() + nagewasa
         return nagewasa
+<<<<<<< HEAD
  
     
 def kihon_selecter(technic_group):
@@ -182,3 +183,25 @@ for rm in range(len(test)):
     print(len(test))
 '''    
     
+=======
+    
+    
+class technic_counter():
+    
+    def in_order():
+        pass
+    
+    
+    
+    
+    def kihon_selecter(technic_group):
+        technic = random.choice(technic_group)
+        print(f"\n Tekniken är: {technic} \n")
+        technic_group.remove(technic)
+        return technic_group
+
+        
+
+        
+        
+>>>>>>> 6cc0524740eee3f606e85336cadac03200d5c092
