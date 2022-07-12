@@ -141,14 +141,14 @@ class FirstDan():
             "Sukui nage, mot grepp i ärmen, ude hishigi hiza gatame"]
         nagewasa = BrownBelt.nagewasa() + nagewasa
         return nagewasa
-<<<<<<< HEAD
  
     
 def kihon_selecter(technic_group):
     technic = random.choice(technic_group)
     print(f"\n Tekniken är: {technic} \n")
     technic_group.remove(technic)
-    print(type(technic))
+    print(type(technic)) #* bugg printstatements
+    print(len(technic)) #* bugg printstatements
     return technic_group
 
 
@@ -161,13 +161,7 @@ def kihon_selecter_nonrandom():
         t1.pop(0)#assigned the removed value
         print(t1)
         print(len(t1))
-        t1.pop(0)
-        print(len(t1))
-        t1.pop(0)
-        print(len(t1))
-        t1.pop(0)
-        print(len(t1))
-
+        #! Fundera hur jag kan får detta att funka med en knapp. Behöver Loopa igenom objectet på någt bra sätt. 
 
 
 def kihon_selecter_random(technic_group):
@@ -176,32 +170,9 @@ def kihon_selecter_random(technic_group):
     return technic_group
 
 
-
 '''
 for rm in range(len(test)):
     test.pop()
     print(len(test))
 '''    
     
-=======
-    
-    
-class technic_counter():
-    
-    def in_order():
-        pass
-    
-    
-    
-    
-    def kihon_selecter(technic_group):
-        technic = random.choice(technic_group)
-        print(f"\n Tekniken är: {technic} \n")
-        technic_group.remove(technic)
-        return technic_group
-
-        
-
-        
-        
->>>>>>> 6cc0524740eee3f606e85336cadac03200d5c092
