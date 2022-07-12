@@ -2,8 +2,7 @@ from random import choice
 from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.properties import StringProperty
-from kivy.uix.screenmanager import ScreenManager, Screen
-import Modules as md
+from Modules import uke_wasa, atemi_wasa, kihon, kansetsu_wasa, nage_wasa
 
 
 #Todo Make it possible to make choises what grades you want to train for. 

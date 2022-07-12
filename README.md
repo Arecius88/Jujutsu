@@ -7,12 +7,13 @@ Crossed out text means that goal has been reached and is moved to the Done secti
 <h2>Plan for this project is:</h2>
 
 <ol>
-  <li>Make the dropdown in spinner the same color as the main spinner. 
+  <li>Make the dropdown in spinner the same color as the main spinner. </li>
   <li>Have a countdown on the amount of technics that are left in a family. </li>
   <li><s>Have a progressbar that visually shows how much you have left in a family. </s></li>
   <li>Make it possible to choose if the user wants the technics in order or at random.</li>
   <li>Make it possible to change kyu-grade and only get that kyu-grade Kihon.</li> 
-  <li>Include Classes in the code that is not a part of Kivy.</li> 
+  <li>Include Classes in the code that is not a part of Kivy.</li>
+  <li>Have multiple screens </li> 
 </ol>
 
 <h4>Stretchgoals:</h4>
@@ -36,3 +37,15 @@ Crossed out text means that goal has been reached and is moved to the Done secti
   <li> Make a GUI</li>
   <li>Have a progressbar that visually shows how much you have left in a family.</li>
 </ul>
+
+
+
+
+<h2>How to use</h2>
+In the head of the screen press the button and choose your technic family. 
+Press "New Technic" button and the label in the middle of the screen show a random technic. 
+Press "New Technic" again and the laven shows a new random technic.
+
+When you have pressed the "New technic" button enough times the label tells you that you are done with that technicfamily. 
+
+Choose a new technic family or press "Reset" and restart. 
