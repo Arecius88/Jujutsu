@@ -1,3 +1,4 @@
+import random
 class YellowBelt():
     def ukewasa():
         ukewasa = ["Ju morote jodan uke, mot svingslag",
@@ -8,8 +9,8 @@ class YellowBelt():
 
     def atemiwasa():
         atemiwasa = ["Shotei uchi, jodan och chudan",
-                        "Me uchi, insidan och utsidan",
-                            "Gedan geri",]
+                    "Me uchi, insidan och utsidan",
+                    "Gedan geri",]
         return atemiwasa
     
     def kansetsuwasa():
@@ -139,3 +140,53 @@ class FirstDan():
             "Sukui nage, mot grepp i ärmen, ude hishigi hiza gatame"]
         nagewasa = BrownBelt.nagewasa() + nagewasa
         return nagewasa
+ 
+ 
+from Modules import atemi_wasa
+
+atemiwasa = atemi_wasa()   
+    
+def kihon_selecter(technic_group):
+    technic = random.choice(technic_group)
+    print(f"\n Tekniken är: {technic} \n")
+    technic_group.remove(technic)
+    print(type(technic))
+    return technic_group
+
+
+
+# Working with Kihon chooser with random and non random options--------------------------------------------------------------------------------------------
+def kihon_selecter_nonrandom():
+        t1 = OrangeBelt.atemiwasa()
+        print(f"t1 is {t1}")
+        print(len(t1))
+        t1.pop(0)#assigned the removed value
+        print(t1)
+        print(len(t1))
+        t1.pop(0)
+        print(len(t1))
+        t1.pop(0)
+        print(len(t1))
+        t1.pop(0)
+        print(len(t1))
+
+
+
+def kihon_selecter_random(technic_group):
+    technic = random.choice(technic_group)
+    technic_group.remove(technic)
+    return technic_group
+
+        
+   
+    
+
+
+
+
+
+'''
+for rm in range(len(test)):
+    test.pop()
+    print(len(test))
+    '''
