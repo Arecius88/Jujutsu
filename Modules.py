@@ -64,7 +64,7 @@ def nage_wasa():
 
 
 def kihon():
-    kihon = uke_wasa( ) + kansetsu_wasa( ) + atemi_wasa() + nage_wasa()
+    kihon = uke_wasa() + kansetsu_wasa() + atemi_wasa() + nage_wasa()
     return kihon
 
 
