@@ -2,8 +2,14 @@ from random import choice
 from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.properties import StringProperty
+#from kivy.lang import Builder
 from Modules import uke_wasa, atemi_wasa, kihon, kansetsu_wasa, nage_wasa
+from kivy.core.window import Window
 
+#https://www.youtube.com/watch?v=Prt_SKkZji8 Tutorial för screnns
+
+#Builder
+#Builder.load_file("test.kv")
 
 
 class MainWidget(Widget):
@@ -146,7 +152,12 @@ class MainWidget(Widget):
 
 
 class JujutsuApp(App):
-    pass
+    pass  
+    '''
+    def build(self):
+        return root
+    '''
+    
+if __name__ == "__main__":
+    JujutsuApp().run()
 
-
-JujutsuApp().run()
