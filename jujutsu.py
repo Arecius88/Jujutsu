@@ -3,7 +3,7 @@ from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.properties import StringProperty
 from Modules import uke_wasa, atemi_wasa, kihon, kansetsu_wasa, nage_wasa
-
+import Modules as md
 
 #Todo Make it possible to make choises what grades you want to train for. 
 class MainWidget(Widget):
