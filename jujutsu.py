@@ -6,8 +6,6 @@ from kivy.properties import StringProperty
 from Modules import uke_wasa, atemi_wasa, kihon, kansetsu_wasa, nage_wasa
 from kivy.core.window import Window
 
-#https://www.youtube.com/watch?v=Prt_SKkZji8 Tutorial för screnns
-
 #Builder
 #Builder.load_file("test.kv")
 

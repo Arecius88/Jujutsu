@@ -1,0 +1,93 @@
+WindowManager:
+	HomeScreen:
+	YellowScreen:
+    OrangeScreen:
+    GreenScreen:
+    BlueScreen:
+    BrownScreen:
+    FirstDanScreen:
+    SecondDanScreen:
+    ThirdDanScreen:
+
+
+<HomeScreen>:
+	name: "home"
+
+	BoxLayout:
+		orientation: "vertical"
+		size: root.width, root.height
+        Spinner:
+            id: spinner_menu
+            text: "Home"
+            values: ("Home", "Yellow")
+            size_hint_y: None
+            height: "48dp"
+            background_color: (255/255,142/255,0,1)
+            on_text: root.on_spinner_select(spinner_menu.text) #fångar in värdet i Spinner
+
+
+            #När Spinner har Yellow -> byt screen till Yellow
+
+
+		Label:
+			text: "Home Screen"
+			font_size: 32
+
+		Button:
+			text: "To Yellow Screen"
+			font_size: 32
+			on_release:
+				app.root.current = "yellow"
+				root.manager.transition.direction = "left"
+
+
+
+<YellowScreen>:
+	name: "yellow"
+
+	BoxLayout:
+		orientation: "vertical"
+		size: root.width, root.height
+
+		Label:
+			text: "Second Screen"
+			font_size: 32
+
+		Button:
+			text: "Go to orange"
+			font_size: 32
+			on_release:
+				app.root.current = "orange"
+				root.manager.transition.direction = "left"
+
+		Button:
+			text: "Back to home"
+			font_size: 32
+			on_release:
+				app.root.current = "home"
+				root.manager.transition.direction = "down"
+
+<OrangeScreen>
+    name: "orange"
+
+	BoxLayout:
+		orientation: "vertical"
+		size: root.width, root.height
+
+		Label:
+			text: "Orange Screen"
+			font_size: 32
+
+		Button:
+			text: "Go to green"
+			font_size: 32
+			on_release:
+				app.root.current = "orange"
+				root.manager.transition.direction = "left"
+
+		Button:
+			text: "Back to home"
+			font_size: 32
+			on_release:
+				app.root.current = "home"
+				root.manager.transition.direction = "down"
