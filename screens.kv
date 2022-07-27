@@ -17,16 +17,13 @@ WindowManager:
 		orientation: "vertical"
 		size: root.width, root.height
         Spinner:
-            id: spinner_menu
+            id: spinner_menu_home
             text: "Home"
-            values: ("Home", "Yellow")
+            values: ("Home", "Yellow", "Orange")
             size_hint_y: None
             height: "48dp"
             background_color: (255/255,142/255,0,1)
-            on_text: root.on_spinner_select(spinner_menu.text) #fångar in värdet i Spinner
-
-
-            #När Spinner har Yellow -> byt screen till Yellow
+            on_text: root.on_spinner_select_grades(spinner_menu_home.text) #fångar in värdet i Spinner (spinner_menu.text)
 
 
 		Label:
@@ -49,7 +46,17 @@ WindowManager:
 		orientation: "vertical"
 		size: root.width, root.height
 
+        Spinner:
+            id: spinner_menu_grades
+            text: "Home"
+            values: ("Home", "Uke", "Atemi")
+            size_hint_y: None
+            height: "48dp"
+            background_color: (255/255,142/255,0,1)
+            on_text: root.on_spinner_select_technique(spinner_menu_grades.text)
+
 		Label:
+		    id: yellow_screen_label
 			text: "Second Screen"
 			font_size: 32
 
