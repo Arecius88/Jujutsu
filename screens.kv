@@ -19,7 +19,7 @@ WindowManager:
         Spinner:
             id: spinner_menu_home
             text: "Choose grade"
-            values: ("Home", "Yellow", "Orange")
+            values: ("Yellow", "Orange")
             size_hint_y: None
             height: "48dp"
             background_color: (255/255,142/255,0,1)
@@ -29,7 +29,7 @@ WindowManager:
 		Label:
 			text: "Choose grade"
 			font_size: 32
-			padding_y: 10
+			padding_y: 5
 
 
 
@@ -42,31 +42,62 @@ WindowManager:
 
         Spinner:
             id: spinner_menu_grades
-            text: "Home"
-            values: ("Home", "Uke", "Atemi")
+            text: "Choose technique family"
+            values: ("Uke wasa", "Atemi wasa")
             size_hint_y: None
             height: "48dp"
             background_color: (255/255,142/255,0,1)
             on_text: root.on_spinner_select_technique(spinner_menu_grades.text)
 
-		Label:
-		    id: yellow_screen_label
-			text: "Yellow screen"
-			font_size: 32
+#The label for displaying the technics
+        Label:
+            id: technic_displayer_label
+            font_size: "25"
+            text: "Choose a technic Family"
 
-		Button:
-			text: "Go to orange"
-			font_size: 32
-			on_release:
-				app.root.current = "orange"
-				root.manager.transition.direction = "left"
+        ProgressBar:
+            id: my_progressbar
+            size_hint_x: .85
+            pos_hint: {"center_x": .5, "top" : 0}
+            value: 0
+            max: 1
 
-		Button:
-			text: "Back to home"
-			font_size: 32
-			on_release:
-				app.root.current = "home"
-				root.manager.transition.direction = "down"
+#Button for the new technic
+        Bubble:
+            size_hint_y: None
+            height: "100dp"
+            background_color: (1, 0.741, 0.2, 1)
+
+
+            BubbleButton:
+                id: technic_button
+                text: "New technic"
+                #background_normal: "" #can use if I want a sharper color
+                background_color: (1, 0.741, 0.2, 1)
+                on_press: root.new_technic_button()
+
+#Button for the reset
+        Bubble:
+            size_hint_y: None
+            height: "100dp"
+
+            BubbleButton:
+                id: reset_button
+                text: "Reset"
+                background_color: (1,0,0,1)
+                #on_press: root.reset_button()
+        Bubble:
+            size_hint_y: None
+            height: "100dp"
+            arrow_pos: "left_mid"
+
+            BubbleButton:
+                id: home_button
+                text: "Home"
+                on_press:
+                    app.root.current = "home"
+                    root.manager.transition.direction = "up"
+
 
 <OrangeScreen>
     name: "orange"
@@ -76,19 +107,12 @@ WindowManager:
 		size: root.width, root.height
 
 		Label:
-			text: "Orange Screen"
-			font_size: 32
+			text: "# PLACEHOLDER for Orange Screen"
+			font_size: 52
 
 		Button:
-			text: "Go to green"
-			font_size: 32
-			on_release:
-				app.root.current = "orange"
-				root.manager.transition.direction = "left"
+		    text: "placeholder button"
+		    on_press:
+		        root.manager.transition.direction = "left"
+		        app.root.current = "home"
 
-		Button:
-			text: "Back to home"
-			font_size: 32
-			on_release:
-				app.root.current = "home"
-				root.manager.transition.direction = "down"

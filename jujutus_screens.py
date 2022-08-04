@@ -1,6 +1,8 @@
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
+from Modules import YellowBelt, OrangeBelt
+from random import choice
 
 
 #Sakpa en class som hanterar alla byten av skärmar
@@ -11,13 +13,18 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 			
 		def on_spinner_select_technique
 			val av teknik som föregående ver av appen. 
-		'''
+'''
+def technique_selecter_random(technique_group):
+    technique = choice(technique_group)
+    print(f"\n Tekniken är: {technique} \n")
+    technique_group.remove(technique)
+    return technique_group
 
 
 #Define our different screens
 class HomeScreen(Screen):
 	def on_spinner_select_grades(self, spinner_value):
-		print("1. Spinner value " + spinner_value)
+		self.spinner_value = spinner_value
 		if spinner_value == "Home":
 			self.parent.current = "home"
 
@@ -28,13 +35,40 @@ class HomeScreen(Screen):
 			self.parent.current = "orange"
 
 class YellowScreen(Screen):
-	def on_spinner_select_technique(self, spinner_value):
-		print("1. Spinner value " + spinner_value)
-		if spinner_value == "Home":
-			self.parent.current = "home"
 
-		elif spinner_value == "Uke":
-			self.ids.yellow_screen_label.text = "Kanske är vi på rätt väg?"
+	#TODO fixa så att YellowScreen kan anävnda sig av Teknikväljaren.
+
+	yellow_ukewasa = YellowBelt.ukewasa()
+	yellow_atemiwasa = YellowBelt.atemiwasa()
+	yellow_kansetsuwasa	= YellowBelt.kansetsuwasa()
+
+	def on_spinner_select_technique(self, spinner_value):
+		self.welcome_text = f"You have chosen {spinner_value}"
+		self.spinner_value = spinner_value
+
+		if self.spinner_value == "Uke wasa":
+			self.ids.technic_displayer_label.text = self.welcome_text
+
+		elif spinner_value == "Atemi wasa":
+			self.ids.technic_displayer_label.text = self.welcome_text
+
+
+	def new_technic_button(self):
+
+		if self.spinner_value == "Uke wasa":
+			self,technique_selecter_random(self.yellow_ukewasa)
+			self.ids.technic_displayer_label.text = self.technique
+
+			# Increment the progressbar with 1 to the maximum of def progressbar_max.
+			#self.ids.my_progressbar.max = self.progressbar_max()
+			self.ids.my_progressbar.value += 1
+
+			# Check if the list of technics are empty
+			if len(self.yellow_ukewasa) == 0:
+				self.ids.technic_displayer_label.text = self.end_of_technic
+				self.spinner_value = ""
+				self.yellow_ukewasa = YellowBelt.ukewasa()
+
 
 class OrangeScreen(Screen):
 	pass
@@ -75,8 +109,6 @@ kv = Builder.load_file('screens.kv')
 class jujutsu_screenApp(App):
 	def build(self):
 		return kv
-
-
 
 
 

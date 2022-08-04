@@ -46,6 +46,7 @@ def kansetsu_wasa():
 
 
 def nage_wasa():
+
     nage_wasa = ["O soto otoshi, mot grepp i ärmen, ude hishigi hiza gatame",
             "Ko soto gari, mot grepp i ärmen, ude hishigi hiza gatame",
             "O goshi, mot grepp i ärmen, ude hishigi hiza atame",
@@ -65,11 +66,22 @@ def kihon():
 
 
 #Function för att välja teknik och radera teknik från listan.
-def kihon_selecter(technic_group):
-    technic = random.choice(technic_group)
-    print(f"\n Tekniken är: {technic} \n")
-    technic_group.remove(technic)
-    return technic_group
+def technique_selecter_random(technique_group):
+    technique = random.choice(technique_group)
+    print(f"\n Tekniken är: {technique} \n")
+    technique_group.remove(technique)
+    return technique_group
+
+
+class ProgressbarCls():
+    # Funktion to set the min to progressbar
+    def progressbar_min(self):
+        return 0
+
+    # Function to get the max value in the progressba
+    def progressbar_max(self, max_value):
+        return 100
+        #return len(max_value)
 
 
 # * Början på att föra över all kod från ovan functions till class
