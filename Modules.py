@@ -64,24 +64,23 @@ def kihon():
     kihon = uke_wasa( ) + kansetsu_wasa( ) + atemi_wasa() + nage_wasa()
     return kihon
 
-
+'''
 #Function för att välja teknik och radera teknik från listan.
 def technique_selecter_random(technique_group):
     technique = random.choice(technique_group)
     print(f"\n Tekniken är: {technique} \n")
     technique_group.remove(technique)
     return technique_group
+'''
 
-
-class ProgressbarCls():
+class Progressbar():
     # Funktion to set the min to progressbar
-    def progressbar_min(self):
+    def minimum(self):
         return 0
 
     # Function to get the max value in the progressba
-    def progressbar_max(self, max_value):
-        return 100
-        #return len(max_value)
+    def maximum(self, max_value):
+        return len(max_value)
 
 
 # * Början på att föra över all kod från ovan functions till class

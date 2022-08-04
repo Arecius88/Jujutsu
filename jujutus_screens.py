@@ -1,29 +1,23 @@
 from kivy.app import App
 from kivy.lang import Builder
+from kivy.properties import StringProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
-from Modules import YellowBelt, OrangeBelt
+from Modules import YellowBelt, OrangeBelt, Progressbar
 from random import choice
 
-
-#Sakpa en class som hanterar alla byten av skärmar
-
-''' class spinner_handler():
-		def on_spinner_select_grades
-			Ändra från Home till en grad
-			
-		def on_spinner_select_technique
-			val av teknik som föregående ver av appen. 
-'''
-def technique_selecter_random(technique_group):
-    technique = choice(technique_group)
-    print(f"\n Tekniken är: {technique} \n")
-    technique_group.remove(technique)
-    return technique_group
-
+#Todo Fixa krash när screen Yellow är vald men innan teknikfamilj är vald - Krash när man klickar på New technic
+#Todo Skriva Reset function för YellowScreen
+#todo skriva klart function för knappen home.
 
 #Define our different screens
 class HomeScreen(Screen):
 	def on_spinner_select_grades(self, spinner_value):
+		"""
+		When the user selects a value from the spinner, the function `on_spinner_select_grades` is called with the value of
+		the spinner as the argument
+
+		:param spinner_value: The value of the spinner that was selected
+		"""
 		self.spinner_value = spinner_value
 		if spinner_value == "Home":
 			self.parent.current = "home"
@@ -35,18 +29,46 @@ class HomeScreen(Screen):
 			self.parent.current = "orange"
 
 class YellowScreen(Screen):
-
-	#TODO fixa så att YellowScreen kan anävnda sig av Teknikväljaren.
-
 	yellow_ukewasa = YellowBelt.ukewasa()
 	yellow_atemiwasa = YellowBelt.atemiwasa()
 	yellow_kansetsuwasa	= YellowBelt.kansetsuwasa()
+	progressbar = Progressbar()
+	end_of_technic = StringProperty("Well done. Choose a new technic family")
+
+	def technique_selecter_random(self, technique_group):
+		"""
+		This function takes in a list of techniques and returns a random technique from that list.
+
+		:param technique_group: This is the list of techniques that you want to select from
+		"""
+		self.technique = choice(technique_group)
+		print(f"\n Tekniken är: {self.technique} \n")
+		technique_group.remove(self.technique)
+		return technique_group
+
 
 	def on_spinner_select_technique(self, spinner_value):
+		"""
+		The function is called when the user selects a value from the spinner.
+		The function takes the value of the spinner as an argument.
+		The function then sets the welcome_text variable to a string that includes the value of the spinner
+		and displays that text in the label.
+		The function then sets the spinner_value variable to the value of the spinner.
+
+		The function then checks if the value of the spinner is equal to "Uke wasa".
+		If it is, the function sets the text of the technic_displayer_label to the welcome_text.
+		If it isn't, the function checks if the value of the spinner is equal to "Atemi wasa".
+		If it is, the function sets the text of the technic_displayer_label to the welcome_text.
+		If it isn't, the function does nothing.
+
+		:param spinner_value: The value of the spinner that was selected
+		"""
+		#Displays the spinner choice in the label
 		self.welcome_text = f"You have chosen {spinner_value}"
 		self.spinner_value = spinner_value
 
 		if self.spinner_value == "Uke wasa":
+			#Display a message in on the label
 			self.ids.technic_displayer_label.text = self.welcome_text
 
 		elif spinner_value == "Atemi wasa":
@@ -54,19 +76,40 @@ class YellowScreen(Screen):
 
 
 	def new_technic_button(self):
+		"""
+		Function to controll the New technic button.
+		Checks the value of the spinner and then display the technic family name.
+		Therafter the functions takes the list of the choicsen group and runs the technuiqe_selecter_random function
+		increments the progressbar by 1
 
+		When the list is empty the function resets:
+			- Spinner
+			- The list of techniques.
+		and display a message in the label.
+		"""
+		#checks the vaule of the spinner
 		if self.spinner_value == "Uke wasa":
-			self,technique_selecter_random(self.yellow_ukewasa)
+			#runs the technique selecter function
+			self.technique_selecter_random(self.yellow_ukewasa)
+
+			#Display a message in the label
 			self.ids.technic_displayer_label.text = self.technique
 
-			# Increment the progressbar with 1 to the maximum of def progressbar_max.
-			#self.ids.my_progressbar.max = self.progressbar_max()
+			#Define the progressbar_max.
+			self.ids.my_progressbar.max = self.progressbar.maximum(YellowBelt.ukewasa())
+
+			#Increment the progressbar with 1 to the maximum
 			self.ids.my_progressbar.value += 1
 
 			# Check if the list of technics are empty
 			if len(self.yellow_ukewasa) == 0:
+				#Display a message that the list is empty
 				self.ids.technic_displayer_label.text = self.end_of_technic
+
+				#Sets the spinner value to an empty string
 				self.spinner_value = ""
+
+				#resets the list
 				self.yellow_ukewasa = YellowBelt.ukewasa()
 
 
