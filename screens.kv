@@ -43,7 +43,7 @@ WindowManager:
         Spinner:
             id: spinner_menu_grades
             text: "Choose technique family"
-            values: ("Uke wasa", "Atemi wasa")
+            values: ("Uke wasa", "Atemi wasa", "Kansetsu Wasa","Nage Wasa", "Kihon")
             size_hint_y: None
             height: "48dp"
             background_color: (255/255,142/255,0,1)
@@ -85,7 +85,7 @@ WindowManager:
                 id: reset_button
                 text: "Reset"
                 background_color: (1,0,0,1)
-                #on_press: root.reset_button()
+                on_press: root.reset_button()
         Bubble:
             size_hint_y: None
             height: "100dp"
@@ -93,9 +93,9 @@ WindowManager:
 
             BubbleButton:
                 id: home_button
-                text: "Home"
+                text: "Back"
                 on_press:
-                    app.root.current = "home"
+                    root.home_screen_button()
                     root.manager.transition.direction = "up"
 
 

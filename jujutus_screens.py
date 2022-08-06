@@ -5,12 +5,13 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from Modules import YellowBelt, OrangeBelt, Progressbar
 from random import choice
 
-#Todo Fixa krash när screen Yellow är vald men innan teknikfamilj är vald - Krash när man klickar på New technic
-#Todo Skriva Reset function för YellowScreen
-#todo skriva klart function för knappen home.
 
 #Define our different screens
 class HomeScreen(Screen):
+	def home_spinner_text(self):
+		home_spinner = "Choose grade"
+		return home_spinner
+
 	def on_spinner_select_grades(self, spinner_value):
 		"""
 		When the user selects a value from the spinner, the function `on_spinner_select_grades` is called with the value of
@@ -28,14 +29,20 @@ class HomeScreen(Screen):
 		elif spinner_value == "Orange":
 			self.parent.current = "orange"
 
+
 class YellowScreen(Screen):
 	yellow_ukewasa = YellowBelt.ukewasa()
 	yellow_atemiwasa = YellowBelt.atemiwasa()
 	yellow_kansetsuwasa	= YellowBelt.kansetsuwasa()
+	yellow_kihon = YellowBelt.all_kihon()
 	progressbar = Progressbar()
-	end_of_technic = StringProperty("Well done. Choose a new technic family")
+	END_OF_TECHNIQUE_TEXT = StringProperty("Well done. Choose a new technic family")
+	RESET_TEXT = StringProperty("You have pressed reset.\nChoose a new technic family")
+	RESET_SPINNER_TEXT = StringProperty("Choose technique family")
 
-	def technique_selecter_random(self, technique_group):
+
+
+	def technique_selected_random(self, technique_group):
 		"""
 		This function takes in a list of techniques and returns a random technique from that list.
 
@@ -64,22 +71,22 @@ class YellowScreen(Screen):
 		:param spinner_value: The value of the spinner that was selected
 		"""
 		#Displays the spinner choice in the label
-		self.welcome_text = f"You have chosen {spinner_value}"
+		self.WELCOME_TEXT = f"You have chosen {spinner_value}"
 		self.spinner_value = spinner_value
 
 		if self.spinner_value == "Uke wasa":
 			#Display a message in on the label
-			self.ids.technic_displayer_label.text = self.welcome_text
+			self.ids.technic_displayer_label.text = self.WELCOME_TEXT
 
 		elif spinner_value == "Atemi wasa":
-			self.ids.technic_displayer_label.text = self.welcome_text
+			self.ids.technic_displayer_label.text = self.WELCOME_TEXT
 
 
 	def new_technic_button(self):
 		"""
-		Function to controll the New technic button.
+		Function to control the New technic button.
 		Checks the value of the spinner and then display the technic family name.
-		Therafter the functions takes the list of the choicsen group and runs the technuiqe_selecter_random function
+		Thereafter, the functions takes the list of the selected group and runs the technique_selected_random function
 		increments the progressbar by 1
 
 		When the list is empty the function resets:
@@ -88,9 +95,11 @@ class YellowScreen(Screen):
 		and display a message in the label.
 		"""
 		#checks the vaule of the spinner
+
 		if self.spinner_value == "Uke wasa":
+
 			#runs the technique selecter function
-			self.technique_selecter_random(self.yellow_ukewasa)
+			self.technique_selected_random(self.yellow_ukewasa)
 
 			#Display a message in the label
 			self.ids.technic_displayer_label.text = self.technique
@@ -104,13 +113,93 @@ class YellowScreen(Screen):
 			# Check if the list of technics are empty
 			if len(self.yellow_ukewasa) == 0:
 				#Display a message that the list is empty
-				self.ids.technic_displayer_label.text = self.end_of_technic
+				self.ids.technic_displayer_label.text = self.END_OF_TECHNIQUE_TEXT
 
-				#Sets the spinner value to an empty string
-				self.spinner_value = ""
+				#Resets the spinner
+				self.ids.spinner_menu_grades.text = self.RESET_SPINNER_TEXT
 
 				#resets the list
 				self.yellow_ukewasa = YellowBelt.ukewasa()
+
+		elif self.spinner_value == "Atemi wasa":
+			#runs the technique selecter function
+			self.technique_selected_random(self.yellow_atemiwasa)
+
+			#Display a message in the label
+			self.ids.technic_displayer_label.text = self.technique
+
+			#Define the progressbar_max.
+			self.ids.my_progressbar.max = self.progressbar.maximum(YellowBelt.atemiwasa())
+
+			#Increment the progressbar with 1 to the maximum
+			self.ids.my_progressbar.value += 1
+
+			# Check if the list of technics are empty
+			if len(self.yellow_atemiwasa) == 0:
+				#Display a message that the list is empty
+				self.ids.technic_displayer_label.text = self.END_OF_TECHNIQUE_TEXT
+
+				#Resets the spinner
+				self.ids.spinner_menu_grades.text = self.RESET_SPINNER_TEXT
+
+				#resets the list
+				self.yellow_atemiwasa = YellowBelt.atemiwasa()
+		#todo display Kansetsu Wasa on the label, Ukewasa and Atemi wasa works.
+		elif self.spinner_value == "Kansetsu Wasa":
+			#runs the technique selecter function
+			self.technique_selected_random(self.yellow_kansetsuwasa)
+
+			#Display a message in the label
+			self.ids.technic_displayer_label.text = self.technique
+
+			#Define the progressbar_max.
+			self.ids.my_progressbar.max = self.progressbar.maximum(YellowBelt.kansetsuwasa())
+
+			#Increment the progressbar with 1 to the maximum
+			self.ids.my_progressbar.value += 1
+
+			# Check if the list of technics are empty
+			#Todo - Klura ut hur jag ska kunna visa en ensam teknik, Just nu visar den inte tekniken alls.
+			if len(self.yellow_kansetsuwasa) == 0:
+				#Display a message that the list is empty
+				self.ids.technic_displayer_label.text = self.END_OF_TECHNIQUE_TEXT
+
+				#Resets the spinner
+				self.ids.spinner_menu_grades.text = self.RESET_SPINNER_TEXT
+
+				#resets the list
+				self.yellow_kansetsuwasa = YellowBelt.kansetsuwasa()
+		# todo display The message on the label
+		elif self.spinner_value == "Nage Wasa":
+			#Display a message in the label
+			self.ids.technic_displayer_label.text = f"This grade do not have {self.spinner_value}.\n " \
+													f"Please choose an other technique group."
+
+
+
+		'''
+		except:
+			self.ids.technic_displayer_label.text = "Error: Make sure that you choose a technique"
+		'''
+
+	def reset_button(self):
+		self.ids.my_progressbar.value = 0
+		self.yellow_ukewasa = YellowBelt.ukewasa()
+		self.atemiwasa = YellowBelt.atemiwasa()
+		self.kihon = YellowBelt.all_kihon()
+		self.kansetsuwasa = YellowBelt.kansetsuwasa()
+		self.ids.technic_displayer_label.text = self.RESET_TEXT
+		self.ids.spinner_menu_grades.text = self.RESET_SPINNER_TEXT
+
+
+	def home_screen_button(self):
+		reference_to_home_screen = self.manager.get_screen("home")
+		reference_to_home_screen.ids.spinner_menu_home.text = HomeScreen.home_spinner_text("placeholder")
+		self.parent.current = "home"
+
+
+
+
 
 
 class OrangeScreen(Screen):

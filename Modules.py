@@ -11,6 +11,7 @@ def uke_wasa():
                 "Chudan uchi uke, mot rakt slag"]
     return uke_wasa
 
+
 def atemi_wasa():
     atemi_wasa = ["Shotei uchi, jodan och chudan",
                   "Me uchi, insidan och utsidan",
@@ -28,6 +29,7 @@ def atemi_wasa():
                   "Haito uchi, jodan",
                   "Shuto uchi, jodan, höger och vänster sida"]
     return atemi_wasa
+
 
 def kansetsu_wasa():
     kansetsu_wasa = ["Ude osae, mot grepp i ärmen, ude osae gatame",
@@ -59,19 +61,18 @@ def nage_wasa():
     return nage_wasa
 
 
-
 def kihon():
     kihon = uke_wasa( ) + kansetsu_wasa( ) + atemi_wasa() + nage_wasa()
     return kihon
 
-'''
+
 #Function för att välja teknik och radera teknik från listan.
 def technique_selecter_random(technique_group):
     technique = random.choice(technique_group)
     print(f"\n Tekniken är: {technique} \n")
     technique_group.remove(technique)
     return technique_group
-'''
+
 
 class Progressbar():
     # Funktion to set the min to progressbar
@@ -101,7 +102,9 @@ class YellowBelt():
     def kansetsuwasa():
         kansetsuwasa = ["Ude osae, mot grepp i ärmen, ude osae gatame"]
         return kansetsuwasa
-
+    def all_kihon():
+        all_kihon = uke_wasa()+atemi_wasa()+kansetsu_wasa()
+        return all_kihon
 
 class OrangeBelt():
     def ukewasa():
@@ -123,10 +126,15 @@ class OrangeBelt():
         kansetsuwasa = YellowBelt.kansetsuwasa() + kansetsuwasa
         return kansetsuwasa
 
+
     def nagewasa():
         nagewasa = ["O soto otoshi, mot grepp i ärmen, ude hishigi hiza gatame"]
         return nagewasa
 
+
+    def all_kihon():
+        all_kihon = uke_wasa() + atemi_wasa() + kansetsu_wasa() + nage_wasa()
+        return all_kihon
 
 class GreenBelt():
     def ukewasa():
@@ -153,6 +161,9 @@ class GreenBelt():
         nagewasa = OrangeBelt.nagewasa() + nagewasa
         return nagewasa
 
+    def all_kihon():
+        all_kihon = uke_wasa() + atemi_wasa() + kansetsu_wasa() + nage_wasa()
+        return all_kihon
 
 class BlueBelt():
     def ukewasa():
@@ -178,6 +189,9 @@ class BlueBelt():
         nagewasa = GreenBelt.nagewasa() + nagewasa
         return nagewasa
 
+    def all_kihon():
+        all_kihon = uke_wasa() + atemi_wasa() + kansetsu_wasa() + nage_wasa()
+        return all_kihon
 
 class BrownBelt():
     def ukewasa():
@@ -201,6 +215,10 @@ class BrownBelt():
                     "Uki otoshi, mot grepp i ärmen, ude henkan gatame", ]
         nagewasa = BlueBelt.nagewasa + nagewasa
         return nagewasa
+
+    def all_kihon():
+        all_kihon = uke_wasa() + atemi_wasa() + kansetsu_wasa() + nage_wasa()
+        return all_kihon
 
 
 class FirstDan():
@@ -226,3 +244,8 @@ class FirstDan():
                     "Sukui nage, mot grepp i ärmen, ude hishigi hiza gatame"]
         nagewasa = BrownBelt.nagewasa() + nagewasa
         return nagewasa
+
+    def all_kihon():
+        all_kihon = uke_wasa() + atemi_wasa() + kansetsu_wasa() + nage_wasa()
+        return all_kihon
+
