@@ -5,6 +5,13 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from Modules import YellowBelt, OrangeBelt, Progressbar
 from random import choice
 
+#TODO: When Kihos is implemented, expand to Jigowasa and REnraku wsa
+
+ukewasa = "Uke wasa"
+atemiwasa = "Atemi wasa"
+kansetsuwasa = "Kansetsu wasa"
+nagewasa = "Nage wasa"
+kihon = "kihon"
 
 #Define our different screens
 class HomeScreen(Screen):
@@ -25,6 +32,7 @@ class HomeScreen(Screen):
 
 		if spinner_value == "Yellow":
 			self.parent.current = "yellow"
+			print(self.ids.spinner_menu_home.text)
 
 		elif spinner_value == "Orange":
 			self.parent.current = "orange"
@@ -74,15 +82,29 @@ class YellowScreen(Screen):
 		self.WELCOME_TEXT = f"You have chosen {spinner_value}"
 		self.spinner_value = spinner_value
 
-		if self.spinner_value == "Uke wasa":
+		if self.spinner_value == ukewasa:
 			#Display a message in on the label
 			self.ids.technic_displayer_label.text = self.WELCOME_TEXT
 
-		elif spinner_value == "Atemi wasa":
+		elif spinner_value == atemiwasa:
 			self.ids.technic_displayer_label.text = self.WELCOME_TEXT
 
+		elif spinner_value == kansetsuwasa:
+			self.ids.technic_displayer_label.text = self.WELCOME_TEXT
+
+		elif spinner_value == nagewasa:
+		#added an if-statement if HomeScreen spinner is Yellow and if so display an error message.
+			if self.manager.get_screen("home").ids.spinner_menu_home.text == "Yellow":
+				self.ids.technic_displayer_label.text = f"This grade do not have {self.spinner_value}.\n " \
+														f"Please choose an other technique group."
+			else:
+				self.ids.technic_displayer_label.text = self.WELCOME_TEXT
+
+		elif spinner_value == kihon:
+			self.ids.technic_displayer_label.text = self.WELCOME_TEXT
 
 	def new_technic_button(self):
+
 		"""
 		Function to control the New technic button.
 		Checks the value of the spinner and then display the technic family name.
@@ -96,8 +118,7 @@ class YellowScreen(Screen):
 		"""
 		#checks the vaule of the spinner
 
-		if self.spinner_value == "Uke wasa":
-
+		if self.spinner_value == ukewasa:
 			#runs the technique selecter function
 			self.technique_selected_random(self.yellow_ukewasa)
 
@@ -121,7 +142,7 @@ class YellowScreen(Screen):
 				#resets the list
 				self.yellow_ukewasa = YellowBelt.ukewasa()
 
-		elif self.spinner_value == "Atemi wasa":
+		elif self.spinner_value == atemiwasa:
 			#runs the technique selecter function
 			self.technique_selected_random(self.yellow_atemiwasa)
 
@@ -144,8 +165,9 @@ class YellowScreen(Screen):
 
 				#resets the list
 				self.yellow_atemiwasa = YellowBelt.atemiwasa()
-		#todo display Kansetsu Wasa on the label, Ukewasa and Atemi wasa works.
-		elif self.spinner_value == "Kansetsu Wasa":
+
+		elif self.spinner_value == kansetsuwasa:
+			# Todo - Klura ut hur jag ska kunna visa en ensam teknik, Just nu visar den inte tekniken alls.
 			#runs the technique selecter function
 			self.technique_selected_random(self.yellow_kansetsuwasa)
 
@@ -159,7 +181,6 @@ class YellowScreen(Screen):
 			self.ids.my_progressbar.value += 1
 
 			# Check if the list of technics are empty
-			#Todo - Klura ut hur jag ska kunna visa en ensam teknik, Just nu visar den inte tekniken alls.
 			if len(self.yellow_kansetsuwasa) == 0:
 				#Display a message that the list is empty
 				self.ids.technic_displayer_label.text = self.END_OF_TECHNIQUE_TEXT
@@ -169,18 +190,11 @@ class YellowScreen(Screen):
 
 				#resets the list
 				self.yellow_kansetsuwasa = YellowBelt.kansetsuwasa()
-		# todo display The message on the label
-		elif self.spinner_value == "Nage Wasa":
-			#Display a message in the label
-			self.ids.technic_displayer_label.text = f"This grade do not have {self.spinner_value}.\n " \
-													f"Please choose an other technique group."
 
 
-
-		'''
-		except:
-			self.ids.technic_displayer_label.text = "Error: Make sure that you choose a technique"
-		'''
+		elif self.spinner_value == nagewasa:
+			#Passes this choise in this grade
+			pass
 
 	def reset_button(self):
 		self.ids.my_progressbar.value = 0
