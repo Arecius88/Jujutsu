@@ -6,16 +6,29 @@ from Modules import YellowBelt, OrangeBelt, Progressbar
 from random import choice
 
 #TODO: When Kihos is implemented, expand to Jigowasa and REnraku wsa
+#TODO: Rest the progressbar when swithcing between technic families
+#TODO: Klura ut hur jag ska kunna visa en ensam teknik (Kansetsuwasa Yellow), Just nu visar den inte tekniken alls.
 
-ukewasa = "Uke wasa"
-atemiwasa = "Atemi wasa"
-kansetsuwasa = "Kansetsu wasa"
-nagewasa = "Nage wasa"
-kihon = "kihon"
 
+UKEWASA = "Uke wasa"
+ATEMIWASA = "Atemi wasa"
+KANSETSUWASA = "Kansetsu wasa"
+NAGEWASA = "Nage wasa"
+KIHON = "Kihon"
+
+'''
+____________Not implemented_______________ 
+JIGOWASA = "jigowasa"
+RENRAKUWASA	= "renrakuwasa"
+__________________________________________
+'''
 #Define our different screens
 class HomeScreen(Screen):
 	def home_spinner_text(self):
+		"""
+		This function returns the text that will be displayed in the spinner on the home screen
+		:return: The string "Choose grade" is being returned.
+		"""
 		home_spinner = "Choose grade"
 		return home_spinner
 
@@ -47,6 +60,7 @@ class YellowScreen(Screen):
 	END_OF_TECHNIQUE_TEXT = StringProperty("Well done. Choose a new technic family")
 	RESET_TEXT = StringProperty("You have pressed reset.\nChoose a new technic family")
 	RESET_SPINNER_TEXT = StringProperty("Choose technique family")
+	ERROR_MESSAGE = StringProperty("Please choose a technique family first")
 
 
 
@@ -82,17 +96,17 @@ class YellowScreen(Screen):
 		self.WELCOME_TEXT = f"You have chosen {spinner_value}"
 		self.spinner_value = spinner_value
 
-		if self.spinner_value == ukewasa:
+		if self.spinner_value == UKEWASA:
 			#Display a message in on the label
 			self.ids.technic_displayer_label.text = self.WELCOME_TEXT
 
-		elif spinner_value == atemiwasa:
+		elif spinner_value == ATEMIWASA:
 			self.ids.technic_displayer_label.text = self.WELCOME_TEXT
 
-		elif spinner_value == kansetsuwasa:
+		elif spinner_value == KANSETSUWASA:
 			self.ids.technic_displayer_label.text = self.WELCOME_TEXT
 
-		elif spinner_value == nagewasa:
+		elif spinner_value == NAGEWASA:
 		#added an if-statement if HomeScreen spinner is Yellow and if so display an error message.
 			if self.manager.get_screen("home").ids.spinner_menu_home.text == "Yellow":
 				self.ids.technic_displayer_label.text = f"This grade do not have {self.spinner_value}.\n " \
@@ -100,11 +114,10 @@ class YellowScreen(Screen):
 			else:
 				self.ids.technic_displayer_label.text = self.WELCOME_TEXT
 
-		elif spinner_value == kihon:
+		elif spinner_value == KIHON:
 			self.ids.technic_displayer_label.text = self.WELCOME_TEXT
 
 	def new_technic_button(self):
-
 		"""
 		Function to control the New technic button.
 		Checks the value of the spinner and then display the technic family name.
@@ -116,85 +129,111 @@ class YellowScreen(Screen):
 			- The list of techniques.
 		and display a message in the label.
 		"""
-		#checks the vaule of the spinner
+		try:
+			#checks the vaule of the spinner
+			if self.spinner_value == UKEWASA:
+				#runs the technique selecter function
+				self.technique_selected_random(self.yellow_ukewasa)
 
-		if self.spinner_value == ukewasa:
-			#runs the technique selecter function
-			self.technique_selected_random(self.yellow_ukewasa)
+				#Display a message in the label
+				self.ids.technic_displayer_label.text = self.technique
 
-			#Display a message in the label
-			self.ids.technic_displayer_label.text = self.technique
+				#Define the progressbar_max.
+				self.ids.my_progressbar.max = self.progressbar.maximum(YellowBelt.ukewasa())
 
-			#Define the progressbar_max.
-			self.ids.my_progressbar.max = self.progressbar.maximum(YellowBelt.ukewasa())
+				#Increment the progressbar with 1 to the maximum
+				self.ids.my_progressbar.value += 1
 
-			#Increment the progressbar with 1 to the maximum
-			self.ids.my_progressbar.value += 1
+				# Check if the list of technics are empty
+				if len(self.yellow_ukewasa) == 0:
+					#Display a message that the list is empty
+					self.ids.technic_displayer_label.text = self.END_OF_TECHNIQUE_TEXT
 
-			# Check if the list of technics are empty
-			if len(self.yellow_ukewasa) == 0:
-				#Display a message that the list is empty
-				self.ids.technic_displayer_label.text = self.END_OF_TECHNIQUE_TEXT
+					#Resets the spinner
+					self.ids.spinner_menu_grades.text = self.RESET_SPINNER_TEXT
 
-				#Resets the spinner
-				self.ids.spinner_menu_grades.text = self.RESET_SPINNER_TEXT
+					#resets the list
+					self.yellow_ukewasa = YellowBelt.ukewasa()
 
-				#resets the list
-				self.yellow_ukewasa = YellowBelt.ukewasa()
+			elif self.spinner_value == ATEMIWASA:
+				#runs the technique selecter function
+				self.technique_selected_random(self.yellow_atemiwasa)
 
-		elif self.spinner_value == atemiwasa:
-			#runs the technique selecter function
-			self.technique_selected_random(self.yellow_atemiwasa)
+				#Display a message in the label
+				self.ids.technic_displayer_label.text = self.technique
 
-			#Display a message in the label
-			self.ids.technic_displayer_label.text = self.technique
+				#Define the progressbar_max.
+				self.ids.my_progressbar.max = self.progressbar.maximum(YellowBelt.atemiwasa())
 
-			#Define the progressbar_max.
-			self.ids.my_progressbar.max = self.progressbar.maximum(YellowBelt.atemiwasa())
+				#Increment the progressbar with 1 to the maximum
+				self.ids.my_progressbar.value += 1
 
-			#Increment the progressbar with 1 to the maximum
-			self.ids.my_progressbar.value += 1
+				# Check if the list of technics are empty
+				if len(self.yellow_atemiwasa) == 0:
+					#Display a message that the list is empty
+					self.ids.technic_displayer_label.text = self.END_OF_TECHNIQUE_TEXT
 
-			# Check if the list of technics are empty
-			if len(self.yellow_atemiwasa) == 0:
-				#Display a message that the list is empty
-				self.ids.technic_displayer_label.text = self.END_OF_TECHNIQUE_TEXT
+					#Resets the spinner
+					self.ids.spinner_menu_grades.text = self.RESET_SPINNER_TEXT
 
-				#Resets the spinner
-				self.ids.spinner_menu_grades.text = self.RESET_SPINNER_TEXT
+					#resets the list
+					self.yellow_atemiwasa = YellowBelt.atemiwasa()
 
-				#resets the list
-				self.yellow_atemiwasa = YellowBelt.atemiwasa()
+			elif self.spinner_value == KANSETSUWASA:
+				#runs the technique selecter function
+				self.technique_selected_random(self.yellow_kansetsuwasa)
 
-		elif self.spinner_value == kansetsuwasa:
-			# Todo - Klura ut hur jag ska kunna visa en ensam teknik, Just nu visar den inte tekniken alls.
-			#runs the technique selecter function
-			self.technique_selected_random(self.yellow_kansetsuwasa)
+				#Display a message in the label
+				self.ids.technic_displayer_label.text = self.technique
 
-			#Display a message in the label
-			self.ids.technic_displayer_label.text = self.technique
+				#Define the progressbar_max.
+				self.ids.my_progressbar.max = self.progressbar.maximum(YellowBelt.kansetsuwasa())
 
-			#Define the progressbar_max.
-			self.ids.my_progressbar.max = self.progressbar.maximum(YellowBelt.kansetsuwasa())
+				#Increment the progressbar with 1 to the maximum
+				self.ids.my_progressbar.value += 1
 
-			#Increment the progressbar with 1 to the maximum
-			self.ids.my_progressbar.value += 1
+				# Check if the list of technics are empty
+				if len(self.yellow_kansetsuwasa) == 0:
+					#Display a message that the list is empty
+					self.ids.technic_displayer_label.text = self.END_OF_TECHNIQUE_TEXT
 
-			# Check if the list of technics are empty
-			if len(self.yellow_kansetsuwasa) == 0:
-				#Display a message that the list is empty
-				self.ids.technic_displayer_label.text = self.END_OF_TECHNIQUE_TEXT
+					#Resets the spinner
+					self.ids.spinner_menu_grades.text = self.RESET_SPINNER_TEXT
 
-				#Resets the spinner
-				self.ids.spinner_menu_grades.text = self.RESET_SPINNER_TEXT
-
-				#resets the list
-				self.yellow_kansetsuwasa = YellowBelt.kansetsuwasa()
+					#resets the list
+					self.yellow_kansetsuwasa = YellowBelt.kansetsuwasa()
 
 
-		elif self.spinner_value == nagewasa:
-			#Passes this choise in this grade
-			pass
+			elif self.spinner_value == NAGEWASA:
+				#Passes this choise in this grade
+				pass
+
+			elif self.spinner_value == KIHON:
+				#runs the technique selecter function
+				self.technique_selected_random(self.yellow_kihon)
+
+				#Display a message in the label
+				self.ids.technic_displayer_label.text = self.technique
+
+				#Define the progressbar_max.
+				self.ids.my_progressbar.max = self.progressbar.maximum(YellowBelt.all_kihon())
+
+				#Increment the progressbar with 1 to the maximum
+				self.ids.my_progressbar.value += 1
+
+				# Check if the list of technics are empty
+				if len(self.yellow_kihon) == 0:
+					#Display a message that the list is empty
+					self.ids.technic_displayer_label.text = self.END_OF_TECHNIQUE_TEXT
+
+					#Resets the spinner
+					self.ids.spinner_menu_grades.text = self.RESET_SPINNER_TEXT
+
+					#resets the list
+					self.yellow_kihon = YellowBelt.all_kihon()
+
+		except:
+			self.ids.technic_displayer_label.text = self.ERROR_MESSAGE
 
 	def reset_button(self):
 		self.ids.my_progressbar.value = 0
@@ -210,10 +249,6 @@ class YellowScreen(Screen):
 		reference_to_home_screen = self.manager.get_screen("home")
 		reference_to_home_screen.ids.spinner_menu_home.text = HomeScreen.home_spinner_text("placeholder")
 		self.parent.current = "home"
-
-
-
-
 
 
 class OrangeScreen(Screen):

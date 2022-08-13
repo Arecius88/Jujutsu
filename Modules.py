@@ -57,7 +57,6 @@ def nage_wasa():
             "Uki otoshi, mot grepp i ärmen, ude henkan gatame",
             "Harai goshi, mot grepp i ärmen, ude hishigi hiza gatame",
             "Sukui nage, mot grepp i ärmen, ude hishigi hiza gatame"]
-
     return nage_wasa
 
 
@@ -79,7 +78,7 @@ class Progressbar():
     def minimum(self):
         return 0
 
-    # Function to get the max value in the progressba
+    # Function to get the max value in the progressbar
     def maximum(self, max_value):
         return len(max_value)
 
@@ -102,6 +101,7 @@ class YellowBelt():
     def kansetsuwasa():
         kansetsuwasa = ["Ude osae, mot grepp i ärmen, ude osae gatame"]
         return kansetsuwasa
+
     def all_kihon():
         all_kihon = uke_wasa()+atemi_wasa()+kansetsu_wasa()
         return all_kihon
