@@ -1,8 +1,7 @@
 from kivy.app import App
 from kivy.lang import Builder
-from kivy.properties import StringProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
-from Modules import YellowBelt, OrangeBelt, Progressbar
+from Modules import YellowBelt, OrangeBelt, Progressbar, Messages_to_app
 from random import choice
 
 #TODO: When Kihos is implemented, expand to Jigowasa and REnraku wsa
@@ -22,17 +21,19 @@ JIGOWASA = "jigowasa"
 RENRAKUWASA	= "renrakuwasa"
 __________________________________________
 '''
+
+
 #Define our different screens
 class HomeScreen(Screen):
 	def home_spinner_text(self):
-		"""
+		'''
 		This function returns the text that will be displayed in the spinner on the home screen
 		:return: The string "Choose grade" is being returned.
-		"""
+		'''
 		home_spinner = "Choose grade"
 		return home_spinner
 
-	def on_spinner_select_grades(self, spinner_value):
+	def on_spinner_select_grades(self,spinner_value):
 		"""
 		When the user selects a value from the spinner, the function `on_spinner_select_grades` is called with the value of
 		the spinner as the argument
@@ -57,12 +58,6 @@ class YellowScreen(Screen):
 	yellow_kansetsuwasa	= YellowBelt.kansetsuwasa()
 	yellow_kihon = YellowBelt.all_kihon()
 	progressbar = Progressbar()
-	END_OF_TECHNIQUE_TEXT = StringProperty("Well done. Choose a new technic family")
-	RESET_TEXT = StringProperty("You have pressed reset.\nChoose a new technic family")
-	RESET_SPINNER_TEXT = StringProperty("Choose technique family")
-	ERROR_MESSAGE = StringProperty("Please choose a technique family first")
-
-
 
 	def technique_selected_random(self, technique_group):
 		"""
@@ -78,33 +73,25 @@ class YellowScreen(Screen):
 
 	def on_spinner_select_technique(self, spinner_value):
 		"""
-		The function is called when the user selects a value from the spinner.
-		The function takes the value of the spinner as an argument.
-		The function then sets the welcome_text variable to a string that includes the value of the spinner
-		and displays that text in the label.
-		The function then sets the spinner_value variable to the value of the spinner.
-
-		The function then checks if the value of the spinner is equal to "Uke wasa".
-		If it is, the function sets the text of the technic_displayer_label to the welcome_text.
-		If it isn't, the function checks if the value of the spinner is equal to "Atemi wasa".
-		If it is, the function sets the text of the technic_displayer_label to the welcome_text.
-		If it isn't, the function does nothing.
+		> When the user selects a value from the spinner, the value is passed to the function and the function updates the
+		value of the variable `technique` to the value of the spinner
 
 		:param spinner_value: The value of the spinner that was selected
 		"""
+
 		#Displays the spinner choice in the label
-		self.WELCOME_TEXT = f"You have chosen {spinner_value}"
 		self.spinner_value = spinner_value
+		WELCOME_TEXT = Messages_to_app.WELCOME_TEXT(spinner_value)
 
 		if self.spinner_value == UKEWASA:
 			#Display a message in on the label
-			self.ids.technic_displayer_label.text = self.WELCOME_TEXT
+			self.ids.technic_displayer_label.text = WELCOME_TEXT
 
 		elif spinner_value == ATEMIWASA:
-			self.ids.technic_displayer_label.text = self.WELCOME_TEXT
+			self.ids.technic_displayer_label.text = WELCOME_TEXT
 
 		elif spinner_value == KANSETSUWASA:
-			self.ids.technic_displayer_label.text = self.WELCOME_TEXT
+			self.ids.technic_displayer_label.text = WELCOME_TEXT
 
 		elif spinner_value == NAGEWASA:
 		#added an if-statement if HomeScreen spinner is Yellow and if so display an error message.
@@ -112,10 +99,10 @@ class YellowScreen(Screen):
 				self.ids.technic_displayer_label.text = f"This grade do not have {self.spinner_value}.\n " \
 														f"Please choose an other technique group."
 			else:
-				self.ids.technic_displayer_label.text = self.WELCOME_TEXT
+				self.ids.technic_displayer_label.text = WELCOME_TEXT
 
 		elif spinner_value == KIHON:
-			self.ids.technic_displayer_label.text = self.WELCOME_TEXT
+			self.ids.technic_displayer_label.text = WELCOME_TEXT
 
 	def new_technic_button(self):
 		"""
@@ -147,10 +134,10 @@ class YellowScreen(Screen):
 				# Check if the list of technics are empty
 				if len(self.yellow_ukewasa) == 0:
 					#Display a message that the list is empty
-					self.ids.technic_displayer_label.text = self.END_OF_TECHNIQUE_TEXT
+					self.ids.technic_displayer_label.text = Messages_to_app.END_OF_TECHNIQUE_TEXT(self)
 
 					#Resets the spinner
-					self.ids.spinner_menu_grades.text = self.RESET_SPINNER_TEXT
+					self.ids.spinner_menu_grades.text = Messages_to_app.RESET_SPINNER_TEXT(self)
 
 					#resets the list
 					self.yellow_ukewasa = YellowBelt.ukewasa()
@@ -171,10 +158,10 @@ class YellowScreen(Screen):
 				# Check if the list of technics are empty
 				if len(self.yellow_atemiwasa) == 0:
 					#Display a message that the list is empty
-					self.ids.technic_displayer_label.text = self.END_OF_TECHNIQUE_TEXT
+					self.ids.technic_displayer_label.text = Messages_to_app.END_OF_TECHNIQUE_TEXT(self)
 
 					#Resets the spinner
-					self.ids.spinner_menu_grades.text = self.RESET_SPINNER_TEXT
+					self.ids.spinner_menu_grades.text = Messages_to_app.RESET_SPINNER_TEXT(self)
 
 					#resets the list
 					self.yellow_atemiwasa = YellowBelt.atemiwasa()
@@ -195,14 +182,12 @@ class YellowScreen(Screen):
 				# Check if the list of technics are empty
 				if len(self.yellow_kansetsuwasa) == 0:
 					#Display a message that the list is empty
-					self.ids.technic_displayer_label.text = self.END_OF_TECHNIQUE_TEXT
+					self.ids.technic_displayer_label.text = Messages_to_app.END_OF_TECHNIQUE_TEXT(self)
 
 					#Resets the spinner
-					self.ids.spinner_menu_grades.text = self.RESET_SPINNER_TEXT
-
+					self.ids.spinner_menu_grades.text = Messages_to_app.RESET_SPINNER_TEXT(self)
 					#resets the list
 					self.yellow_kansetsuwasa = YellowBelt.kansetsuwasa()
-
 
 			elif self.spinner_value == NAGEWASA:
 				#Passes this choise in this grade
@@ -224,16 +209,16 @@ class YellowScreen(Screen):
 				# Check if the list of technics are empty
 				if len(self.yellow_kihon) == 0:
 					#Display a message that the list is empty
-					self.ids.technic_displayer_label.text = self.END_OF_TECHNIQUE_TEXT
+					self.ids.technic_displayer_label.text = Messages_to_app.END_OF_TECHNIQUE_TEXT(self)
 
 					#Resets the spinner
-					self.ids.spinner_menu_grades.text = self.RESET_SPINNER_TEXT
+					self.ids.spinner_menu_grades.text = Messages_to_app.RESET_SPINNER_TEXT(self)
 
 					#resets the list
 					self.yellow_kihon = YellowBelt.all_kihon()
 
 		except:
-			self.ids.technic_displayer_label.text = self.ERROR_MESSAGE
+			self.ids.technic_displayer_label.text = Messages_to_app.ERROR_MESSAGE(self)
 
 	def reset_button(self):
 		self.ids.my_progressbar.value = 0
@@ -241,8 +226,8 @@ class YellowScreen(Screen):
 		self.atemiwasa = YellowBelt.atemiwasa()
 		self.kihon = YellowBelt.all_kihon()
 		self.kansetsuwasa = YellowBelt.kansetsuwasa()
-		self.ids.technic_displayer_label.text = self.RESET_TEXT
-		self.ids.spinner_menu_grades.text = self.RESET_SPINNER_TEXT
+		self.ids.technic_displayer_label.text = Messages_to_app.RESET_TECHNIQUE_TEXT(self)
+		self.ids.spinner_menu_grades.text = Messages_to_app.RESET_SPINNER_TEXT(self)
 
 
 	def home_screen_button(self):

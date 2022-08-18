@@ -2,13 +2,7 @@ from random import choice
 from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.properties import StringProperty
-#from kivy.lang import Builder
-from Modules import uke_wasa, atemi_wasa, kihon, kansetsu_wasa, nage_wasa
-from kivy.core.window import Window
-
-#Builder
-#Builder.load_file("test.kv")
-
+from OLD_Modules import uke_wasa, atemi_wasa, kihon, kansetsu_wasa, nage_wasa
 
 class MainWidget(Widget):
     #defintioner för Kivy
