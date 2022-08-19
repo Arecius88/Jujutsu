@@ -5,9 +5,7 @@ from Modules import YellowBelt, OrangeBelt, Progressbar, Messages_to_app
 from random import choice
 
 #TODO: When Kihos is implemented, expand to Jigowasa and REnraku wsa
-#TODO: Rest the progressbar when swithcing between technic families
-
-
+#TODO: Test Yellow screens for bugs. Then implement it for the rest od the belts.
 
 UKEWASA = "Uke wasa"
 ATEMIWASA = "Atemi wasa"
