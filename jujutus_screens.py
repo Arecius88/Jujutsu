@@ -6,7 +6,7 @@ from random import choice
 
 #TODO: When Kihos is implemented, expand to Jigowasa and REnraku wsa
 #TODO: Rest the progressbar when swithcing between technic families
-#TODO: Klura ut hur jag ska kunna visa en ensam teknik (Kansetsuwasa Yellow), Just nu visar den inte tekniken alls.
+
 
 
 UKEWASA = "Uke wasa"
