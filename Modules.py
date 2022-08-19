@@ -54,7 +54,7 @@ class YellowBelt():
         return kansetsuwasa
 
     def all_kihon():
-        all_kihon = uke_wasa()+atemi_wasa()+kansetsu_wasa()
+        all_kihon = YellowBelt.ukewasa() + YellowBelt.atemiwasa() +YellowBelt.kansetsuwasa()
         return all_kihon
 
 class OrangeBelt():

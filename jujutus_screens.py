@@ -87,19 +87,32 @@ class YellowScreen(Screen):
 			#Display a message in on the label
 			self.ids.technic_displayer_label.text = WELCOME_TEXT
 
+			if self.ids.my_progressbar.value > 0:
+				self.ids.my_progressbar.value = 0
+
 		elif spinner_value == ATEMIWASA:
 			self.ids.technic_displayer_label.text = WELCOME_TEXT
 
+			if self.ids.my_progressbar.value > 0:
+				self.ids.my_progressbar.value = 0
+
 		elif spinner_value == KANSETSUWASA:
 			self.ids.technic_displayer_label.text = WELCOME_TEXT
+
+			if self.ids.my_progressbar.value > 0:
+				self.ids.my_progressbar.value = 0
 
 		elif spinner_value == NAGEWASA:
 		#added an if-statement if HomeScreen spinner is Yellow and if so display an error message.
 			if self.manager.get_screen("home").ids.spinner_menu_home.text == "Yellow":
 				self.ids.technic_displayer_label.text = f"This grade do not have {self.spinner_value}.\n " \
 														f"Please choose an other technique group."
+			if self.ids.my_progressbar.value > 0:
+				self.ids.my_progressbar.value = 0
 			else:
 				self.ids.technic_displayer_label.text = WELCOME_TEXT
+				if self.ids.my_progressbar.value > 0:
+					self.ids.my_progressbar.value = 0
 
 		elif spinner_value == KIHON:
 			self.ids.technic_displayer_label.text = WELCOME_TEXT
@@ -132,7 +145,7 @@ class YellowScreen(Screen):
 				self.ids.my_progressbar.value += 1
 
 				# Check if the list of technics are empty
-				if len(self.yellow_ukewasa) == 0:
+				if len(self.yellow_ukewasa) + 1 == 0:
 					#Display a message that the list is empty
 					self.ids.technic_displayer_label.text = Messages_to_app.END_OF_TECHNIQUE_TEXT(self)
 
@@ -155,8 +168,9 @@ class YellowScreen(Screen):
 				#Increment the progressbar with 1 to the maximum
 				self.ids.my_progressbar.value += 1
 
-				# Check if the list of technics are empty
-				if len(self.yellow_atemiwasa) == 0:
+				# Check if the list of technics are empty. +1 is to add one more step in to the
+				#click of the button
+				if len(self.yellow_atemiwasa) +1 == 0:
 					#Display a message that the list is empty
 					self.ids.technic_displayer_label.text = Messages_to_app.END_OF_TECHNIQUE_TEXT(self)
 
@@ -179,8 +193,9 @@ class YellowScreen(Screen):
 				#Increment the progressbar with 1 to the maximum
 				self.ids.my_progressbar.value += 1
 
-				# Check if the list of technics are empty
-				if len(self.yellow_kansetsuwasa) == 0:
+				# Check if the list of technics are empty. +1 is to add one more step in to the
+				# click of the button
+				if len(self.yellow_kansetsuwasa) +1 == 0:
 					#Display a message that the list is empty
 					self.ids.technic_displayer_label.text = Messages_to_app.END_OF_TECHNIQUE_TEXT(self)
 
@@ -206,8 +221,9 @@ class YellowScreen(Screen):
 				#Increment the progressbar with 1 to the maximum
 				self.ids.my_progressbar.value += 1
 
-				# Check if the list of technics are empty
-				if len(self.yellow_kihon) == 0:
+				# Check if the list of technics are empty. +1 is to add one more step in to the
+				# click of the button
+				if len(self.yellow_kihon) + 1 == 0:
 					#Display a message that the list is empty
 					self.ids.technic_displayer_label.text = Messages_to_app.END_OF_TECHNIQUE_TEXT(self)
 
@@ -232,7 +248,7 @@ class YellowScreen(Screen):
 
 	def home_screen_button(self):
 		reference_to_home_screen = self.manager.get_screen("home")
-		reference_to_home_screen.ids.spinner_menu_home.text = HomeScreen.home_spinner_text("placeholder")
+		reference_to_home_screen.ids.spinner_menu_home.text = HomeScreen.home_spinner_text(self)
 		self.parent.current = "home"
 
 
