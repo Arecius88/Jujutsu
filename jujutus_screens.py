@@ -1,11 +1,17 @@
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
+
+import Modules
 from Modules import YellowBelt, OrangeBelt, Progressbar, Messages_to_app
 from random import choice
 
 #TODO: When Kihos is implemented, expand to Jigowasa and REnraku wsa
 #TODO: Test Yellow screens for bugs. Then implement it for the rest od the belts.
+#Todo: Implement the class Technique selceter from Modules in this program.
+#Todo: After that implement a button to chosse between random or not random.
+
+
 
 UKEWASA = "Uke wasa"
 ATEMIWASA = "Atemi wasa"
@@ -44,10 +50,22 @@ class HomeScreen(Screen):
 
 		if spinner_value == "Yellow":
 			self.parent.current = "yellow"
-			print(self.ids.spinner_menu_home.text)
+
 
 		elif spinner_value == "Orange":
 			self.parent.current = "orange"
+
+		elif spinner_value == "Green":
+			self.parent.current = "green"
+
+		elif spinner_value == "Blue":
+			self.parent.current = "blue"
+
+		elif spinner_value == "Brown":
+			self.parent.current = "brown"
+
+		elif spinner_value == "1st Dan":
+			self.parent.current = "firstdan"
 
 
 class YellowScreen(Screen):
@@ -56,6 +74,7 @@ class YellowScreen(Screen):
 	yellow_kansetsuwasa	= YellowBelt.kansetsuwasa()
 	yellow_kihon = YellowBelt.all_kihon()
 	progressbar = Progressbar()
+
 
 	def technique_selected_random(self, technique_group):
 		"""
@@ -114,6 +133,8 @@ class YellowScreen(Screen):
 
 		elif spinner_value == KIHON:
 			self.ids.technic_displayer_label.text = WELCOME_TEXT
+			if self.ids.my_progressbar.value > 0:
+				self.ids.my_progressbar.value = 0
 
 	def new_technic_button(self):
 		"""
@@ -132,6 +153,7 @@ class YellowScreen(Screen):
 			if self.spinner_value == UKEWASA:
 				#runs the technique selecter function
 				self.technique_selected_random(self.yellow_ukewasa)
+				#Modules.Technique_selecter.random_technique(self.yellow_ukewasa)
 
 				#Display a message in the label
 				self.ids.technic_displayer_label.text = self.technique
@@ -274,12 +296,6 @@ class ThirdDanScreen(Screen):
 class WindowManager(ScreenManager):
 	pass
 
-
-
-
-sm = ScreenManager()
-sm.add_widget(HomeScreen(name="home"))
-sm.add_widget(YellowScreen(name = "yellow"))
 
 
 # Designate Our .kv design file

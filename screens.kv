@@ -19,7 +19,7 @@ WindowManager:
         Spinner:
             id: spinner_menu_home
             text: "Choose grade"
-            values: ("Yellow", "Orange")
+            values: ("Yellow", "Orange", "Green", "Blue", "Brown", "1st Dan")
             size_hint_y: None
             height: "48dp"
             background_color: (255/255,142/255,0,1)
@@ -115,4 +115,70 @@ WindowManager:
 		    on_press:
 		        root.manager.transition.direction = "left"
 		        app.root.current = "home"
+<GreenScreen>
+    name: "green"
 
+	BoxLayout:
+		orientation: "vertical"
+		size: root.width, root.height
+
+		Label:
+			text: "# PLACEHOLDER for green Screen"
+			font_size: 52
+
+		Button:
+		    text: "placeholder button"
+		    on_press:
+		        root.manager.transition.direction = "left"
+		        app.root.current = "home"
+
+<BlueScreen>
+    name: "blue"
+
+	BoxLayout:
+		orientation: "vertical"
+		size: root.width, root.height
+
+		Label:
+			text: "# PLACEHOLDER for blue Screen"
+			font_size: 52
+
+		Button:
+		    text: "placeholder button"
+		    on_press:
+		        root.manager.transition.direction = "left"
+		        app.root.current = "home"
+
+<BrownScreen>
+    name: "brown"
+
+	BoxLayout:
+		orientation: "vertical"
+		size: root.width, root.height
+
+		Label:
+			text: "# PLACEHOLDER for brown Screen"
+			font_size: 52
+
+		Button:
+		    text: "placeholder button"
+		    on_press:
+		        root.manager.transition.direction = "left"
+		        app.root.current = "home"
+
+<FirstDanScreen>
+    name: "firstdan"
+
+	BoxLayout:
+		orientation: "vertical"
+		size: root.width, root.height
+
+		Label:
+			text: "# PLACEHOLDER for 1st dan Screen"
+			font_size: 52
+
+		Button:
+		    text: "placeholder button"
+		    on_press:
+		        root.manager.transition.direction = "left"
+		        app.root.current = "home"

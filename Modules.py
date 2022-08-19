@@ -1,13 +1,26 @@
 import random
 
-#Function för att välja teknik och radera teknik från listan.
-def technique_selecter_random(technique_group):
-    technique = random.choice(technique_group)
-    print(f"\n Tekniken är: {technique} \n")
-    technique_group.remove(technique)
-    return technique_group
+
+'''
+NOT active
+
+class Technique_selecter:
+    def random_technique(technique_list):
+        technique = random.choice(technique_list)
+        print(f"\n Tekniken är: {technique} \n")
+        technique_list.remove(technique)
+        return technique_list, technique
+    def non_random(technique_list):
+        list_mod = technique_list[0]
+        print(f"tekniken är : {list_mod}")
+        technique_list.remove(list_mod)
+        return technique_list
+'''
+
+
 
 class Messages_to_app():
+
     def WELCOME_TEXT(self):
         WELCOME_TEXT = f"You have chosen {self}"
         return WELCOME_TEXT
