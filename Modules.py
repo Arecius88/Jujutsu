@@ -24,6 +24,7 @@ class Messages_to_app():
     def WELCOME_TEXT(self):
         WELCOME_TEXT = f"You have chosen {self}"
         return WELCOME_TEXT
+    
     def END_OF_TECHNIQUE_TEXT(self):
         END_OF_TECHNIQUE_TEXT = "Well done. Choose a new technic family"
         return END_OF_TECHNIQUE_TEXT
@@ -31,6 +32,7 @@ class Messages_to_app():
     def RESET_TECHNIQUE_TEXT(self):
         RESET_TECHNIQUE_TEXT = "You have pressed reset.\nChoose a new technic family"
         return RESET_TECHNIQUE_TEXT
+    
     def RESET_SPINNER_TEXT(self):
         RESET_SPINNER_TEXT = "Choose technique family"
         return RESET_SPINNER_TEXT
@@ -40,11 +42,11 @@ class Messages_to_app():
         return ERROR_MESSAGE
 
 class Progressbar():
-    # Funktion to set the min to progressbar
+    # MEtod to set the min to progressbar
     def minimum(self):
         return 0
 
-    # Function to get the max value in the progressbar
+    # Metod to get the max value in the progressbar
     def maximum(self, max_value):
         return len(max_value)
 
@@ -97,7 +99,7 @@ class OrangeBelt():
 
 
     def all_kihon():
-        all_kihon = uke_wasa() + atemi_wasa() + kansetsu_wasa() + nage_wasa()
+        all_kihon = OrangeBelt.ukewasa() + OrangeBelt.atemiwasa() + OrangeBelt.kansetsuwasa() + OrangeBelt.nagewasa()
         return all_kihon
 
 class GreenBelt():
@@ -110,7 +112,7 @@ class GreenBelt():
     def atemiwasa():
         atemiwasa = ["Kizami tski, jodan och chudan",
                      "Mae geri, chudan"]
-        atemiwasa = OrangeBelt.atemiwasa + atemiwasa
+        atemiwasa = OrangeBelt.atemiwasa() + atemiwasa
         return atemiwasa
 
     def kansetsuwasa():
@@ -126,13 +128,13 @@ class GreenBelt():
         return nagewasa
 
     def all_kihon():
-        all_kihon = uke_wasa() + atemi_wasa() + kansetsu_wasa() + nage_wasa()
+        all_kihon = GreenBelt.ukewasa() + GreenBelt.atemiwasa() + GreenBelt.kansetsuwasa() + GreenBelt.nagewasa()
         return all_kihon
 
 class BlueBelt():
     def ukewasa():
         ukewasa = ["Chudan uchi uke, mot rakt slag"]
-        ukewasa = GreenBelt.ukewasa + ukewasa
+        ukewasa = GreenBelt.ukewasa() + ukewasa
         return ukewasa
 
     def atemiwasa():
@@ -145,7 +147,7 @@ class BlueBelt():
     def kansetsuwasa():
         kansetsuwasa = ["Kote hineri, mot diagonalt grepp. ude henkan gatame",
                         "Irimi nage, mot diagonalt grepp, ude henkan gatame", ]
-        kansetsuwasa = GreenBelt.kansetsuwasa + kansetsuwasa
+        kansetsuwasa = GreenBelt.kansetsuwasa() + kansetsuwasa
         return kansetsuwasa
 
     def nagewasa():
@@ -154,7 +156,7 @@ class BlueBelt():
         return nagewasa
 
     def all_kihon():
-        all_kihon = uke_wasa() + atemi_wasa() + kansetsu_wasa() + nage_wasa()
+        all_kihon = BlueBelt.ukewasa() + BlueBelt.atemiwasa() + BlueBelt.kansetsuwasa() + BlueBelt.nagewasa()
         return all_kihon
 
 class BrownBelt():
@@ -166,7 +168,7 @@ class BrownBelt():
         atemiwasa = ["Empi uchi, jodan och chudan",
                      "Uraken uchi , jodan",
                      "Yoko geri, chudan", ]
-        atemiwasa = BlueBelt.atemiwasa + atemiwasa
+        atemiwasa = BlueBelt.atemiwasa() + atemiwasa
         return atemiwasa
 
     def kansetsuwasa():
@@ -177,11 +179,11 @@ class BrownBelt():
     def nagewasa():
         nagewasa = ["Seoi nage, mot grepp i ärmen, ude hishigi hiza gatame",
                     "Uki otoshi, mot grepp i ärmen, ude henkan gatame", ]
-        nagewasa = BlueBelt.nagewasa + nagewasa
+        nagewasa = BlueBelt.nagewasa() + nagewasa
         return nagewasa
 
     def all_kihon():
-        all_kihon = uke_wasa() + atemi_wasa() + kansetsu_wasa() + nage_wasa()
+        all_kihon = BrownBelt.ukewasa() + BrownBelt.atemiwasa() + BrownBelt.kansetsuwasa() + BrownBelt.nagewasa()
         return all_kihon
 
 class FirstDan():
@@ -192,7 +194,7 @@ class FirstDan():
     def atemiwasa():
         atemiwasa_firstdan = ["Haito uchi, jodan",
                               "Shuto uchi, jodan, höger och vänster sida"]
-        atemiwasa_firstdan = BrownBelt.atemiwasa + atemiwasa_firstdan
+        atemiwasa_firstdan = BrownBelt.atemiwasa() + atemiwasa_firstdan
         return atemiwasa_firstdan
 
     def kansetsuwasa():
@@ -209,6 +211,6 @@ class FirstDan():
         return nagewasa
 
     def all_kihon():
-        all_kihon = uke_wasa() + atemi_wasa() + kansetsu_wasa() + nage_wasa()
+        all_kihon = FirstDan.ukewasa() + FirstDan.atemiwasa() + FirstDan.kansetsuwasa() + FirstDan.nagewasa()
         return all_kihon
 

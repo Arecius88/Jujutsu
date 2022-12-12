@@ -96,7 +96,7 @@ WindowManager:
                 text: "Back"
                 on_press:
                     root.home_screen_button()
-                    root.manager.transition.direction = "up"
+                    root.manager.transition.direction = "right"
 
 
 <OrangeScreen>
@@ -106,31 +106,127 @@ WindowManager:
 		orientation: "vertical"
 		size: root.width, root.height
 
-		Label:
-			text: "# PLACEHOLDER for Orange Screen"
-			font_size: 52
+        Spinner:
+            id: spinner_menu_grades
+            text: "Choose technique family"
+            values: ("Uke wasa", "Atemi wasa", "Kansetsu wasa","Nage wasa", "Kihon")
+            size_hint_y: None
+            height: "48dp"
+            background_color: (255/255,142/255,0,1)
+            on_text: root.on_spinner_select_technique(spinner_menu_grades.text)
 
-		Button:
-		    text: "placeholder button"
-		    on_press:
-		        root.manager.transition.direction = "left"
-		        app.root.current = "home"
+#The label for displaying the technics
+        Label:
+            id: technic_displayer_label
+            font_size: "25"
+            text: "Choose a technic Family"
+
+        ProgressBar:
+            id: my_progressbar
+            size_hint_x: .85
+            pos_hint: {"center_x": .5, "top" : 0}
+            value: 0
+            max: 1
+
+#Button for the new technic
+        Bubble:
+            size_hint_y: None
+            height: "100dp"
+            background_color: (1, 0.741, 0.2, 1)
+
+
+            BubbleButton:
+                id: technic_button
+                text: "New technic"
+                #background_normal: "" #can use if I want a sharper color
+                background_color: (1, 0.741, 0.2, 1)
+                on_press: root.new_technic_button()
+
+#Button for the reset
+        Bubble:
+            size_hint_y: None
+            height: "100dp"
+
+            BubbleButton:
+                id: reset_button
+                text: "Reset"
+                background_color: (1,0,0,1)
+                on_press: root.reset_button()
+        Bubble:
+            size_hint_y: None
+            height: "100dp"
+            arrow_pos: "left_mid"
+
+            BubbleButton:
+                id: home_button
+                text: "Back"
+                on_press:
+                    root.home_screen_button()
+                    root.manager.transition.direction = "right"
+
 <GreenScreen>
     name: "green"
-
 	BoxLayout:
 		orientation: "vertical"
 		size: root.width, root.height
 
-		Label:
-			text: "# PLACEHOLDER for green Screen"
-			font_size: 52
+        Spinner:
+            id: spinner_menu_grades
+            text: "Choose technique family"
+            values: ("Uke wasa", "Atemi wasa", "Kansetsu wasa","Nage wasa", "Kihon")
+            size_hint_y: None
+            height: "48dp"
+            background_color: (255/255,142/255,0,1)
+            on_text: root.on_spinner_select_technique(spinner_menu_grades.text)
 
-		Button:
-		    text: "placeholder button"
-		    on_press:
-		        root.manager.transition.direction = "left"
-		        app.root.current = "home"
+#The label for displaying the technics
+        Label:
+            id: technic_displayer_label
+            font_size: "25"
+            text: "Choose a technic Family"
+
+        ProgressBar:
+            id: my_progressbar
+            size_hint_x: .85
+            pos_hint: {"center_x": .5, "top" : 0}
+            value: 0
+            max: 1
+
+#Button for the new technic
+        Bubble:
+            size_hint_y: None
+            height: "100dp"
+            background_color: (1, 0.741, 0.2, 1)
+
+
+            BubbleButton:
+                id: technic_button
+                text: "New technic"
+                #background_normal: "" #can use if I want a sharper color
+                background_color: (1, 0.741, 0.2, 1)
+                on_press: root.new_technic_button()
+
+#Button for the reset
+        Bubble:
+            size_hint_y: None
+            height: "100dp"
+
+            BubbleButton:
+                id: reset_button
+                text: "Reset"
+                background_color: (1,0,0,1)
+                on_press: root.reset_button()
+        Bubble:
+            size_hint_y: None
+            height: "100dp"
+            arrow_pos: "left_mid"
+
+            BubbleButton:
+                id: home_button
+                text: "Back"
+                on_press:
+                    root.home_screen_button()
+                    root.manager.transition.direction = "right"
 
 <BlueScreen>
     name: "blue"
@@ -139,15 +235,63 @@ WindowManager:
 		orientation: "vertical"
 		size: root.width, root.height
 
-		Label:
-			text: "# PLACEHOLDER for blue Screen"
-			font_size: 52
+        Spinner:
+            id: spinner_menu_grades
+            text: "Choose technique family"
+            values: ("Uke wasa", "Atemi wasa", "Kansetsu wasa","Nage wasa", "Kihon")
+            size_hint_y: None
+            height: "48dp"
+            background_color: (255/255,142/255,0,1)
+            on_text: root.on_spinner_select_technique(spinner_menu_grades.text)
 
-		Button:
-		    text: "placeholder button"
-		    on_press:
-		        root.manager.transition.direction = "left"
-		        app.root.current = "home"
+#The label for displaying the technics
+        Label:
+            id: technic_displayer_label
+            font_size: "25"
+            text: "Choose a technic Family"
+
+        ProgressBar:
+            id: my_progressbar
+            size_hint_x: .85
+            pos_hint: {"center_x": .5, "top" : 0}
+            value: 0
+            max: 1
+
+#Button for the new technic
+        Bubble:
+            size_hint_y: None
+            height: "100dp"
+            background_color: (1, 0.741, 0.2, 1)
+
+
+            BubbleButton:
+                id: technic_button
+                text: "New technic"
+                #background_normal: "" #can use if I want a sharper color
+                background_color: (1, 0.741, 0.2, 1)
+                on_press: root.new_technic_button()
+
+#Button for the reset
+        Bubble:
+            size_hint_y: None
+            height: "100dp"
+
+            BubbleButton:
+                id: reset_button
+                text: "Reset"
+                background_color: (1,0,0,1)
+                on_press: root.reset_button()
+        Bubble:
+            size_hint_y: None
+            height: "100dp"
+            arrow_pos: "left_mid"
+
+            BubbleButton:
+                id: home_button
+                text: "Back"
+                on_press:
+                    root.home_screen_button()
+                    root.manager.transition.direction = "right"
 
 <BrownScreen>
     name: "brown"
@@ -156,16 +300,64 @@ WindowManager:
 		orientation: "vertical"
 		size: root.width, root.height
 
-		Label:
-			text: "# PLACEHOLDER for brown Screen"
-			font_size: 52
+        Spinner:
+            id: spinner_menu_grades
+            text: "Choose technique family"
+            values: ("Uke wasa", "Atemi wasa", "Kansetsu wasa","Nage wasa", "Kihon")
+            size_hint_y: None
+            height: "48dp"
+            background_color: (255/255,142/255,0,1)
+            on_text: root.on_spinner_select_technique(spinner_menu_grades.text)
 
-		Button:
-		    text: "placeholder button"
-		    on_press:
-		        root.manager.transition.direction = "left"
-		        app.root.current = "home"
+#The label for displaying the technics
+        Label:
+            id: technic_displayer_label
+            font_size: "25"
+            text: "Choose a technic Family"
 
+        ProgressBar:
+            id: my_progressbar
+            size_hint_x: .85
+            pos_hint: {"center_x": .5, "top" : 0}
+            value: 0
+            max: 1
+
+#Button for the new technic
+        Bubble:
+            size_hint_y: None
+            height: "100dp"
+            background_color: (1, 0.741, 0.2, 1)
+
+
+            BubbleButton:
+                id: technic_button
+                text: "New technic"
+                #background_normal: "" #can use if I want a sharper color
+                background_color: (1, 0.741, 0.2, 1)
+                on_press: root.new_technic_button()
+
+#Button for the reset
+        Bubble:
+            size_hint_y: None
+            height: "100dp"
+
+            BubbleButton:
+                id: reset_button
+                text: "Reset"
+                background_color: (1,0,0,1)
+                on_press: root.reset_button()
+        Bubble:
+            size_hint_y: None
+            height: "100dp"
+            arrow_pos: "left_mid"
+
+            BubbleButton:
+                id: home_button
+                text: "Back"
+                on_press:
+                    root.home_screen_button()
+                    root.manager.transition.direction = "right"
+					
 <FirstDanScreen>
     name: "firstdan"
 
@@ -173,12 +365,60 @@ WindowManager:
 		orientation: "vertical"
 		size: root.width, root.height
 
-		Label:
-			text: "# PLACEHOLDER for 1st dan Screen"
-			font_size: 52
+        Spinner:
+            id: spinner_menu_grades
+            text: "Choose technique family"
+            values: ("Uke wasa", "Atemi wasa", "Kansetsu wasa","Nage wasa", "Kihon")
+            size_hint_y: None
+            height: "48dp"
+            background_color: (255/255,142/255,0,1)
+            on_text: root.on_spinner_select_technique(spinner_menu_grades.text)
 
-		Button:
-		    text: "placeholder button"
-		    on_press:
-		        root.manager.transition.direction = "left"
-		        app.root.current = "home"
+#The label for displaying the technics
+        Label:
+            id: technic_displayer_label
+            font_size: "25"
+            text: "Choose a technic Family"
+
+        ProgressBar:
+            id: my_progressbar
+            size_hint_x: .85
+            pos_hint: {"center_x": .5, "top" : 0}
+            value: 0
+            max: 1
+
+#Button for the new technic
+        Bubble:
+            size_hint_y: None
+            height: "100dp"
+            background_color: (1, 0.741, 0.2, 1)
+
+
+            BubbleButton:
+                id: technic_button
+                text: "New technic"
+                #background_normal: "" #can use if I want a sharper color
+                background_color: (1, 0.741, 0.2, 1)
+                on_press: root.new_technic_button()
+
+#Button for the reset
+        Bubble:
+            size_hint_y: None
+            height: "100dp"
+
+            BubbleButton:
+                id: reset_button
+                text: "Reset"
+                background_color: (1,0,0,1)
+                on_press: root.reset_button()
+        Bubble:
+            size_hint_y: None
+            height: "100dp"
+            arrow_pos: "left_mid"
+
+            BubbleButton:
+                id: home_button
+                text: "Back"
+                on_press:
+                    root.home_screen_button()
+                    root.manager.transition.direction = "right"
