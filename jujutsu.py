@@ -7,19 +7,17 @@ from random import choice
 
 #TODO: When Kihos is implemented, expand to Jigowasa and Renraku Wasa
 #TODO: Implement up to third dan
-#//Test Yellow screens for bugs. Then implement it for the rest od the belts.
-
 #Todo: Implement a Togglebutton to chooce between random choices or not random choises.
-#///: Write a method to choose between random and non random. 
-#TODO: Implement a way so that the program remembers on witch step you are on, when your change technice family
 
-#// Implement the class Technique selceter from Modules in this program.
-#// Find a Way to exklude the repeting code in For the Classens for the method technique_selected_random
+#TODO: Implement a way so that the program remembers on witch step you are on, when your change technice family
 
 #TODO: Find a Way to exklude/minimize the repeting code in the Classes for the on_spinner_select_technique
 #TODO: Find a Way to exklude/minimize the repeting code in the Classes for the reset_button
 #TODO: Find a Way to exklude/minimize the repeting code in the Classes for the home_screen_button
-
+ #// Implement the class Technique selceter from Modules in this program.
+#// Find a Way to exklude the repeting code in For the Classens for the method technique_selected_random
+#///: Write a method to choose between random and non random. 
+#//Test Yellow screens for bugs. Then implement it for the rest od the belts.
 
 #Definitions of konstants in the app
 UKEWASA = "Uke wasa"

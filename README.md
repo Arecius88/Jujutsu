@@ -9,18 +9,14 @@ Crossed out text means that goal has been reached and is moved to the Done secti
 <ol>
   <li>Make the dropdown in spinner the same color as the main spinner. </li>
   <li>Have a countdown on the amount of technics that are left in a family. </li>
-  <li><s>Have a progressbar that visually shows how much you have left in a family. </s></li>
   <li>Make it possible to choose if the user wants the technics in order or at random.</li>
-  <li><s>Make it possible to change kyu-grade and only get that kyu-grade Kihon.</s></li> 
-  <li><s>Include Classes in the code that is not a part of Kivy.</s></li>
-  <li><s>Have multiple screens</s></li> 
 </ol>
 
 <h4>Stretchgoals:</h4>
 <ul>
    <li>Include the Jigo wasa for all kyu and up to 3dan</li>
    <li>include the Renraku Wasa for all kyu and up to 3dan</li>
-   <li>Make a counter that count how many times a User have completed a technocfamily</li>
+   <li>Make a counter that count how many times a User have completed a techniquefamily</li>
    <ul>
       <li>Kihon completed = +1 on all sub Kihon groups.</li>
    </ul>
