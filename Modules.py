@@ -1,25 +1,47 @@
 import random 
 
 
-'''
-NOT active
-
-class Technique_selecter:
-    def random_technique(technique_list):
-        technique = random.choice(technique_list)
-        print(f"\n Tekniken är: {technique} \n")
-        technique_list.remove(technique)
-        return technique_list, technique
-    def non_random(technique_list):
-        list_mod = technique_list[0]
-        print(f"tekniken är : {list_mod}")
-        technique_list.remove(list_mod)
-        return technique_list
-'''
 
 
+class Technique_selecter():
+    """This class handles all the technique choises. 
+    It has two methods, one random and one nonrandom. 
+    """
+
+    def technique_selected_random(technique_group):
+        """Random selects a technique from the list that was input. 
+
+        Args:
+            technique_group (list): list of the techniques you want to display
+
+        Returns:
+            str: the element that was removed from the list. 
+        """
+        technique = random.choice(technique_group)
+        #*Are left behind for debugging purposes
+        # print(f"\n Tekniken är: {technique} \n")
+        technique_group.remove(technique)
+        return technique
+	
+    def technique_selected_nonrandom(self, technique_group):
+        """Selects the elemment on index 0 from the list of techniques that was input. 
+
+        Args:
+            technique_group (list): list of the techniques you want to display
+
+        Returns:
+            str: the element that was removed from the list.
+        """
+        technique = technique_group[0]
+        #*Are left behind for debugging purposes
+        # print(f"\nNonrandom tecnic is {technique}\n")
+        technique_group.remove(technique)
+		
+        return technique
 
 class Messages_to_app():
+    """This is the class for all the messages that a send to the app. I've chosen to make them constants.  
+    """
 
     def WELCOME_TEXT(self):
         WELCOME_TEXT = f"You have chosen {self}"
@@ -42,15 +64,19 @@ class Messages_to_app():
         return ERROR_MESSAGE
 
 class Progressbar():
-    # MEtod to set the min to progressbar
+    """Class to handle the progressbar max and min values. 
+    """
+
     def minimum(self):
         return 0
 
-    # Metod to get the max value in the progressbar
     def maximum(self, max_value):
         return len(max_value)
 
 class YellowBelt():
+    """Class to handle all the techniques. The methods are the technique families. Every grade have the same layout and adds of from the previous grade. 
+    
+    """
     def ukewasa():
         ukewasa = ["Ju morote jodan uke, mot svingslag",
                    "Jodan uchi uke, mot rakt slag",
