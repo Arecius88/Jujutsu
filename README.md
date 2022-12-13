@@ -36,6 +36,9 @@ Crossed out text means that goal has been reached and is moved to the Done secti
 <ul>
   <li> Make a GUI</li>
   <li>Have a progressbar that visually shows how much you have left in a family.</li>
+  <li>Include Classes in the code that is not a part of Kivy.</li>
+  <li>Make it possible to change kyu-grade and only get that kyu-grade Kihon.</li> 
+  <li>Have multiple screens</li> 
 </ul>
 
 
