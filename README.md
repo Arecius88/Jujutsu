@@ -1,10 +1,22 @@
 # Jujutsu
+<h2>This is the Third version of the app</h2>
+<p>Added all the kyu grades and the first dan grade. Implemented screens for all the grades and for the home screen. Changed the Modules.py from just list to classes for every grade. Have tried to eliminate as many bugs and ways for the app to crash as possible.</p>
+
+<h1>What is this program?</h1> 
 A program to choose, at random, technics in jujustu Kai system for 1 dan.
 It is build in Python and the latest Kivymodules. You need to have Kivy installed. 
 
-Crossed out text means that goal has been reached and is moved to the Done section.
+<h1>How to use the app</h1>
+<p>On the first screen click on the top menu. <br>
+Choose your grade according to its color in the jujutsu Kai system<br>
+the app will then change the screen<br>
+Next, click on the top menu to choose your prefered technique family from Kihon. <br>
+Click on the <i>New technique</i> the app will at random show you a technique from Kihon from that grade. i.e If you choose Atemi Wasa the app will only give you all the Atemi Wasa from that grade.<br>
+Continue to Click on the <i>New technique</i> button util you are done. <br>
+When the are no techniques left the app will ask you to choose a new technique family of Kihon. </p>
 
 <h2>Plan for this project is:</h2>
+Crossed out text means that goal has been reached and is moved to the Done section.
 
 <ol>
   <li>Make the dropdown in spinner the same color as the main spinner. </li>
