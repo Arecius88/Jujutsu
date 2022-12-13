@@ -1,5 +1,9 @@
 # Jujutsu
 A program to choose, at random, technics in jujustu Kai system for 1 dan.
+
+<h2>This is the second version of the app</h2>
+
+
 It is build in Python and the latest Kivymodules. You need to have Kivy installed. 
 
 Crossed out text means that goal has been reached and is moved to the Done section.
