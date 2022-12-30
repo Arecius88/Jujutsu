@@ -21,6 +21,11 @@ from random import choice
 #TODO: Find a Way to exklude/minimize the repeting code in the Classes for the home_screen_button
 
 
+#KNOWN BUGS
+#Progressbar sparar inte hur långt man kommit en en teknikfamilj. Medför att om jag väljer uke wasa, klickar på new techique. Därefet väljer ex Atemi Wasa
+#kommer inte prograssbar ihåg hur långt du kommit. 
+
+
 #Definitions of konstants in the app
 UKEWASA = "Uke wasa"
 ATEMIWASA = "Atemi wasa"
@@ -78,7 +83,7 @@ class HomeScreen(Screen):
 #* NEW SCREEN
 class YellowScreen(Screen):
 	#Sets ie ukewasa to the object och ukewasa from the "color of the belt" class in Modules. 
-	#This Changes with every grade. 
+	#!This Changes with every grade. 
 	ukewasa = YellowBelt.ukewasa()
 	atemiwasa = YellowBelt.atemiwasa()
 	kansetsuwasa = YellowBelt.kansetsuwasa()
@@ -87,11 +92,10 @@ class YellowScreen(Screen):
 
 	
 	def on_spinner_select_technique(self, spinner_value):
-		"""
-		> When the user selects a value from the spinner, the value is passed to the function and the function updates the
-		value of the variable `technique` to the value of the spinner
+		"""Method for the Spinner. With the spinner the user chooses the technique family. 
 
-		:param spinner_value: The value of the spinner that was selected
+		Args:
+			spinner_value (str): The value of the screen that the user wants to user. IE Ukewasa
 		"""
 
 		#Displays the spinner choice in the label
@@ -154,7 +158,7 @@ class YellowScreen(Screen):
 				chosen_technique = Technique_selecter.technique_selected_random(self.ukewasa) 
 				
 				    
-				#Display a message in the label
+				#Display a the choosen technique in the label
 				self.ids.technic_displayer_label.text = chosen_technique
 				
 
@@ -284,13 +288,6 @@ class OrangeScreen(Screen):
 
 
 	def on_spinner_select_technique(self, spinner_value):
-		"""
-		> When the user selects a value from the spinner, the value is passed to the function and the function updates the
-		value of the variable `technique` to the value of the spinner
-
-		:param spinner_value: The value of the spinner that was selected
-		"""
-
 		#Displays the spinner choice in the label
 		self.spinner_value = spinner_value
 		WELCOME_TEXT = Messages_to_app.WELCOME_TEXT(spinner_value)
@@ -332,17 +329,6 @@ class OrangeScreen(Screen):
 				self.ids.my_progressbar.value = Progressbar.minimum(self)
 
 	def new_technic_button(self):
-		"""
-		Function to control the New technic button.
-		Checks the value of the spinner and then display the technic family name.
-		Thereafter, the functions takes the list of the selected group and runs the technique_selected_random function
-		increments the progressbar by 1
-
-		When the list is empty the function resets:
-			- Spinner
-			- The list of techniques.
-		and display a message in the label.
-		"""
 		try:
 			#checks the vaule of the spinner
 			if self.spinner_value == UKEWASA:
@@ -496,12 +482,6 @@ class GreenScreen(Screen):
 
 
 	def on_spinner_select_technique(self, spinner_value):
-		"""
-		> When the user selects a value from the spinner, the value is passed to the function and the function updates the
-		value of the variable `technique` to the value of the spinner
-
-		:param spinner_value: The value of the spinner that was selected
-		"""
 
 		#Displays the spinner choice in the label
 		self.spinner_value = spinner_value
@@ -544,17 +524,7 @@ class GreenScreen(Screen):
 				self.ids.my_progressbar.value = Progressbar.minimum(self)
 
 	def new_technic_button(self):
-		"""
-		Function to control the New technic button.
-		Checks the value of the spinner and then display the technic family name.
-		Thereafter, the functions takes the list of the selected group and runs the technique_selected_random function
-		increments the progressbar by 1
 
-		When the list is empty the function resets:
-			- Spinner
-			- The list of techniques.
-		and display a message in the label.
-		"""
 		try:
 			#checks the vaule of the spinner
 			if self.spinner_value == UKEWASA:
@@ -708,12 +678,6 @@ class BlueScreen(Screen):
 
 
 	def on_spinner_select_technique(self, spinner_value):
-		"""
-		> When the user selects a value from the spinner, the value is passed to the function and the function updates the
-		value of the variable `technique` to the value of the spinner
-
-		:param spinner_value: The value of the spinner that was selected
-		"""
 
 		#Displays the spinner choice in the label
 		self.spinner_value = spinner_value
@@ -756,17 +720,7 @@ class BlueScreen(Screen):
 				self.ids.my_progressbar.value = Progressbar.minimum(self)
 
 	def new_technic_button(self):
-		"""
-		Function to control the New technic button.
-		Checks the value of the spinner and then display the technic family name.
-		Thereafter, the functions takes the list of the selected group and runs the technique_selected_random function
-		increments the progressbar by 1
 
-		When the list is empty the function resets:
-			- Spinner
-			- The list of techniques.
-		and display a message in the label.
-		"""
 		try:
 			#checks the vaule of the spinner
 			if self.spinner_value == UKEWASA:
@@ -920,12 +874,7 @@ class BrownScreen(Screen):
 
 
 	def on_spinner_select_technique(self, spinner_value):
-		"""
-		> When the user selects a value from the spinner, the value is passed to the function and the function updates the
-		value of the variable `technique` to the value of the spinner
 
-		:param spinner_value: The value of the spinner that was selected
-		"""
 
 		#Displays the spinner choice in the label
 		self.spinner_value = spinner_value
@@ -968,17 +917,7 @@ class BrownScreen(Screen):
 				self.ids.my_progressbar.value = Progressbar.minimum(self)
 
 	def new_technic_button(self):
-		"""
-		Function to control the New technic button.
-		Checks the value of the spinner and then display the technic family name.
-		Thereafter, the functions takes the list of the selected group and runs the technique_selected_random function
-		increments the progressbar by 1
 
-		When the list is empty the function resets:
-			- Spinner
-			- The list of techniques.
-		and display a message in the label.
-		"""
 		try:
 			#checks the vaule of the spinner
 			if self.spinner_value == UKEWASA:
@@ -1131,12 +1070,6 @@ class FirstDanScreen(Screen):
 	progressbar = Progressbar()
 
 	def on_spinner_select_technique(self, spinner_value):
-		"""
-		> When the user selects a value from the spinner, the value is passed to the function and the function updates the
-		value of the variable `technique` to the value of the spinner
-
-		:param spinner_value: The value of the spinner that was selected
-		"""
 
 		#Displays the spinner choice in the label
 		self.spinner_value = spinner_value
@@ -1179,17 +1112,7 @@ class FirstDanScreen(Screen):
 				self.ids.my_progressbar.value = Progressbar.minimum(self)
 
 	def new_technic_button(self):
-		"""
-		Function to control the New technic button.
-		Checks the value of the spinner and then display the technic family name.
-		Thereafter, the functions takes the list of the selected group and runs the technique_selected_random function
-		increments the progressbar by 1
 
-		When the list is empty the function resets:
-			- Spinner
-			- The list of techniques.
-		and display a message in the label.
-		"""
 		try:
 			#checks the vaule of the spinner
 			if self.spinner_value == UKEWASA:
