@@ -78,7 +78,7 @@ class HomeScreen(Screen):
 			self.parent.current = "brown"
 
 		elif spinner_value == "1st Dan":
-			self.parent.current = "firstdan"
+			self.parent.current = "firstdan"      
 
 #* NEW SCREEN
 class YellowScreen(Screen):
