@@ -5,35 +5,11 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from Modules import YellowBelt, OrangeBelt, GreenBelt, BlueBelt, BrownBelt, FirstDan, Progressbar, Messages_to_app
 from random import choice
 
-#TODO: When Kihos is implemented, expand to Jigowasa and Renraku Wasa
-#TODO: Implement up to third dan
-#//Test Yellow screens for bugs. Then implement it for the rest od the belts.
-
-#Todo: Implement a Togglebutton to chooce between random choices or not random choises.
-#TODO: Implement at way so that the program remembers on witch step you are on, when your change technice family
-
-#Todo: Implement the class Technique selceter from Modules in this program.
-#TODO: Find a Way to exklude the repeting code in For the Classens for the method technique_selected_random
-
-#TODO: Find a Way to exklude the repeting code in For the Classens for the on_spinner_select_technique
-#TODO: Find a Way to exklude the repeting code in For the Classens for the reset_button
-#TODO: Find a Way to exklude the repeting code in For the Classens for the home_screen_button
-
-
-
 UKEWASA = "Uke wasa"
 ATEMIWASA = "Atemi wasa"
 KANSETSUWASA = "Kansetsu wasa"
 NAGEWASA = "Nage wasa"
 KIHON = "Kihon"
-
-'''
-____________Not implemented_______________ 
-JIGOWASA = "jigowasa"
-RENRAKUWASA	= "renrakuwasa"
-__________________________________________
-'''
-
 
 #Define our different screens
 class HomeScreen(Screen):
