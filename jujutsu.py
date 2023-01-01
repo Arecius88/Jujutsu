@@ -2,17 +2,19 @@ from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
 
-from Modules import Technique_selecter, YellowBelt, OrangeBelt, GreenBelt, BlueBelt, BrownBelt, FirstDan, Progressbar, Messages_to_app
+from Modules import YellowBelt, OrangeBelt, GreenBelt, BlueBelt, BrownBelt, FirstDan, Progressbar, Messages_to_app
 from random import choice
 
 #TODO: When Kihos is implemented, expand to Jigowasa and Renraku Wasa
 #TODO: Implement up to third dan
-#//Test Yellow screens for bugs. Then implement it for the rest od the belts.
-
+#TODO: Implement a screen for settings
 #Todo: Implement a Togglebutton to chooce between random choices or not random choises.
-#///: Write a method to choose between random and non random. 
+
+#TODO: Implement a screen for statistics
 #TODO: Implement a way so that the program remembers on witch step you are on, when your change technice family
 
+#//Test Yellow screens for bugs. Then implement it for the rest od the belts.
+#///: Write a method to choose between random and non random. 
 #// Implement the class Technique selceter from Modules in this program.
 #// Find a Way to exklude the repeting code in For the Classens for the method technique_selected_random
 
@@ -22,32 +24,25 @@ from random import choice
 
 
 #KNOWN BUGS
-#Progressbar sparar inte hur långt man kommit en en teknikfamilj. Medför att om jag väljer uke wasa, klickar på new techique. Därefet väljer ex Atemi Wasa
+#1. Progressbar sparar inte hur långt man kommit en en teknikfamilj. Medför att om jag väljer uke wasa, klickar på new techique. Därefet väljer ex Atemi Wasa
 #kommer inte prograssbar ihåg hur långt du kommit. 
+#2. Screen Settings funkar inte än!
 
-
-#Definitions of konstants in the app
+#Definitions of constants in the app
 UKEWASA = "Uke wasa"
 ATEMIWASA = "Atemi wasa"
 KANSETSUWASA = "Kansetsu wasa"
 NAGEWASA = "Nage wasa"
 KIHON = "Kihon"
 
-'''
-____________Not implemented_______________ 
-JIGOWASA = "jigowasa"
-RENRAKUWASA	= "renrakuwasa"
-__________________________________________
-'''
-
-
 #Define our different screens
 class HomeScreen(Screen):
+	#! Oklart om denna DEF behövs.
 	def home_spinner_text(self):
-		'''
+		"""
 		This function returns the text that will be displayed in the spinner on the home screen
 		:return: The string "Choose grade" is being returned.
-		'''
+		"""
 		home_spinner = "Choose grade"
 		return home_spinner
 
@@ -78,24 +73,39 @@ class HomeScreen(Screen):
 			self.parent.current = "brown"
 
 		elif spinner_value == "1st Dan":
-			self.parent.current = "firstdan"      
+			self.parent.current = "firstdan"
+		#! OBS TILLAGT för settings screen
+		elif spinner_value =="Settings":
+			self.parent.current == "settings"
 
 #* NEW SCREEN
 class YellowScreen(Screen):
 	#Sets ie ukewasa to the object och ukewasa from the "color of the belt" class in Modules. 
-	#!This Changes with every grade. 
+	#This Changes with every grade. 
 	ukewasa = YellowBelt.ukewasa()
 	atemiwasa = YellowBelt.atemiwasa()
 	kansetsuwasa = YellowBelt.kansetsuwasa()
 	kihon = YellowBelt.all_kihon()
 	progressbar = Progressbar()
 
-	
-	def on_spinner_select_technique(self, spinner_value):
-		"""Method for the Spinner. With the spinner the user chooses the technique family. 
 
-		Args:
-			spinner_value (str): The value of the screen that the user wants to user. IE Ukewasa
+	def technique_selected_random(self, technique_group):
+		"""
+		This method takes in a list of techniques and returns a random technique from that list.
+
+		:param technique_group: This is the list of techniques that you want to select from
+		"""
+		self.technique = choice(technique_group)
+		print(f"\n Tekniken är: {self.technique} \n")
+		technique_group.remove(self.technique)
+		return technique_group
+
+	def on_spinner_select_technique(self, spinner_value):
+		"""
+		> When the user selects a value from the spinner, the value is passed to the function and the function updates the
+		value of the variable `technique` to the value of the spinner
+
+		:param spinner_value: The value of the spinner that was selected
 		"""
 
 		#Displays the spinner choice in the label
@@ -155,12 +165,12 @@ class YellowScreen(Screen):
 			#checks the vaule of the spinner
 			if self.spinner_value == UKEWASA:
 				#runs the technique selecter function
-				chosen_technique = Technique_selecter.technique_selected_random(self.ukewasa) 
-				
-				    
-				#Display a the choosen technique in the label
-				self.ids.technic_displayer_label.text = chosen_technique
-				
+				self.technique_selected_random(self.ukewasa)
+				#Modules.Technique_selecter.random_technique(self.
+				# ukewasa)
+
+				#Display a message in the label
+				self.ids.technic_displayer_label.text = self.technique
 
 				#Define the progressbar_max.
 				self.ids.my_progressbar.max = self.progressbar.maximum(YellowBelt.ukewasa())
@@ -181,11 +191,10 @@ class YellowScreen(Screen):
 
 			elif self.spinner_value == ATEMIWASA:
 				#runs the technique selecter function
-				chosen_technique = Technique_selecter.technique_selected_random(self.atemiwasa) 
-				
-				    
+				self.technique_selected_random(self.atemiwasa)
+
 				#Display a message in the label
-				self.ids.technic_displayer_label.text = chosen_technique
+				self.ids.technic_displayer_label.text = self.technique
 
 				#Define the progressbar_max.
 				self.ids.my_progressbar.max = self.progressbar.maximum(YellowBelt.atemiwasa())
@@ -207,10 +216,10 @@ class YellowScreen(Screen):
 
 			elif self.spinner_value == KANSETSUWASA:
 				#runs the technique selecter function
-				chosen_technique = Technique_selecter.technique_selected_random(self.kansetsuwasa) 
-				
+				self.technique_selected_random(self.kansetsuwasa)
+
 				#Display a message in the label
-				self.ids.technic_displayer_label.text = chosen_technique
+				self.ids.technic_displayer_label.text = self.technique
 
 				#Define the progressbar_max.
 				self.ids.my_progressbar.max = self.progressbar.maximum(YellowBelt.kansetsuwasa())
@@ -235,10 +244,10 @@ class YellowScreen(Screen):
 
 			elif self.spinner_value == KIHON:
 				#runs the technique selecter function
-				chosen_technique = Technique_selecter.technique_selected_random(self.kihon) 
-				
+				self.technique_selected_random(self.kihon)
+
 				#Display a message in the label
-				self.ids.technic_displayer_label.text = chosen_technique
+				self.ids.technic_displayer_label.text = self.technique
 
 				#Define the progressbar_max.
 				self.ids.my_progressbar.max = self.progressbar.maximum(YellowBelt.all_kihon())
@@ -287,7 +296,25 @@ class OrangeScreen(Screen):
 	progressbar = Progressbar()
 
 
+	def technique_selected_random(self, technique_group):
+		"""
+		This method takes in a list of techniques and returns a random technique from that list.
+
+		:param technique_group: This is the list of techniques that you want to select from
+		"""
+		self.technique = choice(technique_group)
+		print(f"\n Tekniken är: {self.technique} \n")
+		technique_group.remove(self.technique)
+		return technique_group
+
 	def on_spinner_select_technique(self, spinner_value):
+		"""
+		> When the user selects a value from the spinner, the value is passed to the function and the function updates the
+		value of the variable `technique` to the value of the spinner
+
+		:param spinner_value: The value of the spinner that was selected
+		"""
+
 		#Displays the spinner choice in the label
 		self.spinner_value = spinner_value
 		WELCOME_TEXT = Messages_to_app.WELCOME_TEXT(spinner_value)
@@ -329,14 +356,27 @@ class OrangeScreen(Screen):
 				self.ids.my_progressbar.value = Progressbar.minimum(self)
 
 	def new_technic_button(self):
+		"""
+		Function to control the New technic button.
+		Checks the value of the spinner and then display the technic family name.
+		Thereafter, the functions takes the list of the selected group and runs the technique_selected_random function
+		increments the progressbar by 1
+
+		When the list is empty the function resets:
+			- Spinner
+			- The list of techniques.
+		and display a message in the label.
+		"""
 		try:
 			#checks the vaule of the spinner
 			if self.spinner_value == UKEWASA:
 				#runs the technique selecter function
-				chosen_technique = Technique_selecter.technique_selected_random(self.ukewasa) 
-				
+				self.technique_selected_random(self.ukewasa)
+				#Modules.Technique_selecter.random_technique(self.
+				# ukewasa)
+
 				#Display a message in the label
-				self.ids.technic_displayer_label.text = chosen_technique
+				self.ids.technic_displayer_label.text = self.technique
 
 				#Define the progressbar_max.
 				self.ids.my_progressbar.max = self.progressbar.maximum(OrangeBelt.ukewasa())
@@ -357,10 +397,10 @@ class OrangeScreen(Screen):
 
 			elif self.spinner_value == ATEMIWASA:
 				#runs the technique selecter function
-				chosen_technique = Technique_selecter.technique_selected_random(self.atemiwasa) 
-				
+				self.technique_selected_random(self.atemiwasa)
+
 				#Display a message in the label
-				self.ids.technic_displayer_label.text = chosen_technique
+				self.ids.technic_displayer_label.text = self.technique
 
 				#Define the progressbar_max.
 				self.ids.my_progressbar.max = self.progressbar.maximum(OrangeBelt.atemiwasa())
@@ -382,10 +422,10 @@ class OrangeScreen(Screen):
 
 			elif self.spinner_value == KANSETSUWASA:
 				#runs the technique selecter function
-				chosen_technique = Technique_selecter.technique_selected_random(self.kansetsuwasa) 
-				
+				self.technique_selected_random(self.kansetsuwasa)
+
 				#Display a message in the label
-				self.ids.technic_displayer_label.text = chosen_technique
+				self.ids.technic_displayer_label.text = self.technique
 
 				#Define the progressbar_max.
 				self.ids.my_progressbar.max = self.progressbar.maximum(OrangeBelt.kansetsuwasa())
@@ -405,11 +445,11 @@ class OrangeScreen(Screen):
 					self.kansetsuwasa = OrangeBelt.kansetsuwasa()
 
 			elif self.spinner_value == NAGEWASA: 
-				#runs the technique selecter function
-				chosen_technique = Technique_selecter.technique_selected_random(self.nagewasa) 
-				
+								#runs the technique selecter function
+				self.technique_selected_random(self.nagewasa)
+
 				#Display a message in the label
-				self.ids.technic_displayer_label.text = chosen_technique
+				self.ids.technic_displayer_label.text = self.technique
 
 				#Define the progressbar_max.
 				self.ids.my_progressbar.max = self.progressbar.maximum(OrangeBelt.nagewasa())
@@ -429,10 +469,10 @@ class OrangeScreen(Screen):
 
 			elif self.spinner_value == KIHON:
 				#runs the technique selecter function
-				chosen_technique = Technique_selecter.technique_selected_random(self.kihon) 
-				
+				self.technique_selected_random(self.kihon)
+
 				#Display a message in the label
-				self.ids.technic_displayer_label.text = chosen_technique
+				self.ids.technic_displayer_label.text = self.technique
 
 				#Define the progressbar_max.
 				self.ids.my_progressbar.max = self.progressbar.maximum(OrangeBelt.all_kihon())
@@ -441,7 +481,7 @@ class OrangeScreen(Screen):
 				self.ids.my_progressbar.value += 1
 
 				# Check if the list of technics are empty. +1 is to add one more step in to the
-    
+				# click of the button
 				if len(self.kihon) + 1 == 0:
 					#Display a message that the list is empty
 					self.ids.technic_displayer_label.text = Messages_to_app.END_OF_TECHNIQUE_TEXT(self)
@@ -481,7 +521,24 @@ class GreenScreen(Screen):
 	progressbar = Progressbar()
 
 
+	def technique_selected_random(self, technique_group):
+		"""
+		This method takes in a list of techniques and returns a random technique from that list.
+
+		:param technique_group: This is the list of techniques that you want to select from
+		"""
+		self.technique = choice(technique_group)
+		print(f"\n Tekniken är: {self.technique} \n")
+		technique_group.remove(self.technique)
+		return technique_group
+
 	def on_spinner_select_technique(self, spinner_value):
+		"""
+		> When the user selects a value from the spinner, the value is passed to the function and the function updates the
+		value of the variable `technique` to the value of the spinner
+
+		:param spinner_value: The value of the spinner that was selected
+		"""
 
 		#Displays the spinner choice in the label
 		self.spinner_value = spinner_value
@@ -524,15 +581,27 @@ class GreenScreen(Screen):
 				self.ids.my_progressbar.value = Progressbar.minimum(self)
 
 	def new_technic_button(self):
+		"""
+		Function to control the New technic button.
+		Checks the value of the spinner and then display the technic family name.
+		Thereafter, the functions takes the list of the selected group and runs the technique_selected_random function
+		increments the progressbar by 1
 
+		When the list is empty the function resets:
+			- Spinner
+			- The list of techniques.
+		and display a message in the label.
+		"""
 		try:
 			#checks the vaule of the spinner
 			if self.spinner_value == UKEWASA:
 				#runs the technique selecter function
-				chosen_technique = Technique_selecter.technique_selected_random(self.ukewasa) 
-				
+				self.technique_selected_random(self.ukewasa)
+				#Modules.Technique_selecter.random_technique(self.
+				# ukewasa)
+
 				#Display a message in the label
-				self.ids.technic_displayer_label.text = chosen_technique
+				self.ids.technic_displayer_label.text = self.technique
 
 				#Define the progressbar_max.
 				self.ids.my_progressbar.max = self.progressbar.maximum(GreenBelt.ukewasa())
@@ -553,10 +622,10 @@ class GreenScreen(Screen):
 
 			elif self.spinner_value == ATEMIWASA:
 				#runs the technique selecter function
-				chosen_technique = Technique_selecter.technique_selected_random(self.atemiwasa) 
-				
+				self.technique_selected_random(self.atemiwasa)
+
 				#Display a message in the label
-				self.ids.technic_displayer_label.text = chosen_technique
+				self.ids.technic_displayer_label.text = self.technique
 
 				#Define the progressbar_max.
 				self.ids.my_progressbar.max = self.progressbar.maximum(GreenBelt.atemiwasa())
@@ -578,10 +647,10 @@ class GreenScreen(Screen):
 
 			elif self.spinner_value == KANSETSUWASA:
 				#runs the technique selecter function
-				chosen_technique = Technique_selecter.technique_selected_random(self.kansetsuwasa) 
-				
+				self.technique_selected_random(self.kansetsuwasa)
+
 				#Display a message in the label
-				self.ids.technic_displayer_label.text = chosen_technique
+				self.ids.technic_displayer_label.text = self.technique
 
 				#Define the progressbar_max.
 				self.ids.my_progressbar.max = self.progressbar.maximum(GreenBelt.kansetsuwasa())
@@ -601,11 +670,11 @@ class GreenScreen(Screen):
 					self.kansetsuwasa = GreenBelt.kansetsuwasa()
 
 			elif self.spinner_value == NAGEWASA: 
-				#runs the technique selecter function
-				chosen_technique = Technique_selecter.technique_selected_random(self.nagewasa) 
-				
+								#runs the technique selecter function
+				self.technique_selected_random(self.nagewasa)
+
 				#Display a message in the label
-				self.ids.technic_displayer_label.text = chosen_technique
+				self.ids.technic_displayer_label.text = self.technique
 
 				#Define the progressbar_max.
 				self.ids.my_progressbar.max = self.progressbar.maximum(GreenBelt.nagewasa())
@@ -625,10 +694,10 @@ class GreenScreen(Screen):
 
 			elif self.spinner_value == KIHON:
 				#runs the technique selecter function
-				chosen_technique = Technique_selecter.technique_selected_random(self.kihon) 
-				
+				self.technique_selected_random(self.kihon)
+
 				#Display a message in the label
-				self.ids.technic_displayer_label.text = chosen_technique
+				self.ids.technic_displayer_label.text = self.technique
 
 				#Define the progressbar_max.
 				self.ids.my_progressbar.max = self.progressbar.maximum(GreenBelt.all_kihon())
@@ -677,7 +746,24 @@ class BlueScreen(Screen):
 	progressbar = Progressbar()
 
 
+	def technique_selected_random(self, technique_group):
+		"""
+		This method takes in a list of techniques and returns a random technique from that list.
+
+		:param technique_group: This is the list of techniques that you want to select from
+		"""
+		self.technique = choice(technique_group)
+		print(f"\n Tekniken är: {self.technique} \n")
+		technique_group.remove(self.technique)
+		return technique_group
+
 	def on_spinner_select_technique(self, spinner_value):
+		"""
+		> When the user selects a value from the spinner, the value is passed to the function and the function updates the
+		value of the variable `technique` to the value of the spinner
+
+		:param spinner_value: The value of the spinner that was selected
+		"""
 
 		#Displays the spinner choice in the label
 		self.spinner_value = spinner_value
@@ -720,15 +806,27 @@ class BlueScreen(Screen):
 				self.ids.my_progressbar.value = Progressbar.minimum(self)
 
 	def new_technic_button(self):
+		"""
+		Function to control the New technic button.
+		Checks the value of the spinner and then display the technic family name.
+		Thereafter, the functions takes the list of the selected group and runs the technique_selected_random function
+		increments the progressbar by 1
 
+		When the list is empty the function resets:
+			- Spinner
+			- The list of techniques.
+		and display a message in the label.
+		"""
 		try:
 			#checks the vaule of the spinner
 			if self.spinner_value == UKEWASA:
 				#runs the technique selecter function
-				chosen_technique = Technique_selecter.technique_selected_random(self.ukewasa) 
-				
+				self.technique_selected_random(self.ukewasa)
+				#Modules.Technique_selecter.random_technique(self.
+				# ukewasa)
+
 				#Display a message in the label
-				self.ids.technic_displayer_label.text = chosen_technique
+				self.ids.technic_displayer_label.text = self.technique
 
 				#Define the progressbar_max.
 				self.ids.my_progressbar.max = self.progressbar.maximum(BlueBelt.ukewasa())
@@ -749,10 +847,10 @@ class BlueScreen(Screen):
 
 			elif self.spinner_value == ATEMIWASA:
 				#runs the technique selecter function
-				chosen_technique = Technique_selecter.technique_selected_random(self.atemiwasa) 
-				
+				self.technique_selected_random(self.atemiwasa)
+
 				#Display a message in the label
-				self.ids.technic_displayer_label.text = chosen_technique
+				self.ids.technic_displayer_label.text = self.technique
 
 				#Define the progressbar_max.
 				self.ids.my_progressbar.max = self.progressbar.maximum(BlueBelt.atemiwasa())
@@ -774,10 +872,10 @@ class BlueScreen(Screen):
 
 			elif self.spinner_value == KANSETSUWASA:
 				#runs the technique selecter function
-				chosen_technique = Technique_selecter.technique_selected_random(self.kansetsuwasa) 
-				
+				self.technique_selected_random(self.kansetsuwasa)
+
 				#Display a message in the label
-				self.ids.technic_displayer_label.text = chosen_technique
+				self.ids.technic_displayer_label.text = self.technique
 
 				#Define the progressbar_max.
 				self.ids.my_progressbar.max = self.progressbar.maximum(BlueBelt.kansetsuwasa())
@@ -797,11 +895,11 @@ class BlueScreen(Screen):
 					self.kansetsuwasa = BlueBelt.kansetsuwasa()
 
 			elif self.spinner_value == NAGEWASA: 
-				#runs the technique selecter function
-				chosen_technique = Technique_selecter.technique_selected_random(self.nagewasa) 
-				
+								#runs the technique selecter function
+				self.technique_selected_random(self.nagewasa)
+
 				#Display a message in the label
-				self.ids.technic_displayer_label.text = chosen_technique
+				self.ids.technic_displayer_label.text = self.technique
 
 				#Define the progressbar_max.
 				self.ids.my_progressbar.max = self.progressbar.maximum(BlueBelt.nagewasa())
@@ -821,10 +919,10 @@ class BlueScreen(Screen):
 
 			elif self.spinner_value == KIHON:
 				#runs the technique selecter function
-				chosen_technique = Technique_selecter.technique_selected_random(self.kihon) 
-				
+				self.technique_selected_random(self.kihon)
+
 				#Display a message in the label
-				self.ids.technic_displayer_label.text = chosen_technique
+				self.ids.technic_displayer_label.text = self.technique
 
 				#Define the progressbar_max.
 				self.ids.my_progressbar.max = self.progressbar.maximum(BlueBelt.all_kihon())
@@ -873,8 +971,24 @@ class BrownScreen(Screen):
 	progressbar = Progressbar()
 
 
-	def on_spinner_select_technique(self, spinner_value):
+	def technique_selected_random(self, technique_group):
+		"""
+		This method takes in a list of techniques and returns a random technique from that list.
 
+		:param technique_group: This is the list of techniques that you want to select from
+		"""
+		self.technique = choice(technique_group)
+		print(f"\n Tekniken är: {self.technique} \n")
+		technique_group.remove(self.technique)
+		return technique_group
+
+	def on_spinner_select_technique(self, spinner_value):
+		"""
+		> When the user selects a value from the spinner, the value is passed to the function and the function updates the
+		value of the variable `technique` to the value of the spinner
+
+		:param spinner_value: The value of the spinner that was selected
+		"""
 
 		#Displays the spinner choice in the label
 		self.spinner_value = spinner_value
@@ -917,15 +1031,27 @@ class BrownScreen(Screen):
 				self.ids.my_progressbar.value = Progressbar.minimum(self)
 
 	def new_technic_button(self):
+		"""
+		Function to control the New technic button.
+		Checks the value of the spinner and then display the technic family name.
+		Thereafter, the functions takes the list of the selected group and runs the technique_selected_random function
+		increments the progressbar by 1
 
+		When the list is empty the function resets:
+			- Spinner
+			- The list of techniques.
+		and display a message in the label.
+		"""
 		try:
 			#checks the vaule of the spinner
 			if self.spinner_value == UKEWASA:
 				#runs the technique selecter function
-				chosen_technique = Technique_selecter.technique_selected_random(self.ukewasa) 
-				
+				self.technique_selected_random(self.ukewasa)
+				#Modules.Technique_selecter.random_technique(self.
+				# ukewasa)
+
 				#Display a message in the label
-				self.ids.technic_displayer_label.text = chosen_technique
+				self.ids.technic_displayer_label.text = self.technique
 
 				#Define the progressbar_max.
 				self.ids.my_progressbar.max = self.progressbar.maximum(BrownBelt.ukewasa())
@@ -946,10 +1072,10 @@ class BrownScreen(Screen):
 
 			elif self.spinner_value == ATEMIWASA:
 				#runs the technique selecter function
-				chosen_technique = Technique_selecter.technique_selected_random(self.atemiwasa) 
-				
+				self.technique_selected_random(self.atemiwasa)
+
 				#Display a message in the label
-				self.ids.technic_displayer_label.text = chosen_technique
+				self.ids.technic_displayer_label.text = self.technique
 
 				#Define the progressbar_max.
 				self.ids.my_progressbar.max = self.progressbar.maximum(BrownBelt.atemiwasa())
@@ -971,10 +1097,10 @@ class BrownScreen(Screen):
 
 			elif self.spinner_value == KANSETSUWASA:
 				#runs the technique selecter function
-				chosen_technique = Technique_selecter.technique_selected_random(self.kansetsuwasa) 
-				
+				self.technique_selected_random(self.kansetsuwasa)
+
 				#Display a message in the label
-				self.ids.technic_displayer_label.text = chosen_technique
+				self.ids.technic_displayer_label.text = self.technique
 
 				#Define the progressbar_max.
 				self.ids.my_progressbar.max = self.progressbar.maximum(BrownBelt.kansetsuwasa())
@@ -994,11 +1120,11 @@ class BrownScreen(Screen):
 					self.kansetsuwasa = BrownBelt.kansetsuwasa()
 
 			elif self.spinner_value == NAGEWASA: 
-				#runs the technique selecter function
-				chosen_technique = Technique_selecter.technique_selected_random(self.nagewasa) 
-				
+								#runs the technique selecter function
+				self.technique_selected_random(self.nagewasa)
+
 				#Display a message in the label
-				self.ids.technic_displayer_label.text = chosen_technique
+				self.ids.technic_displayer_label.text = self.technique
 
 				#Define the progressbar_max.
 				self.ids.my_progressbar.max = self.progressbar.maximum(BrownBelt.nagewasa())
@@ -1018,10 +1144,10 @@ class BrownScreen(Screen):
 
 			elif self.spinner_value == KIHON:
 				#runs the technique selecter function
-				chosen_technique = Technique_selecter.technique_selected_random(self.kihon) 
-				
+				self.technique_selected_random(self.kihon)
+
 				#Display a message in the label
-				self.ids.technic_displayer_label.text = chosen_technique
+				self.ids.technic_displayer_label.text = self.technique
 
 				#Define the progressbar_max.
 				self.ids.my_progressbar.max = self.progressbar.maximum(BrownBelt.all_kihon())
@@ -1069,7 +1195,25 @@ class FirstDanScreen(Screen):
 	kihon = FirstDan.all_kihon()
 	progressbar = Progressbar()
 
+
+	def technique_selected_random(self, technique_group):
+		"""
+		This method takes in a list of techniques and returns a random technique from that list.
+
+		:param technique_group: This is the list of techniques that you want to select from
+		"""
+		self.technique = choice(technique_group)
+		print(f"\n Tekniken är: {self.technique} \n")
+		technique_group.remove(self.technique)
+		return technique_group
+
 	def on_spinner_select_technique(self, spinner_value):
+		"""
+		> When the user selects a value from the spinner, the value is passed to the function and the function updates the
+		value of the variable `technique` to the value of the spinner
+
+		:param spinner_value: The value of the spinner that was selected
+		"""
 
 		#Displays the spinner choice in the label
 		self.spinner_value = spinner_value
@@ -1112,15 +1256,27 @@ class FirstDanScreen(Screen):
 				self.ids.my_progressbar.value = Progressbar.minimum(self)
 
 	def new_technic_button(self):
+		"""
+		Function to control the New technic button.
+		Checks the value of the spinner and then display the technic family name.
+		Thereafter, the functions takes the list of the selected group and runs the technique_selected_random function
+		increments the progressbar by 1
 
+		When the list is empty the function resets:
+			- Spinner
+			- The list of techniques.
+		and display a message in the label.
+		"""
 		try:
 			#checks the vaule of the spinner
 			if self.spinner_value == UKEWASA:
 				#runs the technique selecter function
-				chosen_technique = Technique_selecter.technique_selected_random(self.ukewasa) 
-				
+				self.technique_selected_random(self.ukewasa)
+				#Modules.Technique_selecter.random_technique(self.
+				# ukewasa)
+
 				#Display a message in the label
-				self.ids.technic_displayer_label.text = chosen_technique
+				self.ids.technic_displayer_label.text = self.technique
 
 				#Define the progressbar_max.
 				self.ids.my_progressbar.max = self.progressbar.maximum(FirstDan.ukewasa())
@@ -1141,10 +1297,10 @@ class FirstDanScreen(Screen):
 
 			elif self.spinner_value == ATEMIWASA:
 				#runs the technique selecter function
-				chosen_technique = Technique_selecter.technique_selected_random(self.atemiwasa) 
-				
+				self.technique_selected_random(self.atemiwasa)
+
 				#Display a message in the label
-				self.ids.technic_displayer_label.text = chosen_technique
+				self.ids.technic_displayer_label.text = self.technique
 
 				#Define the progressbar_max.
 				self.ids.my_progressbar.max = self.progressbar.maximum(FirstDan.atemiwasa())
@@ -1166,10 +1322,10 @@ class FirstDanScreen(Screen):
 
 			elif self.spinner_value == KANSETSUWASA:
 				#runs the technique selecter function
-				chosen_technique = Technique_selecter.technique_selected_random(self.kansetsuwasa) 
-				
+				self.technique_selected_random(self.kansetsuwasa)
+
 				#Display a message in the label
-				self.ids.technic_displayer_label.text = chosen_technique
+				self.ids.technic_displayer_label.text = self.technique
 
 				#Define the progressbar_max.
 				self.ids.my_progressbar.max = self.progressbar.maximum(FirstDan.kansetsuwasa())
@@ -1189,11 +1345,11 @@ class FirstDanScreen(Screen):
 					self.kansetsuwasa = FirstDan.kansetsuwasa()
 
 			elif self.spinner_value == NAGEWASA: 
-				#runs the technique selecter function
-				chosen_technique = Technique_selecter.technique_selected_random(self.nagewasa) 
-				
+								#runs the technique selecter function
+				self.technique_selected_random(self.nagewasa)
+
 				#Display a message in the label
-				self.ids.technic_displayer_label.text = chosen_technique
+				self.ids.technic_displayer_label.text = self.technique
 
 				#Define the progressbar_max.
 				self.ids.my_progressbar.max = self.progressbar.maximum(FirstDan.nagewasa())
@@ -1213,10 +1369,10 @@ class FirstDanScreen(Screen):
 
 			elif self.spinner_value == KIHON:
 				#runs the technique selecter function
-				chosen_technique = Technique_selecter.technique_selected_random(self.kihon) 
-				
+				self.technique_selected_random(self.kihon)
+
 				#Display a message in the label
-				self.ids.technic_displayer_label.text = chosen_technique
+				self.ids.technic_displayer_label.text = self.technique
 
 				#Define the progressbar_max.
 				self.ids.my_progressbar.max = self.progressbar.maximum(FirstDan.all_kihon())
@@ -1263,7 +1419,9 @@ class ThirdDanScreen(Screen):
 class WindowManager(ScreenManager):
 	pass
 
-
+#* NEW SCREEN
+class SettingsScreen(Screen):
+    pass
 
 # Designate Our .kv design file
 kv = Builder.load_file('screens.kv')

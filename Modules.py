@@ -1,8 +1,6 @@
 import random 
 
 
-
-
 class Technique_selecter():
     """This class handles all the technique choises. 
     It has two methods, one random and one nonrandom. 
