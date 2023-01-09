@@ -6,8 +6,6 @@ WindowManager:
     BlueScreen:
     BrownScreen:
     FirstDanScreen:
-    SecondDanScreen:
-    ThirdDanScreen:
     SettingsScreen:
 
 
@@ -35,28 +33,6 @@ WindowManager:
 			padding_y: 5
             padding_x: 5
 
-        GridLayout:
-            cols: 2
-            rows: 2
-            spacing: "8dp"
-            size_hint_y: "1dp"
-            height: self.minimum_height 
-            Label:
-                text: "If you don't want random \nklick the button"
-                font_size: 30
-                padding_x:5
-            ToggleButton:
-                text: "Not Random"
-                font_size: 30
-                padding_x: 5
-                on_state: 
-                    print("Jag är nu i staus {}".format(self.state))
-            #!OBS Ej klart
-            Label:
-                text: "test"
-
-            Label:
-                text: "test"
 
 
 
@@ -76,7 +52,7 @@ WindowManager:
             background_color: (255/255,142/255,0,1)
             on_text: root.on_spinner_select_technique(spinner_menu_grades.text)
 
-#The label for displaying the technics
+        #The label for displaying the technics
         Label:
             id: technic_displayer_label
             font_size: "25"
@@ -89,7 +65,7 @@ WindowManager:
             value: 0
             max: 1
 
-#Button for the new technic
+        #Button for the new technic
         Bubble:
             size_hint_y: None
             height: "100dp"
@@ -103,7 +79,7 @@ WindowManager:
                 background_color: (1, 0.741, 0.2, 1)
                 on_press: root.new_technic_button()
 
-#Button for the reset
+        #Button for the reset
         Bubble:
             size_hint_y: None
             height: "100dp"
@@ -142,7 +118,7 @@ WindowManager:
             background_color: (255/255,142/255,0,1)
             on_text: root.on_spinner_select_technique(spinner_menu_grades.text)
 
-#The label for displaying the technics
+        #The label for displaying the technics
         Label:
             id: technic_displayer_label
             font_size: "25"
@@ -155,7 +131,7 @@ WindowManager:
             value: 0
             max: 1
 
-#Button for the new technic
+        #Button for the new technic
         Bubble:
             size_hint_y: None
             height: "100dp"
@@ -169,7 +145,7 @@ WindowManager:
                 background_color: (1, 0.741, 0.2, 1)
                 on_press: root.new_technic_button()
 
-#Button for the reset
+        #Button for the reset
         Bubble:
             size_hint_y: None
             height: "100dp"
@@ -206,7 +182,7 @@ WindowManager:
             background_color: (255/255,142/255,0,1)
             on_text: root.on_spinner_select_technique(spinner_menu_grades.text)
 
-#The label for displaying the technics
+        #The label for displaying the technics
         Label:
             id: technic_displayer_label
             font_size: "25"
@@ -219,7 +195,7 @@ WindowManager:
             value: 0
             max: 1
 
-#Button for the new technic
+        #Button for the new technic
         Bubble:
             size_hint_y: None
             height: "100dp"
@@ -233,7 +209,7 @@ WindowManager:
                 background_color: (1, 0.741, 0.2, 1)
                 on_press: root.new_technic_button()
 
-#Button for the reset
+        #Button for the reset
         Bubble:
             size_hint_y: None
             height: "100dp"
@@ -271,7 +247,7 @@ WindowManager:
             background_color: (255/255,142/255,0,1)
             on_text: root.on_spinner_select_technique(spinner_menu_grades.text)
 
-#The label for displaying the technics
+        #The label for displaying the technics
         Label:
             id: technic_displayer_label
             font_size: "25"
@@ -284,7 +260,7 @@ WindowManager:
             value: 0
             max: 1
 
-#Button for the new technic
+    #Button for the new technic
         Bubble:
             size_hint_y: None
             height: "100dp"
@@ -298,7 +274,7 @@ WindowManager:
                 background_color: (1, 0.741, 0.2, 1)
                 on_press: root.new_technic_button()
 
-#Button for the reset
+    #Button for the reset
         Bubble:
             size_hint_y: None
             height: "100dp"
@@ -336,7 +312,7 @@ WindowManager:
             background_color: (255/255,142/255,0,1)
             on_text: root.on_spinner_select_technique(spinner_menu_grades.text)
 
-#The label for displaying the technics
+    #The label for displaying the technics
         Label:
             id: technic_displayer_label
             font_size: "25"
@@ -349,7 +325,7 @@ WindowManager:
             value: 0
             max: 1
 
-#Button for the new technic
+        #Button for the new technic
         Bubble:
             size_hint_y: None
             height: "100dp"
@@ -363,7 +339,7 @@ WindowManager:
                 background_color: (1, 0.741, 0.2, 1)
                 on_press: root.new_technic_button()
 
-#Button for the reset
+       #Button for the reset
         Bubble:
             size_hint_y: None
             height: "100dp"
@@ -401,7 +377,7 @@ WindowManager:
             background_color: (255/255,142/255,0,1)
             on_text: root.on_spinner_select_technique(spinner_menu_grades.text)
 
-#The label for displaying the technics
+        #The label for displaying the technics
         Label:
             id: technic_displayer_label
             font_size: "25"
@@ -414,7 +390,7 @@ WindowManager:
             value: 0
             max: 1
 
-#Button for the new technic
+        #Button for the new technic
         Bubble:
             size_hint_y: None
             height: "100dp"
@@ -428,7 +404,7 @@ WindowManager:
                 background_color: (1, 0.741, 0.2, 1)
                 on_press: root.new_technic_button()
 
-#Button for the reset
+        #Button for the reset
         Bubble:
             size_hint_y: None
             height: "100dp"
@@ -454,22 +430,34 @@ WindowManager:
 <SettingsScreen>
     name: "settings"
 
-
 	BoxLayout:
 		orientation: "vertical"
 		size: root.width, root.height
         Spinner:
-            id: spinner_menu_home
+            id: spinner_menu_settings
             text: "SETTINGS"
             values: ("Yellow", "Orange", "Green", "Blue", "Brown", "1st Dan","Settings")
             size_hint_y: None
             height: "48dp"
             background_color: (255/255,142/255,0,1)
-            on_text: root.on_spinner_select_grades(spinner_menu_home.text) #fångar in värdet i Spinner (spinner_menu.text)
+            on_text: root.on_spinner_select_grades(spinner_menu_settings.text) #fångar in värdet i Spinner (spinner_menu.text)
 
 
 		Label:
-			text: "SETTINGS"
+			id: setting_label
+            text: "SETTINGS"
 			font_size: 32
 			padding_y: 5
             padding_x: 5
+
+        Bubble:
+            size_hint_y: None
+            height: "100dp"
+            arrow_pos: "left_mid"
+
+            BubbleButton:
+                id: home_button
+                text: "Back"
+                on_press:
+                    root.home_screen_button()
+                    root.manager.transition.direction = "right"

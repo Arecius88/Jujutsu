@@ -13,14 +13,15 @@ from random import choice
 #TODO: Implement a screen for statistics
 #TODO: Implement a way so that the program remembers on witch step you are on, when your change technice family
 
+#TODO: Find a Way to exklude/minimize the repeting code in the Classes for the on_spinner_select_technique
+#TODO: Find a Way to exklude/minimize the repeting code in the Classes for the reset_button
+#TODO: Find a Way to exklude/minimize the repeting code in the Classes for the home_screen_button
+
+#Done:Todo
 #//Test Yellow screens for bugs. Then implement it for the rest od the belts.
 #///: Write a method to choose between random and non random. 
 #// Implement the class Technique selceter from Modules in this program.
 #// Find a Way to exklude the repeting code in For the Classens for the method technique_selected_random
-
-#TODO: Find a Way to exklude/minimize the repeting code in the Classes for the on_spinner_select_technique
-#TODO: Find a Way to exklude/minimize the repeting code in the Classes for the reset_button
-#TODO: Find a Way to exklude/minimize the repeting code in the Classes for the home_screen_button
  #// Implement the class Technique selceter from Modules in this program.
 #// Find a Way to exklude the repeting code in For the Classens for the method technique_selected_random
 #///: Write a method to choose between random and non random. 
@@ -45,8 +46,10 @@ class HomeScreen(Screen):
 	def home_spinner_text(self):
 		"""
 		This function returns the text that will be displayed in the spinner on the home screen
-		:return: The string "Choose grade" is being returned.
-		"""
+		Resets the Spinner to Choose Grade when BACK button is Pressed. 
+  		return: The string "Choose grade" is being returned.
+    	"""
+		
 		home_spinner = "Choose grade"
 		return home_spinner
 
@@ -1412,20 +1415,40 @@ class FirstDanScreen(Screen):
 		reference_to_home_screen = self.manager.get_screen("home")
 		reference_to_home_screen.ids.spinner_menu_home.text = HomeScreen.home_spinner_text(self)
 		self.parent.current = "home"
-  
-  
-class SecondDanScreen(Screen):
-	pass
 
-class ThirdDanScreen(Screen):
-	pass
+#* NEW SCREEN
+class SettingsScreen(Screen):
+	def on_spinner_select_grades(self,spinner_value):
+			
+		self.spinner_value = spinner_value
+		if spinner_value == "Home":
+			self.parent.current = "home"
+
+		if spinner_value == "Yellow":
+			self.parent.current = "yellow"
+
+		elif spinner_value == "Orange":
+			self.parent.current = "orange"
+
+		elif spinner_value == "Green":
+			self.parent.current = "green"
+
+		elif spinner_value == "Blue":
+			self.parent.current = "blue"
+
+		elif spinner_value == "Brown":
+			self.parent.current = "brown"
+
+		elif spinner_value == "1st Dan":
+			self.parent.current = "firstdan"
+		#! OBS TILLAGT för settings screen
+		elif spinner_value =="Settings":
+			self.parent.current == "settings"
+
 
 class WindowManager(ScreenManager):
 	pass
 
-#* NEW SCREEN
-class SettingsScreen(Screen):
-    pass
 
 # Designate Our .kv design file
 kv = Builder.load_file('screens.kv')
