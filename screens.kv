@@ -8,6 +8,9 @@ WindowManager:
     FirstDanScreen:
     SecondDanScreen:
     ThirdDanScreen:
+    SettingsScreen:
+
+
 
 
 <HomeScreen>:
@@ -19,7 +22,7 @@ WindowManager:
         Spinner:
             id: spinner_menu_home
             text: "Choose grade"
-            values: ("Yellow", "Orange", "Green", "Blue", "Brown", "1st Dan")
+            values: ("Yellow", "Orange", "Green", "Blue", "Brown", "1st Dan","Settings")
             size_hint_y: None
             height: "48dp"
             background_color: (255/255,142/255,0,1)
@@ -30,6 +33,30 @@ WindowManager:
 			text: "Choose grade"
 			font_size: 32
 			padding_y: 5
+            padding_x: 5
+
+        GridLayout:
+            cols: 2
+            rows: 2
+            spacing: "8dp"
+            size_hint_y: "1dp"
+            height: self.minimum_height 
+            Label:
+                text: "If you don't want random \nklick the button"
+                font_size: 30
+                padding_x:5
+            ToggleButton:
+                text: "Not Random"
+                font_size: 30
+                padding_x: 5
+                on_state: 
+                    print("Jag är nu i staus {}".format(self.state))
+            #!OBS Ej klart
+            Label:
+                text: "test"
+
+            Label:
+                text: "test"
 
 
 
@@ -422,3 +449,27 @@ WindowManager:
                 on_press:
                     root.home_screen_button()
                     root.manager.transition.direction = "right"
+
+#! OBS ej klart
+<SettingsScreen>
+    name: "settings"
+
+
+	BoxLayout:
+		orientation: "vertical"
+		size: root.width, root.height
+        Spinner:
+            id: spinner_menu_home
+            text: "SETTINGS"
+            values: ("Yellow", "Orange", "Green", "Blue", "Brown", "1st Dan","Settings")
+            size_hint_y: None
+            height: "48dp"
+            background_color: (255/255,142/255,0,1)
+            on_text: root.on_spinner_select_grades(spinner_menu_home.text) #fångar in värdet i Spinner (spinner_menu.text)
+
+
+		Label:
+			text: "SETTINGS"
+			font_size: 32
+			padding_y: 5
+            padding_x: 5
