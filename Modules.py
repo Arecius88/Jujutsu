@@ -1,22 +1,4 @@
-import random 
-
-
-'''
-NOT active
-
-class Technique_selecter:
-    def random_technique(technique_list):
-        technique = random.choice(technique_list)
-        print(f"\n Tekniken är: {technique} \n")
-        technique_list.remove(technique)
-        return technique_list, technique
-    def non_random(technique_list):
-        list_mod = technique_list[0]
-        print(f"tekniken är : {list_mod}")
-        technique_list.remove(list_mod)
-        return technique_list
-'''
-
+import random
 
 
 class Messages_to_app():
@@ -24,7 +6,7 @@ class Messages_to_app():
     def WELCOME_TEXT(self):
         WELCOME_TEXT = f"You have chosen {self}"
         return WELCOME_TEXT
-    
+
     def END_OF_TECHNIQUE_TEXT(self):
         END_OF_TECHNIQUE_TEXT = "Well done. Choose a new technic family"
         return END_OF_TECHNIQUE_TEXT
@@ -32,7 +14,7 @@ class Messages_to_app():
     def RESET_TECHNIQUE_TEXT(self):
         RESET_TECHNIQUE_TEXT = "You have pressed reset.\nChoose a new technic family"
         return RESET_TECHNIQUE_TEXT
-    
+
     def RESET_SPINNER_TEXT(self):
         RESET_SPINNER_TEXT = "Choose technique family"
         return RESET_SPINNER_TEXT
@@ -213,4 +195,3 @@ class FirstDan():
     def all_kihon():
         all_kihon = FirstDan.ukewasa() + FirstDan.atemiwasa() + FirstDan.kansetsuwasa() + FirstDan.nagewasa()
         return all_kihon
-

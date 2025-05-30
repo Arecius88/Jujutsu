@@ -50,10 +50,13 @@ class HomeScreen(Screen):
 		elif spinner_value == "1st Dan":
 			self.parent.current = "firstdan"
 
+		elif spinner_value == "Home_screen_1":
+			self.parent.current = "home_screen_1"
+
 #* NEW SCREEN
 class YellowScreen(Screen):
-	#Sets ie ukewasa to the object och ukewasa from the "color of the belt" class in Modules. 
-	#This Changes with every grade. 
+	#Sets ie ukewasa to the object och ukewasa from the "color of the belt" class in Modules.
+	#This Changes with every grade.
 	ukewasa = YellowBelt.ukewasa()
 	atemiwasa = YellowBelt.atemiwasa()
 	kansetsuwasa = YellowBelt.kansetsuwasa()
@@ -157,7 +160,7 @@ class YellowScreen(Screen):
 
 					#Resets the spinner
 					self.ids.spinner_menu_grades.text = Messages_to_app.RESET_SPINNER_TEXT(self)
-     
+
 					#resets the list
 					self.ukewasa = YellowBelt.ukewasa()
 
@@ -258,8 +261,8 @@ class YellowScreen(Screen):
 
 #* NEW SCREEN
 class OrangeScreen(Screen):
-	#Sets ie ukewasa to the object och ukewasa from the "color of the belt" class in Modules.  
-	#This Changes with every grade. 
+	#Sets ie ukewasa to the object och ukewasa from the "color of the belt" class in Modules.
+	#This Changes with every grade.
 	ukewasa = OrangeBelt.ukewasa()
 	atemiwasa = OrangeBelt.atemiwasa()
 	kansetsuwasa = OrangeBelt.kansetsuwasa()
@@ -363,7 +366,7 @@ class OrangeScreen(Screen):
 
 					#Resets the spinner
 					self.ids.spinner_menu_grades.text = Messages_to_app.RESET_SPINNER_TEXT(self)
-     
+
 					#resets the list
 					self.ukewasa = OrangeBelt.ukewasa()
 
@@ -416,7 +419,7 @@ class OrangeScreen(Screen):
 					#resets the list
 					self.kansetsuwasa = OrangeBelt.kansetsuwasa()
 
-			elif self.spinner_value == NAGEWASA: 
+			elif self.spinner_value == NAGEWASA:
 								#runs the technique selecter function
 				self.technique_selected_random(self.nagewasa)
 
@@ -483,8 +486,8 @@ class OrangeScreen(Screen):
 
 #* NEW SCREEN
 class GreenScreen(Screen):
-    #Sets ie ukewasa to the object och ukewasa from the "color of the belt" class in Modules.  
-	#This Changes with every grade. 
+    #Sets ie ukewasa to the object och ukewasa from the "color of the belt" class in Modules.
+	#This Changes with every grade.
 	ukewasa = GreenBelt.ukewasa()
 	atemiwasa = GreenBelt.atemiwasa()
 	kansetsuwasa = GreenBelt.kansetsuwasa()
@@ -588,7 +591,7 @@ class GreenScreen(Screen):
 
 					#Resets the spinner
 					self.ids.spinner_menu_grades.text = Messages_to_app.RESET_SPINNER_TEXT(self)
-     
+
 					#resets the list
 					self.ukewasa = OrangeBelt.ukewasa()
 
@@ -641,7 +644,7 @@ class GreenScreen(Screen):
 					#resets the list
 					self.kansetsuwasa = GreenBelt.kansetsuwasa()
 
-			elif self.spinner_value == NAGEWASA: 
+			elif self.spinner_value == NAGEWASA:
 								#runs the technique selecter function
 				self.technique_selected_random(self.nagewasa)
 
@@ -708,8 +711,8 @@ class GreenScreen(Screen):
 
 #* NEW SCREEN
 class BlueScreen(Screen):
-	#Sets ie ukewasa to the object och ukewasa from the "color of the belt" class in Modules.  
-	#This Changes with every grade.     
+	#Sets ie ukewasa to the object och ukewasa from the "color of the belt" class in Modules.
+	#This Changes with every grade.
 	ukewasa = BlueBelt.ukewasa()
 	atemiwasa = BlueBelt.atemiwasa()
 	kansetsuwasa = BlueBelt.kansetsuwasa()
@@ -813,7 +816,7 @@ class BlueScreen(Screen):
 
 					#Resets the spinner
 					self.ids.spinner_menu_grades.text = Messages_to_app.RESET_SPINNER_TEXT(self)
-     
+
 					#resets the list
 					self.ukewasa = OrangeBelt.ukewasa()
 
@@ -866,7 +869,7 @@ class BlueScreen(Screen):
 					#resets the list
 					self.kansetsuwasa = BlueBelt.kansetsuwasa()
 
-			elif self.spinner_value == NAGEWASA: 
+			elif self.spinner_value == NAGEWASA:
 								#runs the technique selecter function
 				self.technique_selected_random(self.nagewasa)
 
@@ -933,8 +936,8 @@ class BlueScreen(Screen):
 
 #* NEW SCREEN
 class BrownScreen(Screen):
-	#Sets ie ukewasa to the object och ukewasa from the "color of the belt" class in Modules.  
-	#This Changes with every grade. 
+	#Sets ie ukewasa to the object och ukewasa from the "color of the belt" class in Modules.
+	#This Changes with every grade.
 	ukewasa = BrownBelt.ukewasa()
 	atemiwasa = BrownBelt.atemiwasa()
 	kansetsuwasa = BrownBelt.kansetsuwasa()
@@ -1038,7 +1041,7 @@ class BrownScreen(Screen):
 
 					#Resets the spinner
 					self.ids.spinner_menu_grades.text = Messages_to_app.RESET_SPINNER_TEXT(self)
-     
+
 					#resets the list
 					self.ukewasa = BrownBelt.ukewasa()
 
@@ -1091,7 +1094,7 @@ class BrownScreen(Screen):
 					#resets the list
 					self.kansetsuwasa = BrownBelt.kansetsuwasa()
 
-			elif self.spinner_value == NAGEWASA: 
+			elif self.spinner_value == NAGEWASA:
 								#runs the technique selecter function
 				self.technique_selected_random(self.nagewasa)
 
@@ -1158,8 +1161,8 @@ class BrownScreen(Screen):
 
 #* NEW SCREEN
 class FirstDanScreen(Screen):
-	#Sets ie ukewasa to the object och ukewasa from the "color of the belt" class in Modules.  
-	#This Changes with every grade. 	
+	#Sets ie ukewasa to the object och ukewasa from the "color of the belt" class in Modules.
+	#This Changes with every grade.
 	ukewasa = FirstDan.ukewasa()
 	atemiwasa = FirstDan.atemiwasa()
 	kansetsuwasa = FirstDan.kansetsuwasa()
@@ -1263,7 +1266,7 @@ class FirstDanScreen(Screen):
 
 					#Resets the spinner
 					self.ids.spinner_menu_grades.text = Messages_to_app.RESET_SPINNER_TEXT(self)
-     
+
 					#resets the list
 					self.ukewasa = FirstDan.ukewasa()
 
@@ -1316,7 +1319,7 @@ class FirstDanScreen(Screen):
 					#resets the list
 					self.kansetsuwasa = FirstDan.kansetsuwasa()
 
-			elif self.spinner_value == NAGEWASA: 
+			elif self.spinner_value == NAGEWASA:
 								#runs the technique selecter function
 				self.technique_selected_random(self.nagewasa)
 
@@ -1380,8 +1383,8 @@ class FirstDanScreen(Screen):
 		reference_to_home_screen = self.manager.get_screen("home")
 		reference_to_home_screen.ids.spinner_menu_home.text = HomeScreen.home_spinner_text(self)
 		self.parent.current = "home"
-  
-  
+
+
 class SecondDanScreen(Screen):
 	pass
 
