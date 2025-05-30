@@ -1,6 +1,37 @@
 #: kivy 2.3.1
-<test_scren>: #<- refererar till en class med samma namn, en screen med andra ord.
+test_screen: #<- refererar till en class med samma namn, en screen med andra ord.
 
-    Label:
-        size: root.height, root.width
-        text: "Hello"
+<test_screen>:
+    BoxLayout:
+		size: root.width, root.height
+		orientation: "vertical"
+
+        #Översta raden
+        BoxLayout:
+            size_hint: 1, .10
+            Button:
+                text: "JujutsuApp_Kivy"
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+
+        #Mittenraden
+        BoxLayout:
+            size_hint: .5, .80
+            orientation: "vertical"
+            padding: 100
+            spacing: 20
+            pos_hint: {"center_x": .5}
+            Button:
+                text:"Start a training session"
+            Button:
+                text:"View training log"
+            Button:
+                text:"Access settings"
+
+        # Nedersta raden
+        BoxLayout:
+            size_hint: 1, .10
+
+            Button:
+                text: "JujutsuApp_kivy. All rights reserved."
